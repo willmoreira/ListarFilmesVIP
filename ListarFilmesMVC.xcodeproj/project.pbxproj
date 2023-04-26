@@ -13,6 +13,12 @@
 		74B7708C29F9559500800E4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B7708A29F9559500800E4F /* Main.storyboard */; };
 		74B7708E29F9559700800E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74B7708D29F9559700800E4F /* Assets.xcassets */; };
 		74B7709129F9559700800E4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B7708F29F9559700800E4F /* LaunchScreen.storyboard */; };
+		74B7709C29F95F1800800E4F /* UsuarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7709B29F95F1800800E4F /* UsuarioModel.swift */; };
+		74B7709E29F95F3300800E4F /* FilmeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7709D29F95F3300800E4F /* FilmeModel.swift */; };
+		74B770A029F9612D00800E4F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7709F29F9612D00800E4F /* LoginView.swift */; };
+		74B770A229F9635700800E4F /* FilmeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770A129F9635700800E4F /* FilmeView.swift */; };
+		74B770A429F964A500800E4F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770A329F964A500800E4F /* LoginViewController.swift */; };
+		74B770A629F964B900800E4F /* ListaFilmesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770A529F964B900800E4F /* ListaFilmesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		74B7708D29F9559700800E4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74B7709029F9559700800E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74B7709229F9559700800E4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		74B7709B29F95F1800800E4F /* UsuarioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioModel.swift; sourceTree = "<group>"; };
+		74B7709D29F95F3300800E4F /* FilmeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmeModel.swift; sourceTree = "<group>"; };
+		74B7709F29F9612D00800E4F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		74B770A129F9635700800E4F /* FilmeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmeView.swift; sourceTree = "<group>"; };
+		74B770A329F964A500800E4F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		74B770A529F964B900800E4F /* ListaFilmesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaFilmesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,9 @@
 		74B7708329F9559500800E4F /* ListarFilmesMVC */ = {
 			isa = PBXGroup;
 			children = (
+				74B7709A29F957C900800E4F /* Controllers */,
+				74B7709929F957C000800E4F /* Views */,
+				74B7709829F957A500800E4F /* Models */,
 				74B7708429F9559500800E4F /* AppDelegate.swift */,
 				74B7708629F9559500800E4F /* SceneDelegate.swift */,
 				74B7708829F9559500800E4F /* ViewController.swift */,
@@ -65,6 +80,33 @@
 				74B7709229F9559700800E4F /* Info.plist */,
 			);
 			path = ListarFilmesMVC;
+			sourceTree = "<group>";
+		};
+		74B7709829F957A500800E4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				74B7709B29F95F1800800E4F /* UsuarioModel.swift */,
+				74B7709D29F95F3300800E4F /* FilmeModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		74B7709929F957C000800E4F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				74B7709F29F9612D00800E4F /* LoginView.swift */,
+				74B770A129F9635700800E4F /* FilmeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		74B7709A29F957C900800E4F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				74B770A329F964A500800E4F /* LoginViewController.swift */,
+				74B770A529F964B900800E4F /* ListaFilmesViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +180,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74B770A029F9612D00800E4F /* LoginView.swift in Sources */,
 				74B7708929F9559500800E4F /* ViewController.swift in Sources */,
+				74B7709E29F95F3300800E4F /* FilmeModel.swift in Sources */,
 				74B7708529F9559500800E4F /* AppDelegate.swift in Sources */,
+				74B770A429F964A500800E4F /* LoginViewController.swift in Sources */,
+				74B7709C29F95F1800800E4F /* UsuarioModel.swift in Sources */,
 				74B7708729F9559500800E4F /* SceneDelegate.swift in Sources */,
+				74B770A229F9635700800E4F /* FilmeView.swift in Sources */,
+				74B770A629F964B900800E4F /* ListaFilmesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +339,6 @@
 				INFOPLIST_FILE = ListarFilmesMVC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -318,7 +365,6 @@
 				INFOPLIST_FILE = ListarFilmesMVC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
