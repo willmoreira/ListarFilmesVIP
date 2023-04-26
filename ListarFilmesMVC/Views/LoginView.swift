@@ -7,16 +7,20 @@
 
 import UIKit
 
+protocol LoginViewDelegate: AnyObject {
+    func buttonIrParaTelaListaFilmes()
+}
+
 class LoginView: UIView {
     
+    weak var delegate: LoginViewDelegate?
+
     lazy var titleLogin = UILabel()
     lazy var titleSenha = UILabel()
-
 
     lazy var titleView: UILabel = {
         let titleView = UILabel()
         titleView.font = UIFont.systemFont(ofSize: 24)
-
         return titleView
     }()
 
@@ -27,7 +31,6 @@ class LoginView: UIView {
         return textField
     }()
     
-    
     lazy var inputSenha: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Digite sua senha"
@@ -37,6 +40,7 @@ class LoginView: UIView {
     
     lazy var buttonLogar: UIButton = {
         let button = UIButton()
+        button.addTarget(self, action: #selector(botaoPressionado), for: .touchUpInside)
         button.backgroundColor = .blue
         button.layer.cornerRadius = 5
         return button
@@ -47,7 +51,6 @@ class LoginView: UIView {
         let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
         let underlineAttributedString = NSAttributedString(string: "Recuperar senha", attributes: underlineAttribute)
         button.setAttributedTitle(underlineAttributedString, for: .normal)
-
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         
@@ -57,7 +60,7 @@ class LoginView: UIView {
     lazy var buttonCadastrar: UIButton = {
         let button = UIButton()
         let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
-        let underlineAttributedString = NSAttributedString(string: "Cadastrar", attributes: underlineAttribute)
+        let underlineAttributedString = NSAttributedString(string: "Criar Conta", attributes: underlineAttribute)
         button.setAttributedTitle(underlineAttributedString, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -108,7 +111,7 @@ class LoginView: UIView {
         self.addSubview(titleView)
         
         NSLayoutConstraint.activate([
-            titleView.topAnchor.constraint(equalTo: self.topAnchor, constant: 150),
+            titleView.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
             titleView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
             titleLogin.topAnchor.constraint(equalTo: titleView.topAnchor, constant: 100),
@@ -129,7 +132,7 @@ class LoginView: UIView {
             buttonLogar.widthAnchor.constraint(equalToConstant: 150),
             buttonLogar.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
-            buttonRecuperarSenha.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -150),
+            buttonRecuperarSenha.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
             buttonRecuperarSenha.widthAnchor.constraint(equalToConstant: 200),
             buttonRecuperarSenha.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
@@ -139,5 +142,10 @@ class LoginView: UIView {
             
         ])
     }
+    
+    @objc func botaoPressionado() {
+        delegate?.buttonIrParaTelaListaFilmes()
+    }
+
 }
 
