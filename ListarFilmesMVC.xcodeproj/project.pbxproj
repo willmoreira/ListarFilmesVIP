@@ -56,6 +56,9 @@
 		74B7708329F9559500800E4F /* ListarFilmesMVC */ = {
 			isa = PBXGroup;
 			children = (
+				74B7709A29F957C900800E4F /* Controllers */,
+				74B7709929F957C000800E4F /* Views */,
+				74B7709829F957A500800E4F /* Models */,
 				74B7708429F9559500800E4F /* AppDelegate.swift */,
 				74B7708629F9559500800E4F /* SceneDelegate.swift */,
 				74B7708829F9559500800E4F /* ViewController.swift */,
@@ -65,6 +68,27 @@
 				74B7709229F9559700800E4F /* Info.plist */,
 			);
 			path = ListarFilmesMVC;
+			sourceTree = "<group>";
+		};
+		74B7709829F957A500800E4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		74B7709929F957C000800E4F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		74B7709A29F957C900800E4F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
