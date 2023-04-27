@@ -1,22 +1,21 @@
 //
-//  LoginView.swift
+//  CreateLoginView.swift
 //  ListarFilmesMVC
 //
-//  Created by William Moreira on 26/04/23.
+//  Created by William Moreira on 27/04/23.
 //
 
 import UIKit
 
-protocol LoginViewDelegate: AnyObject {
-    func buttonLogarPressionado()
-    func botaoResetPressionado()
+protocol CreateLoginViewDelegate: AnyObject {
     func botaoCriarPressionado()
 }
 
-class LoginView: UIView {
+class CreateLoginView: UIView {
     
-    weak var delegate: LoginViewDelegate?
-    lazy var activityIndicator = UIActivityIndicatorView(style: .large)
+    weak var delegate: CreateLoginViewDelegate?
+    let activityIndicator = UIActivityIndicatorView(style: .large)
+
     lazy var titleLogin = UILabel()
     lazy var titleSenha = UILabel()
 
@@ -42,31 +41,9 @@ class LoginView: UIView {
     
     lazy var buttonLogar: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(botaoPressionado), for: .touchUpInside)
+        button.addTarget(self, action: #selector(botaoCriarPressionado), for: .touchUpInside)
         button.backgroundColor = .blue
         button.layer.cornerRadius = 5
-        return button
-    }()
-    
-    lazy var buttonRecuperarSenha: UIButton = {
-        let button = UIButton()
-        button.addTarget(self, action: #selector(botaoResetPressionado), for: .touchUpInside)
-        let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
-        let underlineAttributedString = NSAttributedString(string: "Recuperar senha", attributes: underlineAttribute)
-        button.setAttributedTitle(underlineAttributedString, for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        return button
-    }()
-    
-    lazy var buttonCadastrar: UIButton = {
-        let button = UIButton()
-        button.addTarget(self, action: #selector(botaoCriarPressionado), for: .touchUpInside)
-        let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
-        let underlineAttributedString = NSAttributedString(string: "Criar Conta", attributes: underlineAttribute)
-        button.setAttributedTitle(underlineAttributedString, for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         return button
     }()
     
@@ -81,12 +58,12 @@ class LoginView: UIView {
     }
     
     private func setupInit() {
-        self.titleView.text = "APP LISTA DE FILMES"
+        self.titleView.text = "CADASTRAR LOGIN"
         self.titleLogin.text = "Email"
         self.inputLogin = inputLogin
         self.titleSenha.text = "Senha"
         self.inputSenha = inputSenha
-        self.buttonLogar.setTitle("Entrar", for: .normal)
+        self.buttonLogar.setTitle("Cadastrar", for: .normal)
         setupLayout()
     }
     
@@ -97,8 +74,6 @@ class LoginView: UIView {
         inputLogin.translatesAutoresizingMaskIntoConstraints = false
         inputSenha.translatesAutoresizingMaskIntoConstraints = false
         buttonLogar.translatesAutoresizingMaskIntoConstraints = false
-        buttonCadastrar.translatesAutoresizingMaskIntoConstraints = false
-        buttonRecuperarSenha.translatesAutoresizingMaskIntoConstraints = false
         titleView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
@@ -107,8 +82,6 @@ class LoginView: UIView {
         self.addSubview(inputLogin)
         self.addSubview(inputSenha)
         self.addSubview(buttonLogar)
-        self.addSubview(buttonRecuperarSenha)
-        self.addSubview(buttonCadastrar)
         self.addSubview(titleView)
         self.addSubview(activityIndicator)
         
@@ -136,28 +109,12 @@ class LoginView: UIView {
             buttonLogar.topAnchor.constraint(equalTo: inputSenha.bottomAnchor, constant: 50),
             buttonLogar.widthAnchor.constraint(equalToConstant: 150),
             buttonLogar.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            
-            buttonRecuperarSenha.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100),
-            buttonRecuperarSenha.widthAnchor.constraint(equalToConstant: 200),
-            buttonRecuperarSenha.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            
-            buttonCadastrar.topAnchor.constraint(equalTo: buttonRecuperarSenha.bottomAnchor, constant:10),
-            buttonCadastrar.widthAnchor.constraint(equalToConstant: 200),
-            buttonCadastrar.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            
         ])
-    }
-    
-    @objc func botaoPressionado() {
-        delegate?.buttonLogarPressionado()
-    }
-    
-    @objc func botaoResetPressionado() {
-        delegate?.botaoResetPressionado()
     }
 
     @objc func botaoCriarPressionado() {
         delegate?.botaoCriarPressionado()
     }
+    
 }
 

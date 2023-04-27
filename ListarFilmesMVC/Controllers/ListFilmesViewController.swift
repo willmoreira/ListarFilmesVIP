@@ -1,5 +1,5 @@
 //
-//  ListaFilmesViewController.swift
+//  ListFilmesViewController.swift
 //  ListarFilmesMVC
 //
 //  Created by William Moreira on 26/04/23.
@@ -8,7 +8,7 @@
 import UIKit
 
 
-class ListaFilmesViewController: UIViewController {
+class ListFilmesViewController: UIViewController {
     
     var viewFilmes = FilmeView()
     

@@ -9,8 +9,7 @@ import UIKit
 
 class FilmeView: UIView {
     
-    var listFilmes: [Movie] = []
-    
+    lazy var listFilmes: [Movie] = []
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -48,9 +47,7 @@ class FilmeView: UIView {
         tableView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
     }
-    
 }
 
 extension FilmeView: UITableViewDelegate, UITableViewDataSource {
@@ -60,7 +57,7 @@ extension FilmeView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        //cell.textLabel?.text = listFilmes[indexPath.row]
+        cell.textLabel?.text = listFilmes[indexPath.row].title
         return cell
     }
 }
