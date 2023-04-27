@@ -9,7 +9,7 @@ import UIKit
 
 class FilmeView: UIView {
     
-    lazy var listFilmes: [FilmeModel] = []
+    var listFilmes: [Movie] = []
     
     
     lazy var tableView: UITableView = {
@@ -60,7 +60,7 @@ extension FilmeView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = listFilmes[indexPath.row].nome
+        //cell.textLabel?.text = listFilmes[indexPath.row]
         return cell
     }
 }

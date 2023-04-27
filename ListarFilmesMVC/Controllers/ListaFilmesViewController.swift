@@ -10,18 +10,14 @@ import UIKit
 
 class ListaFilmesViewController: UIViewController {
     
-
     var viewFilmes = FilmeView()
     
     override func loadView() {
         
         super.loadView()
         view = viewFilmes
+        print(viewFilmes.listFilmes)
         view.backgroundColor = .white
         
-        
     }
-    
-    
-    
 }
