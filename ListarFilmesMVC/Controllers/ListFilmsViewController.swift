@@ -1,5 +1,5 @@
 //
-//  ListFilmesViewController.swift
+//  ListFilmsViewController.swift
 //  ListarFilmesMVC
 //
 //  Created by William Moreira on 26/04/23.
@@ -8,16 +8,13 @@
 import UIKit
 
 
-class ListFilmesViewController: UIViewController {
+class ListFilmsViewController: UIViewController {
     
-    var viewFilmes = FilmeView()
+    var filmView = FilmView()
     
     override func loadView() {
-        
         super.loadView()
-        view = viewFilmes
-        print(viewFilmes.listFilmes)
+        view = filmView
         view.backgroundColor = .white
-        
     }
 }

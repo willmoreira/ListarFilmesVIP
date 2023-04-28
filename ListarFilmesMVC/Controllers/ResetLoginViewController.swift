@@ -23,11 +23,11 @@ class ResetLoginViewController: UIViewController, ResetLoginViewDelegate {
         super.viewDidLoad()
     }
     
-    func buttonResetLogarPressionado() {
-        coletarDados()
+    func resetLoginButtonPressed() {
+        getData()
     }
     
-    func coletarDados() {
+    func getData() {
         let email = resetLoginView.inputLogin.text!
         if !email.isEmpty {
             tryReset(email: email)
@@ -46,11 +46,11 @@ class ResetLoginViewController: UIViewController, ResetLoginViewDelegate {
                 }
                 return
             }
-            self.irParaLogin()
+            self.goToLogin()
         }
     }
     
-    func irParaLogin() {
+    func goToLogin() {
         self.navigationController?.popViewController(animated: true)
     }
     

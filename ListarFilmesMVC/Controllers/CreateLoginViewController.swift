@@ -10,32 +10,32 @@ import FirebaseAuth
 
 class CreateLoginViewController: UIViewController, CreateLoginViewDelegate{
     
-    var createloginView = CreateLoginView()
+    var createLoginView = CreateLoginView()
     var login: String = ""
     var senha: String = ""
     
     override func loadView() {
         super.loadView()
-        view = createloginView
+        view = createLoginView
         view.backgroundColor = .white
-        createloginView.delegate = self
+        createLoginView.delegate = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
   
-    func botaoCriarPressionado() {
-        coletarDados()
+    func createButtonPressed() {
+        getData()
     }
     
-    func coletarDados() {
-        senha = createloginView.inputSenha.text!
-        login = createloginView.inputLogin.text!
+    func getData() {
+        senha = createLoginView.inputSenha.text!
+        login = createLoginView.inputLogin.text!
         
         if !login.isEmpty {
             if !senha.isEmpty {
-                createloginView.activityIndicator.startAnimating()
+                createLoginView.activityIndicator.startAnimating()
                 tryCreateLogin()
             } else {
                 showAlert(title: "Erro no campo Senha", message: "Preencha o campo Senha")
@@ -47,7 +47,7 @@ class CreateLoginViewController: UIViewController, CreateLoginViewDelegate{
     
     func tryCreateLogin() {
         Auth.auth().createUser(withEmail: login, password: senha) { authResult, error in
-            self.createloginView.activityIndicator.stopAnimating()
+            self.createLoginView.activityIndicator.stopAnimating()
             
             if let error = error {
                 if error.localizedDescription == "The email address is already in use by another account." {
@@ -68,13 +68,16 @@ class CreateLoginViewController: UIViewController, CreateLoginViewDelegate{
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
-            self.irParaLogin()
+            if title == "Sucesso!" {
+                //poderia chamar a tela de filmes
+                self.goToLogin()
+            }
         }
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
     
-    func irParaLogin() {
+    func goToLogin() {
         self.navigationController?.popViewController(animated: true)
     }
 }

@@ -11,7 +11,7 @@ import FirebaseAuth
 class LoginViewController: UIViewController, LoginViewDelegate {
     
     var loginView = LoginView()
-    var listaFilmes: [Movie] = []
+    var listMovies: [Result] = []
     var login: String = ""
     var senha: String = ""
     
@@ -24,10 +24,10 @@ class LoginViewController: UIViewController, LoginViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        buscarListaFilmes()
+        searchMovieList()
     }
     
-    func buscarListaFilmes() {
+    func searchMovieList() {
         // Defina a URL da API e a chave de API
         let apiKey = "ac894a60b6f5b4abf7ff6c58dbc67ced"
         let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)"
@@ -60,8 +60,8 @@ class LoginViewController: UIViewController, LoginViewDelegate {
                 print(json)
                 
                 let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                self.listaFilmes = try decoder.decode([Movie].self, from: data)
+                let result = try decoder.decode(Movie.self, from: data)
+                self.listMovies = result.results
                 
             } catch {
                 print("Erro ao converter dados em JSON: \(error.localizedDescription)")
@@ -71,11 +71,11 @@ class LoginViewController: UIViewController, LoginViewDelegate {
         task.resume()
     }
     
-    func buttonLogarPressionado() {
-        coletarDados()
+    func loginButtonPressed() {
+        getData()
     }
     
-    func coletarDados() {
+    func getData() {
         senha = loginView.inputSenha.text!
         login = loginView.inputLogin.text!
         
@@ -105,24 +105,24 @@ class LoginViewController: UIViewController, LoginViewDelegate {
                 }
                 return
             }
-            self.irParaTelaListaFilmes()
+            self.goToScreenListMovies()
         }
     }
     
-    func botaoResetPressionado() {
-        let telaResetSenha = ResetLoginViewController()
-        self.navigationController?.pushViewController(telaResetSenha, animated: true)
+    func resetButtonPressed() {
+        let resetLoginViewController = ResetLoginViewController()
+        self.navigationController?.pushViewController(resetLoginViewController, animated: true)
     }
     
-    func botaoCriarPressionado() {
-        let telaCriarLogin = CreateLoginViewController()
-        self.navigationController?.pushViewController(telaCriarLogin, animated: true)
+    func createButtonPressed() {
+        let createLoginViewController = CreateLoginViewController()
+        self.navigationController?.pushViewController(createLoginViewController, animated: true)
     }
     
-    func irParaTelaListaFilmes() {
-        let telalistaFilmes = ListFilmesViewController()
-        telalistaFilmes.viewFilmes.listFilmes = self.listaFilmes
-        self.navigationController?.pushViewController(telalistaFilmes, animated: true)
+    func goToScreenListMovies() {
+        let listFilmsViewController = ListFilmsViewController()
+        listFilmsViewController.filmView.listFilms = self.listMovies
+        self.navigationController?.pushViewController(listFilmsViewController, animated: true)
     }
     
     func showAlert(title: String, message: String) {

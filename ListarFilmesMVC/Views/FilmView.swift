@@ -1,5 +1,5 @@
 //
-//  FilmeView.swift
+//  FilmView.swift
 //  ListarFilmesMVC
 //
 //  Created by William Moreira on 26/04/23.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class FilmeView: UIView {
+class FilmView: UIView {
     
-    lazy var listFilmes: [Movie] = []
+    lazy var listFilms: [Result] = []
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -19,10 +19,8 @@ class FilmeView: UIView {
         return tableView
     }()
     
-    lazy var titleTela = UILabel()
-    lazy var buttonSair = UIButton()
-    
-    
+    lazy var titleView = UILabel()
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupInit()
@@ -34,8 +32,7 @@ class FilmeView: UIView {
     }
     
     private func setupInit() {
-        self.titleTela.text = "Lista de Filmes"
-        self.buttonSair.titleLabel?.text = "Sair"
+        self.titleView.text = "Lista de Filmes"
         configureView()
     }
     
@@ -50,14 +47,14 @@ class FilmeView: UIView {
     }
 }
 
-extension FilmeView: UITableViewDelegate, UITableViewDataSource {
+extension FilmView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listFilmes.count
+        return listFilms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = listFilmes[indexPath.row].title
+        cell.textLabel?.text = listFilms[indexPath.row].title
         return cell
     }
 }

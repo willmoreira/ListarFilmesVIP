@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CreateLoginViewDelegate: AnyObject {
-    func botaoCriarPressionado()
+    func createButtonPressed()
 }
 
 class CreateLoginView: UIView {
@@ -16,8 +16,8 @@ class CreateLoginView: UIView {
     weak var delegate: CreateLoginViewDelegate?
     let activityIndicator = UIActivityIndicatorView(style: .large)
 
-    lazy var titleLogin = UILabel()
-    lazy var titleSenha = UILabel()
+    lazy var titleLoginLabel = UILabel()
+    lazy var titlePasswordLabel = UILabel()
 
     lazy var titleView: UILabel = {
         let titleView = UILabel()
@@ -39,9 +39,9 @@ class CreateLoginView: UIView {
         return textField
     }()
     
-    lazy var buttonLogar: UIButton = {
+    lazy var createLoginButton: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(botaoCriarPressionado), for: .touchUpInside)
+        button.addTarget(self, action: #selector(createButtonPressed), for: .touchUpInside)
         button.backgroundColor = .blue
         button.layer.cornerRadius = 5
         return button
@@ -59,29 +59,29 @@ class CreateLoginView: UIView {
     
     private func setupInit() {
         self.titleView.text = "CADASTRAR LOGIN"
-        self.titleLogin.text = "Email"
+        self.titleLoginLabel.text = "Email"
         self.inputLogin = inputLogin
-        self.titleSenha.text = "Senha"
+        self.titlePasswordLabel.text = "Senha"
         self.inputSenha = inputSenha
-        self.buttonLogar.setTitle("Cadastrar", for: .normal)
+        self.createLoginButton.setTitle("Cadastrar", for: .normal)
         setupLayout()
     }
     
     private func setupLayout() {
         titleView.translatesAutoresizingMaskIntoConstraints = false
-        titleLogin.translatesAutoresizingMaskIntoConstraints = false
-        titleSenha.translatesAutoresizingMaskIntoConstraints = false
+        titleLoginLabel.translatesAutoresizingMaskIntoConstraints = false
+        titlePasswordLabel.translatesAutoresizingMaskIntoConstraints = false
         inputLogin.translatesAutoresizingMaskIntoConstraints = false
         inputSenha.translatesAutoresizingMaskIntoConstraints = false
-        buttonLogar.translatesAutoresizingMaskIntoConstraints = false
+        createLoginButton.translatesAutoresizingMaskIntoConstraints = false
         titleView.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         
-        self.addSubview(titleLogin)
-        self.addSubview(titleSenha)
+        self.addSubview(titleLoginLabel)
+        self.addSubview(titlePasswordLabel)
         self.addSubview(inputLogin)
         self.addSubview(inputSenha)
-        self.addSubview(buttonLogar)
+        self.addSubview(createLoginButton)
         self.addSubview(titleView)
         self.addSubview(activityIndicator)
         
@@ -92,28 +92,28 @@ class CreateLoginView: UIView {
             titleView.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
             titleView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
 
-            titleLogin.topAnchor.constraint(equalTo: titleView.topAnchor, constant: 100),
-            titleLogin.leftAnchor.constraint(equalTo: self.inputLogin.leftAnchor, constant: 0),
+            titleLoginLabel.topAnchor.constraint(equalTo: titleView.topAnchor, constant: 100),
+            titleLoginLabel.leftAnchor.constraint(equalTo: self.inputLogin.leftAnchor, constant: 0),
             
-            inputLogin.topAnchor.constraint(equalTo: titleLogin.bottomAnchor, constant: 10),
+            inputLogin.topAnchor.constraint(equalTo: titleLoginLabel.bottomAnchor, constant: 10),
             inputLogin.widthAnchor.constraint(equalToConstant: 300),
             inputLogin.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
-            titleSenha.topAnchor.constraint(equalTo: inputLogin.bottomAnchor, constant: 50),
-            titleSenha.leftAnchor.constraint(equalTo: self.inputLogin.leftAnchor, constant: 0),
+            titlePasswordLabel.topAnchor.constraint(equalTo: inputLogin.bottomAnchor, constant: 50),
+            titlePasswordLabel.leftAnchor.constraint(equalTo: self.inputLogin.leftAnchor, constant: 0),
             
-            inputSenha.topAnchor.constraint(equalTo: titleSenha.bottomAnchor, constant: 10),
+            inputSenha.topAnchor.constraint(equalTo: titlePasswordLabel.bottomAnchor, constant: 10),
             inputSenha.widthAnchor.constraint(equalToConstant: 300),
             inputSenha.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
-            buttonLogar.topAnchor.constraint(equalTo: inputSenha.bottomAnchor, constant: 50),
-            buttonLogar.widthAnchor.constraint(equalToConstant: 150),
-            buttonLogar.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            createLoginButton.topAnchor.constraint(equalTo: inputSenha.bottomAnchor, constant: 50),
+            createLoginButton.widthAnchor.constraint(equalToConstant: 150),
+            createLoginButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         ])
     }
 
-    @objc func botaoCriarPressionado() {
-        delegate?.botaoCriarPressionado()
+    @objc func createButtonPressed() {
+        delegate?.createButtonPressed()
     }
     
 }

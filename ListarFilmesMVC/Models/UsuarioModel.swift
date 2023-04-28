@@ -10,10 +10,10 @@ import Foundation
 
 class UsuarioModel {
     var login: String
-    var senha: String
+    var password: String
     
-    init(login: String, senha: String) {
+    init(login: String, password: String) {
         self.login = login
-        self.senha = senha
+        self.password = password
     }
 }
