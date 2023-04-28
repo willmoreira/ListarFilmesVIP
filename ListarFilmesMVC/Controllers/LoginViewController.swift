@@ -76,7 +76,8 @@ class LoginViewController: UIViewController, LoginViewDelegate {
     }
     
     func loginButtonPressed() {
-        getData()
+        self.goToScreenListMovies()
+        //getData()
     }
     
     func getData() {

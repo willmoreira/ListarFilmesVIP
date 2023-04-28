@@ -66,5 +66,4 @@ class CustomTableViewCell: UITableViewCell {
         let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500" + posterPath)
         customImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder"))
     }
-    
 }

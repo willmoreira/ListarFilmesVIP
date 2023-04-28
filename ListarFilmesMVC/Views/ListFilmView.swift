@@ -8,10 +8,15 @@
 import UIKit
 import SDWebImage
 
-class FilmView: UIView {
+protocol ListFilmViewDelegate: AnyObject {
+    func goToDetailViewController(filmSelected: Result)
+}
+
+class ListFilmView: UIView {
     
+    weak var delegate: ListFilmViewDelegate?
     lazy var listFilms: [Result] = []
-    
+
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -61,13 +66,19 @@ class FilmView: UIView {
     }
 }
 
-extension FilmView: UITableViewDelegate, UITableViewDataSource {
+extension ListFilmView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listFilms.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let filmeSelecionado = listFilms[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        delegate?.goToDetailViewController(filmSelected: filmeSelecionado)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
