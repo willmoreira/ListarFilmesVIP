@@ -16,5 +16,6 @@ class ListFilmsViewController: UIViewController {
         super.loadView()
         view = filmView
         view.backgroundColor = .white
+
     }
 }

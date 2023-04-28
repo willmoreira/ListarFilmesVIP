@@ -60,7 +60,7 @@ class LoginViewController: UIViewController, LoginViewDelegate {
                 print(json)
                 
                 let decoder = JSONDecoder()
-                let result = try decoder.decode(Movie.self, from: data)
+                let result = try decoder.decode(MovieModel.self, from: data)
                 self.listMovies = result.results
                 
             } catch {
