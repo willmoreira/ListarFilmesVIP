@@ -11,11 +11,15 @@ import UIKit
 class ListFilmsViewController: UIViewController {
     
     var filmView = FilmView()
-    
+
     override func loadView() {
         super.loadView()
         view = filmView
         view.backgroundColor = .white
 
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 }

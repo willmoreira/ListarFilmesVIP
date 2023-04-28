@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FilmView: UIView {
     
@@ -42,7 +43,6 @@ class FilmView: UIView {
     private func configureView() {
         self.titleView.text = "Lista de Filmes"
         tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "CustomTableViewCell")
-        backgroundColor = .white
         addSubview(titleView)
         addSubview(tableView)
         
@@ -67,7 +67,7 @@ extension FilmView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,8 +75,23 @@ extension FilmView: UITableViewDelegate, UITableViewDataSource {
         
         // Configure o nome, subtítulo e imagem
         cell.nameLabel.text = listFilms[indexPath.row].title
-        cell.subtitleLabel.text = listFilms[indexPath.row].overview
-        
+        cell.subtitleLabel.text = "Lançado em " + formatDate(date: listFilms[indexPath.row].releaseDate)
+        cell.configureImage(posterPath: listFilms[indexPath.row].posterPath)
+
         return cell
+    }
+    
+    func formatDate(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        var dateString: String = ""
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        if let date = dateFormatter.date(from: date) {
+            dateFormatter.dateStyle = .long
+            dateFormatter.timeStyle = .none
+            dateFormatter.locale = Locale(identifier: "pt_BR")
+            dateString = dateFormatter.string(from: date)
+        }
+        return dateString
     }
 }

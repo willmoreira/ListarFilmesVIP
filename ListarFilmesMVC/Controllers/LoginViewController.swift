@@ -27,6 +27,10 @@ class LoginViewController: UIViewController, LoginViewDelegate {
         searchMovieList()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     func searchMovieList() {
         // Defina a URL da API e a chave de API
         let apiKey = "ac894a60b6f5b4abf7ff6c58dbc67ced"
@@ -111,18 +115,38 @@ class LoginViewController: UIViewController, LoginViewDelegate {
     
     func resetButtonPressed() {
         let resetLoginViewController = ResetLoginViewController()
+        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
+
+        navigationItem.backBarButtonItem = backButton
         self.navigationController?.pushViewController(resetLoginViewController, animated: true)
     }
     
     func createButtonPressed() {
         let createLoginViewController = CreateLoginViewController()
+        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
+
+        navigationItem.backBarButtonItem = backButton
         self.navigationController?.pushViewController(createLoginViewController, animated: true)
     }
     
     func goToScreenListMovies() {
+        cleanTextFields()
         let listFilmsViewController = ListFilmsViewController()
         listFilmsViewController.filmView.listFilms = self.listMovies
+        
+        let backButton = UIBarButtonItem(title: "Sair do APP", style: .plain, target: nil, action: nil)
+
+        navigationItem.backBarButtonItem = backButton
         self.navigationController?.pushViewController(listFilmsViewController, animated: true)
+    }
+    
+    func cleanTextFields() {
+        loginView.inputSenha.text = ""
+        loginView.inputLogin.text = ""
+    }
+    
+    @objc func exitButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func showAlert(title: String, message: String) {
