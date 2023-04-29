@@ -1,5 +1,5 @@
 // MARK: - Welcome
-struct MovieModel: Codable {
+struct FilmModel: Codable {
     let page: Int
     let results: [Result]
     let totalPages, totalResults: Int

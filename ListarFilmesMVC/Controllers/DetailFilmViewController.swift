@@ -68,8 +68,7 @@ class DetailFilmViewController: UIViewController {
             descriptLabel.topAnchor.constraint(equalTo: customImageView.bottomAnchor, constant: 16),
         ])
     }
-    
-    
+   
     func configureImage(posterPath: String) {
         let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500" + posterPath)
         customImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder"))

@@ -11,6 +11,7 @@ import FirebaseAuth
 class CreateLoginViewController: UIViewController, CreateLoginViewDelegate{
     
     var createLoginView = CreateLoginView()
+    var listFilms: [Result] = []
     var login: String = ""
     var senha: String = ""
     
@@ -24,7 +25,7 @@ class CreateLoginViewController: UIViewController, CreateLoginViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-  
+    
     func createButtonPressed() {
         getData()
     }
@@ -61,7 +62,7 @@ class CreateLoginViewController: UIViewController, CreateLoginViewDelegate{
                 }
                 return
             }
-            self.showAlert(title: "Sucesso!", message: "Usuario cadastrado com sucesso!")
+            self.showAlert(title: "Sucesso!", message: "Usuario cadastrado com sucesso, faça o Login agora!")
         }
     }
     
@@ -69,7 +70,6 @@ class CreateLoginViewController: UIViewController, CreateLoginViewDelegate{
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             if title == "Sucesso!" {
-                //poderia chamar a tela de filmes
                 self.goToLogin()
             }
         }

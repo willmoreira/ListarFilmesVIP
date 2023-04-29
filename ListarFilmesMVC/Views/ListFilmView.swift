@@ -62,7 +62,6 @@ class ListFilmView: UIView {
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
-        
     }
 }
 
@@ -83,12 +82,9 @@ extension ListFilmView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
-        
-        // Configure o nome, subtítulo e imagem
         cell.nameLabel.text = listFilms[indexPath.row].title
         cell.subtitleLabel.text = "Lançado em " + formatDate(date: listFilms[indexPath.row].releaseDate)
         cell.configureImage(posterPath: listFilms[indexPath.row].posterPath)
-
         return cell
     }
     

@@ -144,7 +144,6 @@ class LoginView: UIView {
             registerButton.topAnchor.constraint(equalTo: recoverPasswordButton.bottomAnchor, constant:10),
             registerButton.widthAnchor.constraint(equalToConstant: 200),
             registerButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            
         ])
     }
     

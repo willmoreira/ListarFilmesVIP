@@ -11,7 +11,7 @@ import FirebaseAuth
 class LoginViewController: UIViewController, LoginViewDelegate {
     
     var loginView = LoginView()
-    var listMovies: [Result] = []
+    var listFilms: [Result] = []
     var login: String = ""
     var senha: String = ""
     
@@ -24,14 +24,14 @@ class LoginViewController: UIViewController, LoginViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchMovieList()
+        searchFilmList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
-    func searchMovieList() {
+    func searchFilmList() {
         // Defina a URL da API e a chave de API
         let apiKey = "ac894a60b6f5b4abf7ff6c58dbc67ced"
         let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)"
@@ -59,25 +59,20 @@ class LoginViewController: UIViewController, LoginViewDelegate {
                 return
             }
             // Converta os dados em um objeto JSON
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
-                
+            do {                
                 let decoder = JSONDecoder()
-                let result = try decoder.decode(MovieModel.self, from: data)
-                self.listMovies = result.results
+                let result = try decoder.decode(FilmModel.self, from: data)
+                self.listFilms = result.results
                 
             } catch {
                 print("Erro ao converter dados em JSON: \(error.localizedDescription)")
             }
         }
-        // Inicie a task de data
         task.resume()
     }
     
     func loginButtonPressed() {
-        self.goToScreenListMovies()
-        //getData()
+        getData()
     }
     
     func getData() {
@@ -110,33 +105,31 @@ class LoginViewController: UIViewController, LoginViewDelegate {
                 }
                 return
             }
-            self.goToScreenListMovies()
+            self.goToScreenListFilms()
         }
     }
     
     func resetButtonPressed() {
         let resetLoginViewController = ResetLoginViewController()
         let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
-
         navigationItem.backBarButtonItem = backButton
         self.navigationController?.pushViewController(resetLoginViewController, animated: true)
     }
     
     func createButtonPressed() {
         let createLoginViewController = CreateLoginViewController()
+        createLoginViewController.listFilms = self.listFilms
         let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
-
         navigationItem.backBarButtonItem = backButton
         self.navigationController?.pushViewController(createLoginViewController, animated: true)
     }
     
-    func goToScreenListMovies() {
+    func goToScreenListFilms() {
         cleanTextFields()
         let listFilmsViewController = ListFilmsViewController()
-        listFilmsViewController.filmView.listFilms = self.listMovies
+        listFilmsViewController.filmView.listFilms = self.listFilms
         
         let backButton = UIBarButtonItem(title: "Sair do APP", style: .plain, target: nil, action: nil)
-
         navigationItem.backBarButtonItem = backButton
         self.navigationController?.pushViewController(listFilmsViewController, animated: true)
     }

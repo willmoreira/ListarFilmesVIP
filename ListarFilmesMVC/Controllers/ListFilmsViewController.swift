@@ -38,9 +38,11 @@ class ListFilmsViewController: UIViewController, ListFilmViewDelegate {
     }
     
     func goToDetailViewController(filmSelected: Result) {
-        let detailVC = DetailFilmViewController()// instancie a próxima UIViewController onde você quer enviar o filme
-        detailVC.film = filmSelected // defina o objeto de filme na próxima UIViewController
-        navigationController?.pushViewController(detailVC, animated: true) // navegue para a próxima UIViewController
+        let detailVC = DetailFilmViewController()
+        detailVC.film = filmSelected
+        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backButton
+        navigationController?.pushViewController(detailVC, animated: true)
     }
    
 }
