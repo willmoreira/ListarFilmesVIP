@@ -8,24 +8,54 @@
 
 /* Begin PBXBuildFile section */
 		746F8DE02A01558500BD6452 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 746F8DDF2A01558500BD6452 /* GoogleService-Info.plist */; };
+		746F8E7F2A01865000BD6452 /* FilmDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E792A01865000BD6452 /* FilmDetailPresenter.swift */; };
+		746F8E802A01865000BD6452 /* FilmDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E7A2A01865000BD6452 /* FilmDetailRouter.swift */; };
+		746F8E812A01865000BD6452 /* FilmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E7B2A01865000BD6452 /* FilmDetailViewController.swift */; };
+		746F8E822A01865000BD6452 /* FilmDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E7C2A01865000BD6452 /* FilmDetailInteractor.swift */; };
+		746F8E832A01865000BD6452 /* FilmDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E7D2A01865000BD6452 /* FilmDetailView.swift */; };
+		746F8E842A01865000BD6452 /* FilmDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E7E2A01865000BD6452 /* FilmDetailModel.swift */; };
+		746F8E8B2A01867000BD6452 /* FilmListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E852A01867000BD6452 /* FilmListPresenter.swift */; };
+		746F8E8C2A01867000BD6452 /* FilmListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E862A01867000BD6452 /* FilmListRouter.swift */; };
+		746F8E8D2A01867000BD6452 /* FilmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E872A01867000BD6452 /* FilmListViewController.swift */; };
+		746F8E8E2A01867000BD6452 /* FilmListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E882A01867000BD6452 /* FilmListInteractor.swift */; };
+		746F8E8F2A01867000BD6452 /* FilmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E892A01867000BD6452 /* FilmListView.swift */; };
+		746F8E902A01867000BD6452 /* FilmListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E8A2A01867000BD6452 /* FilmListModel.swift */; };
+		746F8E972A01869B00BD6452 /* CreateLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E912A01869B00BD6452 /* CreateLoginPresenter.swift */; };
+		746F8E982A01869B00BD6452 /* CreateLoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E922A01869B00BD6452 /* CreateLoginRouter.swift */; };
+		746F8E992A01869B00BD6452 /* CreateLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E932A01869B00BD6452 /* CreateLoginViewController.swift */; };
+		746F8E9A2A01869B00BD6452 /* CreateLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E942A01869B00BD6452 /* CreateLoginInteractor.swift */; };
+		746F8E9B2A01869B00BD6452 /* CreateLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E952A01869B00BD6452 /* CreateLoginView.swift */; };
+		746F8E9C2A01869B00BD6452 /* CreateLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E962A01869B00BD6452 /* CreateLoginModel.swift */; };
+		746F8EA32A01899800BD6452 /* ResetLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E9D2A01899800BD6452 /* ResetLoginPresenter.swift */; };
+		746F8EA42A01899800BD6452 /* ResetLoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E9E2A01899800BD6452 /* ResetLoginRouter.swift */; };
+		746F8EA52A01899800BD6452 /* ResetLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E9F2A01899800BD6452 /* ResetLoginViewController.swift */; };
+		746F8EA62A01899800BD6452 /* ResetLoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8EA02A01899800BD6452 /* ResetLoginInteractor.swift */; };
+		746F8EA72A01899800BD6452 /* ResetLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8EA12A01899800BD6452 /* ResetLoginView.swift */; };
+		746F8EA82A01899800BD6452 /* ResetLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8EA22A01899800BD6452 /* ResetLoginModel.swift */; };
+		746F8EAF2A018A1D00BD6452 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8EA92A018A1D00BD6452 /* LoginPresenter.swift */; };
+		746F8EB02A018A1D00BD6452 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8EAA2A018A1D00BD6452 /* LoginRouter.swift */; };
+		746F8EB12A018A1D00BD6452 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8EAB2A018A1D00BD6452 /* LoginViewController.swift */; };
+		746F8EB22A018A1D00BD6452 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8EAC2A018A1D00BD6452 /* LoginInteractor.swift */; };
+		746F8EB32A018A1D00BD6452 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8EAD2A018A1D00BD6452 /* LoginView.swift */; };
+		746F8EB42A018A1D00BD6452 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8EAE2A018A1D00BD6452 /* LoginModel.swift */; };
 		74B7708529F9559500800E4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7708429F9559500800E4F /* AppDelegate.swift */; };
 		74B7708729F9559500800E4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7708629F9559500800E4F /* SceneDelegate.swift */; };
 		74B7708C29F9559500800E4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B7708A29F9559500800E4F /* Main.storyboard */; };
 		74B7708E29F9559700800E4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74B7708D29F9559700800E4F /* Assets.xcassets */; };
 		74B7709129F9559700800E4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B7708F29F9559700800E4F /* LaunchScreen.storyboard */; };
 		74B7709C29F95F1800800E4F /* UsuarioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7709B29F95F1800800E4F /* UsuarioModel.swift */; };
-		74B770A029F9612D00800E4F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7709F29F9612D00800E4F /* LoginView.swift */; };
+		74B770A029F9612D00800E4F /* LoginView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7709F29F9612D00800E4F /* LoginView2.swift */; };
 		74B770A229F9635700800E4F /* ListFilmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770A129F9635700800E4F /* ListFilmView.swift */; };
-		74B770A429F964A500800E4F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770A329F964A500800E4F /* LoginViewController.swift */; };
+		74B770A429F964A500800E4F /* LoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770A329F964A500800E4F /* LoginViewController2.swift */; };
 		74B770A629F964B900800E4F /* ListFilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770A529F964B900800E4F /* ListFilmsViewController.swift */; };
 		74B770A829F9ED2D00800E4F /* FilmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770A729F9ED2D00800E4F /* FilmModel.swift */; };
 		74B770B029FA9FD100800E4F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770AF29FA9FD100800E4F /* FirebaseAnalytics */; };
 		74B770B229FA9FD100800E4F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770B129FA9FD100800E4F /* FirebaseAuth */; };
 		74B770B429FA9FD100800E4F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770B329FA9FD100800E4F /* FirebaseFirestore */; };
-		74B770B629FADA0100800E4F /* ResetLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770B529FADA0100800E4F /* ResetLoginViewController.swift */; };
-		74B770B829FADBFC00800E4F /* ResetLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770B729FADBFC00800E4F /* ResetLoginView.swift */; };
-		74B770BA29FAEE0900800E4F /* CreateLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770B929FAEE0900800E4F /* CreateLoginViewController.swift */; };
-		74B770BC29FAF85300800E4F /* CreateLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770BB29FAF85300800E4F /* CreateLoginView.swift */; };
+		74B770B629FADA0100800E4F /* ResetLoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770B529FADA0100800E4F /* ResetLoginViewController2.swift */; };
+		74B770B829FADBFC00800E4F /* ResetLoginView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770B729FADBFC00800E4F /* ResetLoginView2.swift */; };
+		74B770BA29FAEE0900800E4F /* CreateLoginViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770B929FAEE0900800E4F /* CreateLoginViewController2.swift */; };
+		74B770BC29FAF85300800E4F /* CreateLoginView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770BB29FAF85300800E4F /* CreateLoginView2.swift */; };
 		74B770C029FC06ED00800E4F /* CellCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770BF29FC06ED00800E4F /* CellCustomView.swift */; };
 		74B770C329FC0D5700800E4F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770C229FC0D5700800E4F /* SDWebImage */; };
 		74B770C529FC0D5700800E4F /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770C429FC0D5700800E4F /* SDWebImageMapKit */; };
@@ -34,6 +64,36 @@
 
 /* Begin PBXFileReference section */
 		746F8DDF2A01558500BD6452 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		746F8E792A01865000BD6452 /* FilmDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailPresenter.swift; sourceTree = "<group>"; };
+		746F8E7A2A01865000BD6452 /* FilmDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailRouter.swift; sourceTree = "<group>"; };
+		746F8E7B2A01865000BD6452 /* FilmDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailViewController.swift; sourceTree = "<group>"; };
+		746F8E7C2A01865000BD6452 /* FilmDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailInteractor.swift; sourceTree = "<group>"; };
+		746F8E7D2A01865000BD6452 /* FilmDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailView.swift; sourceTree = "<group>"; };
+		746F8E7E2A01865000BD6452 /* FilmDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailModel.swift; sourceTree = "<group>"; };
+		746F8E852A01867000BD6452 /* FilmListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListPresenter.swift; sourceTree = "<group>"; };
+		746F8E862A01867000BD6452 /* FilmListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListRouter.swift; sourceTree = "<group>"; };
+		746F8E872A01867000BD6452 /* FilmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListViewController.swift; sourceTree = "<group>"; };
+		746F8E882A01867000BD6452 /* FilmListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListInteractor.swift; sourceTree = "<group>"; };
+		746F8E892A01867000BD6452 /* FilmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListView.swift; sourceTree = "<group>"; };
+		746F8E8A2A01867000BD6452 /* FilmListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListModel.swift; sourceTree = "<group>"; };
+		746F8E912A01869B00BD6452 /* CreateLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginPresenter.swift; sourceTree = "<group>"; };
+		746F8E922A01869B00BD6452 /* CreateLoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginRouter.swift; sourceTree = "<group>"; };
+		746F8E932A01869B00BD6452 /* CreateLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginViewController.swift; sourceTree = "<group>"; };
+		746F8E942A01869B00BD6452 /* CreateLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginInteractor.swift; sourceTree = "<group>"; };
+		746F8E952A01869B00BD6452 /* CreateLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginView.swift; sourceTree = "<group>"; };
+		746F8E962A01869B00BD6452 /* CreateLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginModel.swift; sourceTree = "<group>"; };
+		746F8E9D2A01899800BD6452 /* ResetLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginPresenter.swift; sourceTree = "<group>"; };
+		746F8E9E2A01899800BD6452 /* ResetLoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginRouter.swift; sourceTree = "<group>"; };
+		746F8E9F2A01899800BD6452 /* ResetLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginViewController.swift; sourceTree = "<group>"; };
+		746F8EA02A01899800BD6452 /* ResetLoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginInteractor.swift; sourceTree = "<group>"; };
+		746F8EA12A01899800BD6452 /* ResetLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginView.swift; sourceTree = "<group>"; };
+		746F8EA22A01899800BD6452 /* ResetLoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginModel.swift; sourceTree = "<group>"; };
+		746F8EA92A018A1D00BD6452 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		746F8EAA2A018A1D00BD6452 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		746F8EAB2A018A1D00BD6452 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		746F8EAC2A018A1D00BD6452 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		746F8EAD2A018A1D00BD6452 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		746F8EAE2A018A1D00BD6452 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		74B7708129F9559500800E4F /* ListarFilmesVIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListarFilmesVIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B7708429F9559500800E4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74B7708629F9559500800E4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,15 +102,15 @@
 		74B7709029F9559700800E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74B7709229F9559700800E4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74B7709B29F95F1800800E4F /* UsuarioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsuarioModel.swift; sourceTree = "<group>"; };
-		74B7709F29F9612D00800E4F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		74B7709F29F9612D00800E4F /* LoginView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView2.swift; sourceTree = "<group>"; };
 		74B770A129F9635700800E4F /* ListFilmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFilmView.swift; sourceTree = "<group>"; };
-		74B770A329F964A500800E4F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		74B770A329F964A500800E4F /* LoginViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController2.swift; sourceTree = "<group>"; };
 		74B770A529F964B900800E4F /* ListFilmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFilmsViewController.swift; sourceTree = "<group>"; };
 		74B770A729F9ED2D00800E4F /* FilmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmModel.swift; sourceTree = "<group>"; };
-		74B770B529FADA0100800E4F /* ResetLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginViewController.swift; sourceTree = "<group>"; };
-		74B770B729FADBFC00800E4F /* ResetLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginView.swift; sourceTree = "<group>"; };
-		74B770B929FAEE0900800E4F /* CreateLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginViewController.swift; sourceTree = "<group>"; };
-		74B770BB29FAF85300800E4F /* CreateLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginView.swift; sourceTree = "<group>"; };
+		74B770B529FADA0100800E4F /* ResetLoginViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginViewController2.swift; sourceTree = "<group>"; };
+		74B770B729FADBFC00800E4F /* ResetLoginView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginView2.swift; sourceTree = "<group>"; };
+		74B770B929FAEE0900800E4F /* CreateLoginViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginViewController2.swift; sourceTree = "<group>"; };
+		74B770BB29FAF85300800E4F /* CreateLoginView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginView2.swift; sourceTree = "<group>"; };
 		74B770BF29FC06ED00800E4F /* CellCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCustomView.swift; sourceTree = "<group>"; };
 		74B770C629FC36F600800E4F /* DetailFilmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFilmViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +131,83 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		746F8E2B2A017FA200BD6452 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				746F8E302A017FE400BD6452 /* ResetLogin */,
+				746F8E2F2A017FD900BD6452 /* CreateLogin */,
+				746F8E2E2A017FC600BD6452 /* FilmDetail */,
+				746F8E2D2A017FB700BD6452 /* FilmList */,
+				746F8E2C2A017FAC00BD6452 /* Login */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		746F8E2C2A017FAC00BD6452 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				746F8EA92A018A1D00BD6452 /* LoginPresenter.swift */,
+				746F8EAA2A018A1D00BD6452 /* LoginRouter.swift */,
+				746F8EAB2A018A1D00BD6452 /* LoginViewController.swift */,
+				746F8EAC2A018A1D00BD6452 /* LoginInteractor.swift */,
+				746F8EAD2A018A1D00BD6452 /* LoginView.swift */,
+				746F8EAE2A018A1D00BD6452 /* LoginModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		746F8E2D2A017FB700BD6452 /* FilmList */ = {
+			isa = PBXGroup;
+			children = (
+				746F8E852A01867000BD6452 /* FilmListPresenter.swift */,
+				746F8E862A01867000BD6452 /* FilmListRouter.swift */,
+				746F8E872A01867000BD6452 /* FilmListViewController.swift */,
+				746F8E882A01867000BD6452 /* FilmListInteractor.swift */,
+				746F8E892A01867000BD6452 /* FilmListView.swift */,
+				746F8E8A2A01867000BD6452 /* FilmListModel.swift */,
+			);
+			path = FilmList;
+			sourceTree = "<group>";
+		};
+		746F8E2E2A017FC600BD6452 /* FilmDetail */ = {
+			isa = PBXGroup;
+			children = (
+				746F8E792A01865000BD6452 /* FilmDetailPresenter.swift */,
+				746F8E7A2A01865000BD6452 /* FilmDetailRouter.swift */,
+				746F8E7B2A01865000BD6452 /* FilmDetailViewController.swift */,
+				746F8E7C2A01865000BD6452 /* FilmDetailInteractor.swift */,
+				746F8E7D2A01865000BD6452 /* FilmDetailView.swift */,
+				746F8E7E2A01865000BD6452 /* FilmDetailModel.swift */,
+			);
+			path = FilmDetail;
+			sourceTree = "<group>";
+		};
+		746F8E2F2A017FD900BD6452 /* CreateLogin */ = {
+			isa = PBXGroup;
+			children = (
+				746F8E912A01869B00BD6452 /* CreateLoginPresenter.swift */,
+				746F8E922A01869B00BD6452 /* CreateLoginRouter.swift */,
+				746F8E932A01869B00BD6452 /* CreateLoginViewController.swift */,
+				746F8E942A01869B00BD6452 /* CreateLoginInteractor.swift */,
+				746F8E952A01869B00BD6452 /* CreateLoginView.swift */,
+				746F8E962A01869B00BD6452 /* CreateLoginModel.swift */,
+			);
+			path = CreateLogin;
+			sourceTree = "<group>";
+		};
+		746F8E302A017FE400BD6452 /* ResetLogin */ = {
+			isa = PBXGroup;
+			children = (
+				746F8E9D2A01899800BD6452 /* ResetLoginPresenter.swift */,
+				746F8E9E2A01899800BD6452 /* ResetLoginRouter.swift */,
+				746F8E9F2A01899800BD6452 /* ResetLoginViewController.swift */,
+				746F8EA02A01899800BD6452 /* ResetLoginInteractor.swift */,
+				746F8EA12A01899800BD6452 /* ResetLoginView.swift */,
+				746F8EA22A01899800BD6452 /* ResetLoginModel.swift */,
+			);
+			path = ResetLogin;
+			sourceTree = "<group>";
+		};
 		74B7707829F9559500800E4F = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +227,7 @@
 		74B7708329F9559500800E4F /* ListarFilmesMVC */ = {
 			isa = PBXGroup;
 			children = (
+				746F8E2B2A017FA200BD6452 /* Scenes */,
 				74B7709A29F957C900800E4F /* Controllers */,
 				74B7709929F957C000800E4F /* Views */,
 				74B7709829F957A500800E4F /* Models */,
@@ -116,10 +254,10 @@
 		74B7709929F957C000800E4F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				74B7709F29F9612D00800E4F /* LoginView.swift */,
+				74B7709F29F9612D00800E4F /* LoginView2.swift */,
 				74B770A129F9635700800E4F /* ListFilmView.swift */,
-				74B770B729FADBFC00800E4F /* ResetLoginView.swift */,
-				74B770BB29FAF85300800E4F /* CreateLoginView.swift */,
+				74B770B729FADBFC00800E4F /* ResetLoginView2.swift */,
+				74B770BB29FAF85300800E4F /* CreateLoginView2.swift */,
 				74B770BF29FC06ED00800E4F /* CellCustomView.swift */,
 			);
 			path = Views;
@@ -128,10 +266,10 @@
 		74B7709A29F957C900800E4F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				74B770A329F964A500800E4F /* LoginViewController.swift */,
+				74B770A329F964A500800E4F /* LoginViewController2.swift */,
 				74B770A529F964B900800E4F /* ListFilmsViewController.swift */,
-				74B770B529FADA0100800E4F /* ResetLoginViewController.swift */,
-				74B770B929FAEE0900800E4F /* CreateLoginViewController.swift */,
+				74B770B529FADA0100800E4F /* ResetLoginViewController2.swift */,
+				74B770B929FAEE0900800E4F /* CreateLoginViewController2.swift */,
 				74B770C629FC36F600800E4F /* DetailFilmViewController.swift */,
 			);
 			path = Controllers;
@@ -220,19 +358,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74B770A029F9612D00800E4F /* LoginView.swift in Sources */,
+				746F8E8B2A01867000BD6452 /* FilmListPresenter.swift in Sources */,
+				746F8EA82A01899800BD6452 /* ResetLoginModel.swift in Sources */,
+				746F8EB22A018A1D00BD6452 /* LoginInteractor.swift in Sources */,
+				746F8EB12A018A1D00BD6452 /* LoginViewController.swift in Sources */,
+				746F8EA52A01899800BD6452 /* ResetLoginViewController.swift in Sources */,
+				74B770A029F9612D00800E4F /* LoginView2.swift in Sources */,
 				74B770C729FC36F600800E4F /* DetailFilmViewController.swift in Sources */,
-				74B770BC29FAF85300800E4F /* CreateLoginView.swift in Sources */,
+				746F8E812A01865000BD6452 /* FilmDetailViewController.swift in Sources */,
+				746F8EB32A018A1D00BD6452 /* LoginView.swift in Sources */,
+				746F8E992A01869B00BD6452 /* CreateLoginViewController.swift in Sources */,
+				74B770BC29FAF85300800E4F /* CreateLoginView2.swift in Sources */,
+				746F8E9B2A01869B00BD6452 /* CreateLoginView.swift in Sources */,
 				74B7708529F9559500800E4F /* AppDelegate.swift in Sources */,
 				74B770A829F9ED2D00800E4F /* FilmModel.swift in Sources */,
-				74B770A429F964A500800E4F /* LoginViewController.swift in Sources */,
-				74B770BA29FAEE0900800E4F /* CreateLoginViewController.swift in Sources */,
-				74B770B829FADBFC00800E4F /* ResetLoginView.swift in Sources */,
+				746F8E902A01867000BD6452 /* FilmListModel.swift in Sources */,
+				746F8EA32A01899800BD6452 /* ResetLoginPresenter.swift in Sources */,
+				746F8E7F2A01865000BD6452 /* FilmDetailPresenter.swift in Sources */,
+				746F8EA42A01899800BD6452 /* ResetLoginRouter.swift in Sources */,
+				74B770A429F964A500800E4F /* LoginViewController2.swift in Sources */,
+				746F8E842A01865000BD6452 /* FilmDetailModel.swift in Sources */,
+				746F8E9A2A01869B00BD6452 /* CreateLoginInteractor.swift in Sources */,
+				746F8E8E2A01867000BD6452 /* FilmListInteractor.swift in Sources */,
+				746F8E9C2A01869B00BD6452 /* CreateLoginModel.swift in Sources */,
+				746F8E982A01869B00BD6452 /* CreateLoginRouter.swift in Sources */,
+				746F8EAF2A018A1D00BD6452 /* LoginPresenter.swift in Sources */,
+				746F8EB42A018A1D00BD6452 /* LoginModel.swift in Sources */,
+				746F8EA72A01899800BD6452 /* ResetLoginView.swift in Sources */,
+				74B770BA29FAEE0900800E4F /* CreateLoginViewController2.swift in Sources */,
+				74B770B829FADBFC00800E4F /* ResetLoginView2.swift in Sources */,
+				746F8E8C2A01867000BD6452 /* FilmListRouter.swift in Sources */,
 				74B770C029FC06ED00800E4F /* CellCustomView.swift in Sources */,
-				74B770B629FADA0100800E4F /* ResetLoginViewController.swift in Sources */,
+				746F8EA62A01899800BD6452 /* ResetLoginInteractor.swift in Sources */,
+				74B770B629FADA0100800E4F /* ResetLoginViewController2.swift in Sources */,
+				746F8E832A01865000BD6452 /* FilmDetailView.swift in Sources */,
 				74B7709C29F95F1800800E4F /* UsuarioModel.swift in Sources */,
+				746F8E822A01865000BD6452 /* FilmDetailInteractor.swift in Sources */,
+				746F8E8D2A01867000BD6452 /* FilmListViewController.swift in Sources */,
 				74B7708729F9559500800E4F /* SceneDelegate.swift in Sources */,
+				746F8E802A01865000BD6452 /* FilmDetailRouter.swift in Sources */,
+				746F8E972A01869B00BD6452 /* CreateLoginPresenter.swift in Sources */,
 				74B770A229F9635700800E4F /* ListFilmView.swift in Sources */,
+				746F8E8F2A01867000BD6452 /* FilmListView.swift in Sources */,
+				746F8EB02A018A1D00BD6452 /* LoginRouter.swift in Sources */,
 				74B770A629F964B900800E4F /* ListFilmsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

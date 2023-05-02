@@ -8,9 +8,9 @@
 import UIKit
 import FirebaseAuth
 
-class CreateLoginViewController: UIViewController, CreateLoginViewDelegate{
+class CreateLoginViewController2: UIViewController, CreateLoginViewDelegate2 {
     
-    var createLoginView = CreateLoginView()
+    var createLoginView = CreateLoginView2()
     var listFilms: [Result] = []
     var login: String = ""
     var senha: String = ""

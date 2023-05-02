@@ -8,9 +8,9 @@
 import UIKit
 import FirebaseAuth
 
-class LoginViewController: UIViewController, LoginViewDelegate {
+class LoginViewController2: UIViewController, LoginViewDelegate2 {
     
-    var loginView = LoginView()
+    var loginView = LoginView2()
     var listFilms: [Result] = []
     var login: String = ""
     var senha: String = ""
@@ -110,14 +110,14 @@ class LoginViewController: UIViewController, LoginViewDelegate {
     }
     
     func resetButtonPressed() {
-        let resetLoginViewController = ResetLoginViewController()
+        let resetLoginViewController = ResetLoginViewController2()
         let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backButton
         self.navigationController?.pushViewController(resetLoginViewController, animated: true)
     }
     
     func createButtonPressed() {
-        let createLoginViewController = CreateLoginViewController()
+        let createLoginViewController = CreateLoginViewController2()
         createLoginViewController.listFilms = self.listFilms
         let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backButton

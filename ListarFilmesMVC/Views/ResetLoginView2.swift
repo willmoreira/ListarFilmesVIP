@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol ResetLoginViewDelegate: AnyObject {
+protocol ResetLoginViewDelegate2: AnyObject {
     func resetLoginButtonPressed()
 }
 
-class ResetLoginView: UIView {
+class ResetLoginView2: UIView {
     
-    weak var delegate: ResetLoginViewDelegate?
+    weak var delegate: ResetLoginViewDelegate2?
     lazy var activityIndicator = UIActivityIndicatorView(style: .large)
     lazy var titleLoginLabel = UILabel()
 

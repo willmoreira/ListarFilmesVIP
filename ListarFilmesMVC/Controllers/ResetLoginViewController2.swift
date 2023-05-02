@@ -8,9 +8,9 @@
 import UIKit
 import FirebaseAuth
 
-class ResetLoginViewController: UIViewController, ResetLoginViewDelegate {
+class ResetLoginViewController2: UIViewController, ResetLoginViewDelegate2 {
     
-    var resetLoginView = ResetLoginView()
+    var resetLoginView = ResetLoginView2()
     
     override func loadView() {
         super.loadView()

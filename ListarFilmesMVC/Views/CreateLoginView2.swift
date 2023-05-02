@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol CreateLoginViewDelegate: AnyObject {
+protocol CreateLoginViewDelegate2: AnyObject {
     func createButtonPressed()
 }
 
-class CreateLoginView: UIView {
+class CreateLoginView2: UIView {
     
-    weak var delegate: CreateLoginViewDelegate?
+    weak var delegate: CreateLoginViewDelegate2?
     let activityIndicator = UIActivityIndicatorView(style: .large)
 
     lazy var titleLoginLabel = UILabel()
