@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "78D933C0-9228-4CAC-B885-FA08E55F773D"
-            shouldBeEnabled = "No"
+            uuid = "65582307-A2F2-446F-B5D0-0FF057F0A79C"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ListarFilmesMVC/Views/CellCustomView.swift"
+            filePath = "ListarFilmesMVC/Views/DetailFilmView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "setSelected(_:animated:)"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "configureView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

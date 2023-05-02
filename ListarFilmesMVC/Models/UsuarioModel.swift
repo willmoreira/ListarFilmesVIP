@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class UsuarioModel {
     var login: String
     var password: String

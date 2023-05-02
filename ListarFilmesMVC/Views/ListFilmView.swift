@@ -8,10 +8,15 @@
 import UIKit
 import SDWebImage
 
-class FilmView: UIView {
+protocol ListFilmViewDelegate: AnyObject {
+    func goToDetailViewController(filmSelected: Result)
+}
+
+class ListFilmView: UIView {
     
+    weak var delegate: ListFilmViewDelegate?
     lazy var listFilms: [Result] = []
-    
+
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -57,11 +62,10 @@ class FilmView: UIView {
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
-        
     }
 }
 
-extension FilmView: UITableViewDelegate, UITableViewDataSource {
+extension ListFilmView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listFilms.count
     }
@@ -70,14 +74,17 @@ extension FilmView: UITableViewDelegate, UITableViewDataSource {
         return 100
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let filmeSelecionado = listFilms[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        delegate?.goToDetailViewController(filmSelected: filmeSelecionado)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
-        
-        // Configure o nome, subtítulo e imagem
         cell.nameLabel.text = listFilms[indexPath.row].title
         cell.subtitleLabel.text = "Lançado em " + formatDate(date: listFilms[indexPath.row].releaseDate)
         cell.configureImage(posterPath: listFilms[indexPath.row].posterPath)
-
         return cell
     }
     
