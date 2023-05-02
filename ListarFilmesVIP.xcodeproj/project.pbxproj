@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		746F8DDA2A014F6C00BD6452 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 746F8DD92A014F6C00BD6452 /* GoogleService-Info.plist */; };
+		746F8DE02A01558500BD6452 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 746F8DDF2A01558500BD6452 /* GoogleService-Info.plist */; };
 		74B7708529F9559500800E4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7708429F9559500800E4F /* AppDelegate.swift */; };
 		74B7708729F9559500800E4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7708629F9559500800E4F /* SceneDelegate.swift */; };
 		74B7708C29F9559500800E4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B7708A29F9559500800E4F /* Main.storyboard */; };
@@ -33,7 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		746F8DD92A014F6C00BD6452 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		746F8DDF2A01558500BD6452 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74B7708129F9559500800E4F /* ListarFilmesVIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListarFilmesVIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B7708429F9559500800E4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74B7708629F9559500800E4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 				74B7708D29F9559700800E4F /* Assets.xcassets */,
 				74B7708F29F9559700800E4F /* LaunchScreen.storyboard */,
 				74B7709229F9559700800E4F /* Info.plist */,
-				746F8DD92A014F6C00BD6452 /* GoogleService-Info.plist */,
+				746F8DDF2A01558500BD6452 /* GoogleService-Info.plist */,
 			);
 			path = ListarFilmesMVC;
 			sourceTree = "<group>";
@@ -207,7 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74B7709129F9559700800E4F /* LaunchScreen.storyboard in Resources */,
-				746F8DDA2A014F6C00BD6452 /* GoogleService-Info.plist in Resources */,
+				746F8DE02A01558500BD6452 /* GoogleService-Info.plist in Resources */,
 				74B7708E29F9559700800E4F /* Assets.xcassets in Resources */,
 				74B7708C29F9559500800E4F /* Main.storyboard in Resources */,
 			);
