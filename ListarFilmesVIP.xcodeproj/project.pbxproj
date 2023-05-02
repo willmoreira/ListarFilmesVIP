@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		746F8DDA2A014F6C00BD6452 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 746F8DD92A014F6C00BD6452 /* GoogleService-Info.plist */; };
 		74B7708529F9559500800E4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7708429F9559500800E4F /* AppDelegate.swift */; };
 		74B7708729F9559500800E4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7708629F9559500800E4F /* SceneDelegate.swift */; };
 		74B7708C29F9559500800E4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74B7708A29F9559500800E4F /* Main.storyboard */; };
@@ -18,7 +19,6 @@
 		74B770A429F964A500800E4F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770A329F964A500800E4F /* LoginViewController.swift */; };
 		74B770A629F964B900800E4F /* ListFilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770A529F964B900800E4F /* ListFilmsViewController.swift */; };
 		74B770A829F9ED2D00800E4F /* FilmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770A729F9ED2D00800E4F /* FilmModel.swift */; };
-		74B770AD29FA9E6200800E4F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74B770AC29FA9E6200800E4F /* GoogleService-Info.plist */; };
 		74B770B029FA9FD100800E4F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770AF29FA9FD100800E4F /* FirebaseAnalytics */; };
 		74B770B229FA9FD100800E4F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770B129FA9FD100800E4F /* FirebaseAuth */; };
 		74B770B429FA9FD100800E4F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770B329FA9FD100800E4F /* FirebaseFirestore */; };
@@ -33,7 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		74B7708129F9559500800E4F /* ListarFilmesMVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListarFilmesMVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		746F8DD92A014F6C00BD6452 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		74B7708129F9559500800E4F /* ListarFilmesVIP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ListarFilmesVIP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74B7708429F9559500800E4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74B7708629F9559500800E4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		74B7708B29F9559500800E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,7 +47,6 @@
 		74B770A329F964A500800E4F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		74B770A529F964B900800E4F /* ListFilmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFilmsViewController.swift; sourceTree = "<group>"; };
 		74B770A729F9ED2D00800E4F /* FilmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmModel.swift; sourceTree = "<group>"; };
-		74B770AC29FA9E6200800E4F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		74B770B529FADA0100800E4F /* ResetLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginViewController.swift; sourceTree = "<group>"; };
 		74B770B729FADBFC00800E4F /* ResetLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginView.swift; sourceTree = "<group>"; };
 		74B770B929FAEE0900800E4F /* CreateLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 		74B7708229F9559500800E4F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				74B7708129F9559500800E4F /* ListarFilmesMVC.app */,
+				74B7708129F9559500800E4F /* ListarFilmesVIP.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,7 +99,7 @@
 				74B7708D29F9559700800E4F /* Assets.xcassets */,
 				74B7708F29F9559700800E4F /* LaunchScreen.storyboard */,
 				74B7709229F9559700800E4F /* Info.plist */,
-				74B770AC29FA9E6200800E4F /* GoogleService-Info.plist */,
+				746F8DD92A014F6C00BD6452 /* GoogleService-Info.plist */,
 			);
 			path = ListarFilmesMVC;
 			sourceTree = "<group>";
@@ -140,9 +140,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		74B7708029F9559500800E4F /* ListarFilmesMVC */ = {
+		74B7708029F9559500800E4F /* ListarFilmesVIP */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 74B7709529F9559700800E4F /* Build configuration list for PBXNativeTarget "ListarFilmesMVC" */;
+			buildConfigurationList = 74B7709529F9559700800E4F /* Build configuration list for PBXNativeTarget "ListarFilmesVIP" */;
 			buildPhases = (
 				74B7707D29F9559500800E4F /* Sources */,
 				74B7707E29F9559500800E4F /* Frameworks */,
@@ -152,7 +152,7 @@
 			);
 			dependencies = (
 			);
-			name = ListarFilmesMVC;
+			name = ListarFilmesVIP;
 			packageProductDependencies = (
 				74B770AF29FA9FD100800E4F /* FirebaseAnalytics */,
 				74B770B129FA9FD100800E4F /* FirebaseAuth */,
@@ -161,7 +161,7 @@
 				74B770C429FC0D5700800E4F /* SDWebImageMapKit */,
 			);
 			productName = ListarFilmesMVC;
-			productReference = 74B7708129F9559500800E4F /* ListarFilmesMVC.app */;
+			productReference = 74B7708129F9559500800E4F /* ListarFilmesVIP.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -179,7 +179,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 74B7707C29F9559500800E4F /* Build configuration list for PBXProject "ListarFilmesMVC" */;
+			buildConfigurationList = 74B7707C29F9559500800E4F /* Build configuration list for PBXProject "ListarFilmesVIP" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -196,7 +196,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				74B7708029F9559500800E4F /* ListarFilmesMVC */,
+				74B7708029F9559500800E4F /* ListarFilmesVIP */,
 			);
 		};
 /* End PBXProject section */
@@ -207,7 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74B7709129F9559700800E4F /* LaunchScreen.storyboard in Resources */,
-				74B770AD29FA9E6200800E4F /* GoogleService-Info.plist in Resources */,
+				746F8DDA2A014F6C00BD6452 /* GoogleService-Info.plist in Resources */,
 				74B7708E29F9559700800E4F /* Assets.xcassets in Resources */,
 				74B7708C29F9559500800E4F /* Main.storyboard in Resources */,
 			);
@@ -380,6 +380,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZZG85XAAJ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListarFilmesMVC/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -392,7 +393,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = will.ListarFilmesMVC;
+				PRODUCT_BUNDLE_IDENTIFIER = will.ListarFilmesVIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -407,6 +408,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ZZG85XAAJ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ListarFilmesMVC/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -419,7 +421,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = will.ListarFilmesMVC;
+				PRODUCT_BUNDLE_IDENTIFIER = will.ListarFilmesVIP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -430,7 +432,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		74B7707C29F9559500800E4F /* Build configuration list for PBXProject "ListarFilmesMVC" */ = {
+		74B7707C29F9559500800E4F /* Build configuration list for PBXProject "ListarFilmesVIP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				74B7709329F9559700800E4F /* Debug */,
@@ -439,7 +441,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		74B7709529F9559700800E4F /* Build configuration list for PBXNativeTarget "ListarFilmesMVC" */ = {
+		74B7709529F9559700800E4F /* Build configuration list for PBXNativeTarget "ListarFilmesVIP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				74B7709629F9559700800E4F /* Debug */,
