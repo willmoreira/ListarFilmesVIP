@@ -19,7 +19,6 @@ protocol ResetLoginViewDelegate where Self: UIViewController {
 
 final class ResetLoginView: UIView {
     
-
     weak var delegate: ResetLoginViewDelegate?
     lazy var activityIndicator = UIActivityIndicatorView(style: .large)
     lazy var titleLoginLabel = UILabel()
@@ -98,9 +97,5 @@ final class ResetLoginView: UIView {
     
     @objc func resetLoginButtonPressed() {
         delegate?.resetLoginButtonPressed()
-    }
-    
-    private enum ViewTrait {
-        static let leftMargin: CGFloat = 10.0
     }
 }

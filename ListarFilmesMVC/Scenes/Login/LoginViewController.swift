@@ -48,7 +48,6 @@ final class LoginViewController: UIViewController {
     }
 }
 
-
 // MARK: - LoginDisplayLogic
 extension LoginViewController: LoginDisplayLogic {
     func displayStartLoading() {
@@ -66,7 +65,6 @@ extension LoginViewController: LoginDisplayLogic {
         self.present(alert, animated: true, completion: nil)
     }
 }
-
 
 // MARK: - LoginViewDelegate
 extension LoginViewController: LoginViewDelegate {
@@ -90,7 +88,6 @@ extension LoginViewController: LoginViewDelegate {
         //do something with the data or message send back from mainView
     }
 }
-
 
 // MARK: - Private Zone
 private extension LoginViewController {

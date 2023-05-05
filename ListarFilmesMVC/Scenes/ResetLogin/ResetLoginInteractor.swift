@@ -34,16 +34,18 @@ final class ResetLoginInteractor: ResetLoginDataStore {
         self.presenter = ResetLoginPresenter(viewController: viewController)
     }
     
-    func tryLogin(request: ResetLoginModel.ResetLogin.Request){
+    func tryResetLogin(request: ResetLoginModel.ResetLogin.Request){
         presenter.presentStartLoading()
         var response = ResetLoginModel.ResetLogin.Response(titleMessage: "Sucesso!", message: "As orientações foram enviadas para seu email!")
-
+        
         if let login = request.login {
             Auth.auth().sendPasswordReset(withEmail: login) { error in
                 self.presenter.presentStopLoading()
                 if let error = error {
                     if error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
-                        response = ResetLoginModel.ResetLogin.Response(titleMessage: "Usuário não encontrado", message: "Não há registro de usuário correspondente a este identificador. O usuário pode ter sido excluído." )
+                        response = ResetLoginModel.ResetLogin.Response(
+                            titleMessage: "Usuário não encontrado",
+                            message: "Não há registro de usuário correspondente a este identificador. O usuário pode ter sido excluído." )
                         self.presenter.presentShowAlert(response)
                     }
                     return
@@ -54,7 +56,6 @@ final class ResetLoginInteractor: ResetLoginDataStore {
     }
 }
 
-
 // MARK: - ResetLoginBusinessLogic
 extension ResetLoginInteractor: ResetLoginBusinessLogic {
     func doResetLogin(_ request: ResetLoginModel.ResetLogin.Request) {
@@ -63,10 +64,9 @@ extension ResetLoginInteractor: ResetLoginBusinessLogic {
             presenter.presentShowAlert(response)
             return
         }
-        tryLogin(request: request)
+        tryResetLogin(request: request)
     }
 }
-
 
 // MARK: - Private Zone
 private extension ResetLoginInteractor {

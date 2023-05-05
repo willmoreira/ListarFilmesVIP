@@ -35,21 +35,23 @@ final class LoginInteractor: LoginDataStore {
     }
     
     func tryLogin(request: LoginModel.Login.Request) {
-
         presenter.presentStartLoading()
         
         if let login = request.login, let password = request.password {
             Auth.auth().signIn(withEmail: login, password: password) { authResult, error in
-                
                 self.presenter.presentStopLoading()
                 
                 if let error = error {
                     if error.localizedDescription == "The password is invalid or the user does not have a password." {
-                        let response = LoginModel.Login.Response(titleMessage: "Senha inválida!", message: "A senha é inválida ou o usuário não possui uma senha.")
+                        let response = LoginModel.Login.Response(
+                            titleMessage: "Senha inválida!",
+                            message: "A senha é inválida ou o usuário não possui uma senha.")
                         self.presenter.presentShowAlert(response)
                     }
                     if error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
-                        let response = LoginModel.Login.Response(titleMessage: "Usuario não encontrado!", message: "Não há registro de usuário correspondente a este email, confira o email ou cadastre um novo usuário.")
+                        let response = LoginModel.Login.Response(
+                            titleMessage: "Usuario não encontrado!",
+                            message: "Não há registro de usuário correspondente a este email, confira o email ou cadastre um novo usuário.")
                         self.presenter.presentShowAlert(response)
                     }
                     return
@@ -60,18 +62,21 @@ final class LoginInteractor: LoginDataStore {
     }
 }
 
-
 // MARK: - LoginBusinessLogic
 extension LoginInteractor: LoginBusinessLogic {
     
     func doLogin(_ request: LoginModel.Login.Request) {
         guard let username = request.login, !username.isEmpty else {
-            let response = LoginModel.Login.Response(titleMessage: "Erro no campo Login", message: "Preencha o campo Login")
+            let response = LoginModel.Login.Response(
+                titleMessage: "Erro no campo Login",
+                message: "Preencha o campo Login")
             presenter.presentShowAlert(response)
             return
         }
         guard let password = request.password, !password.isEmpty else {
-            let response = LoginModel.Login.Response(titleMessage: "Erro no campo Senha", message: "Preencha o campo Senha")
+            let response = LoginModel.Login.Response(
+                titleMessage: "Erro no campo Senha",
+                message: "Preencha o campo Senha")
             presenter.presentShowAlert(response)
             return
         }
@@ -79,9 +84,7 @@ extension LoginInteractor: LoginBusinessLogic {
     }
 }
 
-
 // MARK: - Private Zone
 private extension LoginInteractor {
-    
     
 }

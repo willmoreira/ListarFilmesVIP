@@ -16,7 +16,6 @@ protocol LoginPresentationLogic {
     func presentShowAlert(_ response: LoginModel.Login.Response)
     func presentStartLoading()
     func presentStopLoading()
-
 }
 
 final class LoginPresenter {
@@ -26,7 +25,6 @@ final class LoginPresenter {
         self.viewController = viewController
     }
 }
-
 
 // MARK: - LoginPresentationLogic
 extension LoginPresenter: LoginPresentationLogic {
@@ -44,9 +42,7 @@ extension LoginPresenter: LoginPresentationLogic {
     }
 }
 
-
 // MARK: - Private Zone
 private extension LoginPresenter {
-    
     
 }

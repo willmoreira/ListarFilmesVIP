@@ -72,7 +72,6 @@ extension CreateLoginViewController: CreateLoginDisplayLogic {
     
 }
 
-
 // MARK: - CreateLoginViewDelegate
 extension CreateLoginViewController: CreateLoginViewDelegate {
     func createButtonPressed() {
@@ -80,13 +79,11 @@ extension CreateLoginViewController: CreateLoginViewDelegate {
         interactor.doCreateLogin(request)
     }
     
-    
     func sendDataBackToParent(_ data: Data) {
         //usually this delegate takes care of users actions and requests through UI
         //do something with the data or message send back from mainView
     }
 }
-
 
 // MARK: - Private Zone
 private extension CreateLoginViewController {

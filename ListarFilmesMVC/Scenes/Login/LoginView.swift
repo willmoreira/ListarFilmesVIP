@@ -13,9 +13,7 @@
 import UIKit
 
 protocol LoginViewDelegate where Self: UIViewController {
-    
     func sendDataBackToParent(_ data: Data)
-    //delegate de botao na tela login sendo acionado
     func loginButtonPressed()
     func resetButtonPressed()
     func createButtonPressed()
@@ -29,7 +27,6 @@ final class LoginView: UIView {
         static let leftMargin: CGFloat = 10.0
     }
     
-    //Setando componentes visuas na view
     lazy var activityIndicator = UIActivityIndicatorView(style: .large)
     lazy var titleLoginLabel = UILabel()
     lazy var titleSenhaLabel = UILabel()

@@ -28,11 +28,9 @@ final class LoginRouter {
     }
 }
 
-
 // MARK: - LoginRouting
 extension LoginRouter: LoginRouting {
     func routeToCreateLogin(_ route: LoginModel.Login.Route) {
-        //trocar depois pela certa
         let mainView = CreateLoginView()
         let dataSource = CreateLoginModel.DataSource()
         let createLoginViewController = CreateLoginViewController(mainView: mainView, dataSource: dataSource)
@@ -40,7 +38,6 @@ extension LoginRouter: LoginRouting {
     }
     
     func routeToResetLogin(_ route: LoginModel.Login.Route) {
-        //trocar depois pela certa
         let mainView = ResetLoginView()
         let dataSource = ResetLoginModel.DataSource()
         let resetLoginViewController = ResetLoginViewController(mainView: mainView, dataSource: dataSource)
@@ -50,7 +47,6 @@ extension LoginRouter: LoginRouting {
     func routeToListfilms(_ route: LoginModel.Login.Route) {
         
     }
-    
     
     func routeTo(_ route: LoginModel.Route) {
         DispatchQueue.main.async {
@@ -65,7 +61,6 @@ extension LoginRouter: LoginRouting {
         }
     }
 }
-
 
 // MARK: - Private Zone
 private extension LoginRouter {

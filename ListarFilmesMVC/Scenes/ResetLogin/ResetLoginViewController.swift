@@ -37,7 +37,6 @@ final class ResetLoginViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
         mainView.backgroundColor = .white
         mainView.delegate = self
-        //interactor.doSomething(item: 22)
     }
     
     override func loadView() {
@@ -49,7 +48,6 @@ final class ResetLoginViewController: UIViewController {
         fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
     }
 }
-
 
 // MARK: - ResetLoginDisplayLogic
 extension ResetLoginViewController: ResetLoginDisplayLogic {
@@ -73,7 +71,6 @@ extension ResetLoginViewController: ResetLoginDisplayLogic {
     }
 }
 
-
 // MARK: - ResetLoginViewDelegate
 extension ResetLoginViewController: ResetLoginViewDelegate {
     func resetLoginButtonPressed() {
@@ -86,7 +83,6 @@ extension ResetLoginViewController: ResetLoginViewDelegate {
         //do something with the data or message send back from mainView
     }
 }
-
 
 // MARK: - Private Zone
 private extension ResetLoginViewController {

@@ -34,29 +34,35 @@ final class CreateLoginInteractor: CreateLoginDataStore {
         self.presenter = CreateLoginPresenter(viewController: viewController)
     }
     
-    func tryLogin(request: CreateLoginModel.CreateLogin.Request) {
+    func tryCreateLogin(request: CreateLoginModel.CreateLogin.Request) {
         
         if let login = request.login, let password = request.password {
-
             presenter.presentStartLoading()
-
-            var response = CreateLoginModel.CreateLogin.Response(titleMessage: "Sucesso!", message: "Usuario cadastrado com sucesso, faça o Login agora!")
-
+            
+            var response = CreateLoginModel.CreateLogin.Response(
+                titleMessage: "Sucesso!",
+                message: "Usuario cadastrado com sucesso, faça o Login agora!")
+            
             Auth.auth().createUser(withEmail: login, password: password) { authResult, error in
-                
                 self.presenter.presentStopLoading()
                 
                 if let error = error {
                     if error.localizedDescription == "The email address is already in use by another account." {
-                        response = CreateLoginModel.CreateLogin.Response(titleMessage: "Email já em uso!", message: "O endereço de e-mail já está sendo usado por outra conta.")
+                        response = CreateLoginModel.CreateLogin.Response(
+                            titleMessage: "Email já em uso!",
+                            message: "O endereço de e-mail já está sendo usado por outra conta.")
                         self.presenter.presentShowAlert(response)
                     }
                     if error.localizedDescription == "The email address is badly formatted." {
-                        response = CreateLoginModel.CreateLogin.Response(titleMessage: "Formato do email incorreto!", message:  "O endereço de e-mail não parece ser valido")
+                        response = CreateLoginModel.CreateLogin.Response(
+                            titleMessage: "Formato do email incorreto!",
+                            message:  "O endereço de e-mail não parece ser valido")
                         self.presenter.presentShowAlert(response)
                     }
                     if error.localizedDescription == "The password must be 6 characters long or more." {
-                        response = CreateLoginModel.CreateLogin.Response(titleMessage: "Regra de senha", message:  "A senha deve ter 6 caracteres ou mais.")
+                        response = CreateLoginModel.CreateLogin.Response(
+                            titleMessage: "Regra de senha",
+                            message:  "A senha deve ter 6 caracteres ou mais.")
                         self.presenter.presentShowAlert(response)
                     }
                     return
@@ -67,25 +73,27 @@ final class CreateLoginInteractor: CreateLoginDataStore {
     }
 }
 
-
 // MARK: - CreateLoginBusinessLogic
 extension CreateLoginInteractor: CreateLoginBusinessLogic {
     
     func doCreateLogin(_ request: CreateLoginModel.CreateLogin.Request) {
         guard let username = request.login, !username.isEmpty else {
-            let response = CreateLoginModel.CreateLogin.Response(titleMessage: "Erro no campo Login", message: "Preencha o campo Login")
+            let response = CreateLoginModel.CreateLogin.Response(
+                titleMessage: "Erro no campo Login",
+                message: "Preencha o campo Login")
             presenter.presentShowAlert(response)
             return
         }
         guard let password = request.password, !password.isEmpty else {
-            let response = CreateLoginModel.CreateLogin.Response(titleMessage: "Erro no campo Senha", message: "Preencha o campo Senha")
+            let response = CreateLoginModel.CreateLogin.Response(
+                titleMessage: "Erro no campo Senha",
+                message: "Preencha o campo Senha")
             presenter.presentShowAlert(response)
             return
         }
-        tryLogin(request: request)
+        tryCreateLogin(request: request)
     }
 }
-
 
 // MARK: - Private Zone
 private extension CreateLoginInteractor {

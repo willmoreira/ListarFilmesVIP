@@ -26,7 +26,6 @@ final class CreateLoginPresenter {
     }
 }
 
-
 // MARK: - CreateLoginPresentationLogic
 extension CreateLoginPresenter: CreateLoginPresentationLogic {
     func presentStartLoading() {
@@ -42,7 +41,6 @@ extension CreateLoginPresenter: CreateLoginPresentationLogic {
         self.viewController?.diplayShowAlert(viewModel)
     }
 }
-
 
 // MARK: - Private Zone
 private extension CreateLoginPresenter {

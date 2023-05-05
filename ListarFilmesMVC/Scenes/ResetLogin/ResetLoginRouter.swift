@@ -13,46 +13,43 @@
 import UIKit
 
 protocol ResetLoginRouting {
-  
-  func routeTo(_ route: ResetLoginModel.Route)
+    func routeTo(_ route: ResetLoginModel.Route)
 }
 
 final class ResetLoginRouter {
-  
-  private weak var viewController: UIViewController?
-  
-  init(viewController: UIViewController?) {
-    self.viewController = viewController
-  }
+    
+    private weak var viewController: UIViewController?
+    
+    init(viewController: UIViewController?) {
+        self.viewController = viewController
+    }
 }
-
 
 // MARK: - ResetLoginRouting
 extension ResetLoginRouter: ResetLoginRouting {
-  
-  func routeTo(_ route: ResetLoginModel.Route) {
-    DispatchQueue.main.async {
-      switch route {
-        
-      case .dismissResetLoginScene:
-        self.dismissResetLoginScene()
-        
-      case .xScene(let data):
-        self.showXSceneBy(data)
-      }
+    
+    func routeTo(_ route: ResetLoginModel.Route) {
+        DispatchQueue.main.async {
+            switch route {
+                
+            case .dismissResetLoginScene:
+                self.dismissResetLoginScene()
+                
+            case .xScene(let data):
+                self.showXSceneBy(data)
+            }
+        }
     }
-  }
 }
-
 
 // MARK: - Private Zone
 private extension ResetLoginRouter {
-  
-  func dismissResetLoginScene() {
-    viewController?.dismiss(animated: true)
-  }
-  
-  func showXSceneBy(_ data: Int) {
-    print("will show the next screen")
-  }
+    
+    func dismissResetLoginScene() {
+        viewController?.dismiss(animated: true)
+    }
+    
+    func showXSceneBy(_ data: Int) {
+        print("will show the next screen")
+    }
 }

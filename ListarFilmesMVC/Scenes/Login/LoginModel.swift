@@ -15,18 +15,6 @@ import Foundation
 
 enum LoginModel {
     
-    enum Request {
-        case doSomething(item: Int)
-    }
-    
-    enum Response {
-        case doSomething(newItem: Int, isItem: Bool)
-    }
-    
-    enum ViewModel {
-        case doSomething(viewModelData: NSObject)
-    }
-    
     enum Route {
         case dismissLoginScene
         case xScene(xData: Int)
@@ -51,9 +39,9 @@ enum LoginModel {
             var titleMessage: String?
             var message: String?
         }
+        
         struct Route {
             
         }
     }
-    
 }

@@ -15,18 +15,6 @@ import Foundation
 
 enum ResetLoginModel {
     
-    enum Request {
-        case doSomething(item: Int)
-    }
-    
-    enum Response {
-        case doSomething(newItem: Int, isItem: Bool)
-    }
-    
-    enum ViewModel {
-        case doSomething(viewModelData: NSObject)
-    }
-    
     enum Route {
         case dismissResetLoginScene
         case xScene(xData: Int)
@@ -51,6 +39,7 @@ enum ResetLoginModel {
             var titleMessage: String?
             var message: String?
         }
+        
         struct Route {
             
         }

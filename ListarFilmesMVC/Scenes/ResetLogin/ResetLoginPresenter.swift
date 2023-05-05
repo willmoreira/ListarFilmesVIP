@@ -26,7 +26,6 @@ final class ResetLoginPresenter {
     }
 }
 
-
 // MARK: - ResetLoginPresentationLogic
 extension ResetLoginPresenter: ResetLoginPresentationLogic {
     func presentShowAlert(_ response: ResetLoginModel.ResetLogin.Response) {
@@ -43,8 +42,7 @@ extension ResetLoginPresenter: ResetLoginPresentationLogic {
     }
 }
 
-
 // MARK: - Private Zone
 private extension ResetLoginPresenter {
-  
+    
 }

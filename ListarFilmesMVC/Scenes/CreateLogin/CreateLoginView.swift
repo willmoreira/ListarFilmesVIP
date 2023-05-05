@@ -21,16 +21,16 @@ final class CreateLoginView: UIView {
     
     weak var delegate: CreateLoginViewDelegate?
     let activityIndicator = UIActivityIndicatorView(style: .large)
-
+    
     lazy var titleLoginLabel = UILabel()
     lazy var titlePasswordLabel = UILabel()
-
+    
     lazy var titleView: UILabel = {
         let titleView = UILabel()
         titleView.font = UIFont.systemFont(ofSize: 24)
         return titleView
     }()
-
+    
     lazy var inputLogin: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Digite seu email"
@@ -97,7 +97,7 @@ final class CreateLoginView: UIView {
             
             titleView.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
             titleView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-
+            
             titleLoginLabel.topAnchor.constraint(equalTo: titleView.topAnchor, constant: 100),
             titleLoginLabel.leftAnchor.constraint(equalTo: self.inputLogin.leftAnchor, constant: 0),
             
@@ -117,12 +117,8 @@ final class CreateLoginView: UIView {
             createLoginButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         ])
     }
-
+    
     @objc func createButtonPressed() {
         delegate?.createButtonPressed()
-    }
-    
-    private enum ViewTrait {
-        static let leftMargin: CGFloat = 10.0
     }
 }
