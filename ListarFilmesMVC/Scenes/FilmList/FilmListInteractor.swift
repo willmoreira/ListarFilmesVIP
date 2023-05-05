@@ -17,7 +17,7 @@ typealias FilmListInteractable = FilmListBusinessLogic & FilmListDataStore
 protocol FilmListBusinessLogic {
     func doRequest(_ request: FilmListModel.Request)
     func setupMainView(_ request: FilmListModel.FilmList.Request)
-    func goToDetail(film: Result)
+    func goToDetail(_ request: FilmListModel.FilmListResult.Request)
 }
 
 protocol FilmListDataStore {
@@ -44,9 +44,9 @@ extension FilmListInteractor: FilmListBusinessLogic {
         presenter.setupMainView(response)
     }
     
-    func goToDetail(film: Result) {
-      
-        
+    func goToDetail(_ request: FilmListModel.FilmListResult.Request) {
+        let response = FilmListModel.FilmListResult.Response(result: request.result)
+        presenter.goToDetailList(response)
     }
     
     func doRequest(_ request: FilmListModel.Request) {

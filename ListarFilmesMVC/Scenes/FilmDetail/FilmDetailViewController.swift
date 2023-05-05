@@ -35,6 +35,7 @@ final class FilmDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainView.backgroundColor = .white
         //interactor.doSomething(item: 22)
     }
     

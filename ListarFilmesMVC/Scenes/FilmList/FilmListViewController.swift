@@ -15,6 +15,7 @@ import UIKit
 protocol FilmListDisplayLogic where Self: UIViewController {
     func displayViewModel(_ viewModel: FilmListModel.ViewModel)
     func displaySetupMainView(_ viewModel: FilmListModel.FilmList.ViewModel)
+    func displayGoToDetailList(_ viewModel: FilmListModel.FilmListResult.ViewModel)
 }
 
 final class FilmListViewController: UIViewController {
@@ -34,7 +35,8 @@ final class FilmListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.backgroundColor = .white
-        
+        mainView.delegate = self
+
         let request = FilmListModel.FilmList.Request()
         interactor.setupMainView(request)
         
@@ -55,6 +57,11 @@ final class FilmListViewController: UIViewController {
 
 // MARK: - FilmListDisplayLogic
 extension FilmListViewController: FilmListDisplayLogic {
+    func displayGoToDetailList(_ viewModel: FilmListModel.FilmListResult.ViewModel) {
+        let route = FilmListModel.FilmList.Route()
+        router.routeToFilmDetail(route)
+    }
+    
     func displaySetupMainView(_ viewModel: FilmListModel.FilmList.ViewModel) {
         guard let view = self.view as? FilmListView else { return }
         view.listFilms = viewModel.list.results
@@ -74,14 +81,14 @@ extension FilmListViewController: FilmListDisplayLogic {
 
 // MARK: - FilmListViewDelegate
 extension FilmListViewController: FilmListViewDelegate {
-    func goToDetailViewController(_ filmSelected: Result) {
-        //ajustar o objeto que passa
-        //interactor.goToDetail(filmSelected)
+    
+    func goToDetailViewController(_ result: Result) {
+        let request = FilmListModel.FilmListResult.Request(result: result)
+        interactor.goToDetail(request)
     }
     
     func sendDataBackToParent(_ data: Data) {
         //usually this delegate takes care of users actions and requests through UI
-        
         //do something with the data or message send back from mainView
     }
 }

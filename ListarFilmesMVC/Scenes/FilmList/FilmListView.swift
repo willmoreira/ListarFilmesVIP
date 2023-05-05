@@ -14,7 +14,7 @@ import UIKit
 
 protocol FilmListViewDelegate where Self: UIViewController {
     func sendDataBackToParent(_ data: Data)
-    func goToDetailViewController(_ filmSelected: Result)
+    func goToDetailViewController(_ result: Result)
 }
 
 final class FilmListView: UIView {
@@ -22,7 +22,7 @@ final class FilmListView: UIView {
     weak var delegate: FilmListViewDelegate?
     
     lazy var listFilms: [Result] = []
-
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -48,7 +48,7 @@ final class FilmListView: UIView {
     }
     
     private func setupInit() {
-          configureView()
+        configureView()
     }
     
     private func configureView() {
@@ -69,7 +69,7 @@ final class FilmListView: UIView {
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
     }
-
+    
     
     private enum ViewTrait {
         static let leftMargin: CGFloat = 10.0
@@ -86,9 +86,9 @@ extension FilmListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let filmeSelecionado = listFilms[indexPath.row]
+        let result = listFilms[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
-        //delegate?.goToDetailViewController(filmeSelecionado)
+        delegate?.goToDetailViewController(result)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -103,7 +103,7 @@ extension FilmListView: UITableViewDelegate, UITableViewDataSource {
         let dateFormatter = DateFormatter()
         var dateString: String = ""
         dateFormatter.dateFormat = "yyyy-MM-dd"
-
+        
         if let date = dateFormatter.date(from: date) {
             dateFormatter.dateStyle = .long
             dateFormatter.timeStyle = .none
