@@ -13,46 +13,47 @@
 import UIKit
 
 protocol FilmListRouting {
-  
-  func routeTo(_ route: FilmListModel.Route)
+    
+    func routeTo(_ route: FilmListModel.Route)
+    
 }
 
 final class FilmListRouter {
-  
-  private weak var viewController: UIViewController?
-  
-  init(viewController: UIViewController?) {
-    self.viewController = viewController
-  }
+    
+    private weak var viewController: UIViewController?
+    
+    init(viewController: UIViewController?) {
+        self.viewController = viewController
+    }
 }
 
 
 // MARK: - FilmListRouting
 extension FilmListRouter: FilmListRouting {
-  
-  func routeTo(_ route: FilmListModel.Route) {
-    DispatchQueue.main.async {
-      switch route {
         
-      case .dismissFilmListScene:
-        self.dismissFilmListScene()
-        
-      case .xScene(let data):
-        self.showXSceneBy(data)
-      }
+    func routeTo(_ route: FilmListModel.Route) {
+        DispatchQueue.main.async {
+            switch route {
+                
+            case .dismissFilmListScene:
+                self.dismissFilmListScene()
+                
+            case .xScene(let data):
+                self.showXSceneBy(data)
+            }
+        }
     }
-  }
 }
 
 
 // MARK: - Private Zone
 private extension FilmListRouter {
-  
-  func dismissFilmListScene() {
-    viewController?.dismiss(animated: true)
-  }
-  
-  func showXSceneBy(_ data: Int) {
-    print("will show the next screen")
-  }
+    
+    func dismissFilmListScene() {
+        viewController?.dismiss(animated: true)
+    }
+    
+    func showXSceneBy(_ data: Int) {
+        print("will show the next screen")
+    }
 }

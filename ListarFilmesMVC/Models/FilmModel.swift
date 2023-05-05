@@ -1,7 +1,7 @@
 // MARK: - Welcome
-struct FilmModel: Codable {
+struct FilmModel2: Codable {
     let page: Int
-    let results: [Result]
+    let results: [Result2]
     let totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
@@ -12,12 +12,12 @@ struct FilmModel: Codable {
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct Result2: Codable {
     let adult: Bool
     let backdropPath: String
     let genreIDS: [Int]
     let id: Int
-    let originalLanguage: OriginalLanguage
+    let originalLanguage: OriginalLanguage2
     let originalTitle, overview: String
     let popularity: Double
     let posterPath, releaseDate, title: String
@@ -25,7 +25,7 @@ struct Result: Codable {
     let voteAverage: Double
     let voteCount: Int
 
-    enum CodingKeys: String, CodingKey {
+    enum CodingKeys2: String, CodingKey {
         case adult
         case backdropPath = "backdrop_path"
         case genreIDS = "genre_ids"
@@ -41,7 +41,7 @@ struct Result: Codable {
     }
 }
 
-enum OriginalLanguage: String, Codable {
+enum OriginalLanguage2: String, Codable {
     case en = "en"
     case es = "es"
     case ko = "ko"

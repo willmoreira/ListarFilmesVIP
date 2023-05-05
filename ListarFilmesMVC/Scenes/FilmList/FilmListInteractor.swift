@@ -15,54 +15,65 @@ import Foundation
 typealias FilmListInteractable = FilmListBusinessLogic & FilmListDataStore
 
 protocol FilmListBusinessLogic {
-  
-  func doRequest(_ request: FilmListModel.Request)
+    func doRequest(_ request: FilmListModel.Request)
+    func setupMainView(_ request: FilmListModel.FilmList.Request)
+    func goToDetail(film: Result)
 }
 
 protocol FilmListDataStore {
-  var dataSource: FilmListModel.DataSource { get }
+    var dataSource: FilmListModel.DataSource { get }
 }
 
 final class FilmListInteractor: FilmListDataStore {
-  
-  var dataSource: FilmListModel.DataSource
-  
-  private var presenter: FilmListPresentationLogic
-  
-  init(viewController: FilmListDisplayLogic?, dataSource: FilmListModel.DataSource) {
-    self.dataSource = dataSource
-    self.presenter = FilmListPresenter(viewController: viewController)
-  }
+    
+    var dataSource: FilmListModel.DataSource
+    
+    private var presenter: FilmListPresentationLogic
+    
+    init(viewController: FilmListDisplayLogic?, dataSource: FilmListModel.DataSource) {
+        self.dataSource = dataSource
+        self.presenter = FilmListPresenter(viewController: viewController)
+    }
 }
 
 
 // MARK: - FilmListBusinessLogic
 extension FilmListInteractor: FilmListBusinessLogic {
-  
-  func doRequest(_ request: FilmListModel.Request) {
-    DispatchQueue.global(qos: .userInitiated).async {
-      
-      switch request {
-        
-      case .doSomething(let item):
-        self.doSomething(item)
-      }
+    func setupMainView(_ request: FilmListModel.FilmList.Request) {
+        let response = FilmListModel.FilmList.Response(list: dataSource.filmModelList)
+        presenter.setupMainView(response)
     }
-  }
+    
+    func goToDetail(film: Result) {
+      
+        
+    }
+    
+    func doRequest(_ request: FilmListModel.Request) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            
+            switch request {
+                
+            case .doSomething(let item):
+                self.doSomething(item)
+            }
+        }
+    }
 }
 
 
 // MARK: - Private Zone
 private extension FilmListInteractor {
-  
-  func doSomething(_ item: Int) {
+   
     
-    //construct the Service right before using it
-    //let serviceX = factory.makeXService()
-    
-    // get new data async or sync
-    //let newData = serviceX.getNewData()
-    
-    presenter.presentResponse(.doSomething(newItem: item + 1, isItem: true))
-  }
+    func doSomething(_ item: Int) {
+        
+        //construct the Service right before using it
+        //let serviceX = factory.makeXService()
+        
+        // get new data async or sync
+        //let newData = serviceX.getNewData()
+        
+        presenter.presentResponse(.doSomething(newItem: item + 1, isItem: true))
+    }
 }

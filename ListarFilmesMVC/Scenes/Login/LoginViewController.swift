@@ -14,21 +14,23 @@ import UIKit
 
 protocol LoginDisplayLogic where Self: UIViewController {
     func diplayShowAlert(_ viewModel: LoginModel.Login.ViewModel)
-    func displayStartLoading()
-    func displayStopLoading()
+    func displayGoToFilmList(_ viewModel: LoginModel.Login.ViewModel) 
+    func displayStartLoading(_ viewModel: LoginModel.Login.ViewModel)
+    func displayStopLoading(_ viewModel: LoginModel.Login.ViewModel)
 }
 
 final class LoginViewController: UIViewController {
     
     private let mainView: LoginView
     private var interactor: LoginInteractable!
-    private var router: LoginRouting!
+    private var router: (LoginRouting & LoginDataPassing)!
     
     init(mainView: LoginView, dataSource: LoginModel.DataSource) {
         self.mainView = mainView
         super.init(nibName: nil, bundle: nil)
         interactor = LoginInteractor(viewController: self, dataSource: dataSource)
         router = LoginRouter(viewController: self)
+        router.dataStore = interactor
     }
     
     override func viewDidLoad() {
@@ -50,12 +52,22 @@ final class LoginViewController: UIViewController {
 
 // MARK: - LoginDisplayLogic
 extension LoginViewController: LoginDisplayLogic {
-    func displayStartLoading() {
+    func displayGoToFilmList(_ viewModel: LoginModel.Login.ViewModel) {
+        let route = LoginModel.Login.Route()
+        router.routeToListfilms(route)
+    }
+    
+    func displayStartLoading(_ viewModel: LoginModel.Login.ViewModel) {
         mainView.activityIndicator.startAnimating()
     }
     
-    func displayStopLoading() {
+    func displayStopLoading(_ viewModel: LoginModel.Login.ViewModel) {
         mainView.activityIndicator.stopAnimating()
+    }
+    
+    func displayGoToFilmList() {
+        let route = LoginModel.Login.Route()
+        router.routeToListfilms(route)
     }
     
     func diplayShowAlert(_ viewModel: LoginModel.Login.ViewModel) {

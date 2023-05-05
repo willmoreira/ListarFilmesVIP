@@ -14,8 +14,9 @@ import UIKit
 
 protocol LoginPresentationLogic {
     func presentShowAlert(_ response: LoginModel.Login.Response)
-    func presentStartLoading()
-    func presentStopLoading()
+    func presentStartLoading(_ response: LoginModel.Login.Response)
+    func presentStopLoading(_ response: LoginModel.Login.Response)
+    func presentGoToListFilms(_ response: LoginModel.Login.Response)
 }
 
 final class LoginPresenter {
@@ -28,14 +29,21 @@ final class LoginPresenter {
 
 // MARK: - LoginPresentationLogic
 extension LoginPresenter: LoginPresentationLogic {
-    func presentStartLoading() {
-        self.viewController?.displayStartLoading()
+    func presentStartLoading(_ response: LoginModel.Login.Response) {
+        let viewModel = LoginModel.Login.ViewModel()
+        self.viewController?.displayStartLoading(viewModel)
     }
     
-    func presentStopLoading() {
-        self.viewController?.displayStopLoading()
+    func presentStopLoading(_ response: LoginModel.Login.Response) {
+        let viewModel = LoginModel.Login.ViewModel()
+        self.viewController?.displayStopLoading(viewModel)
     }
     
+    func presentGoToListFilms(_ response: LoginModel.Login.Response) {
+        let viewModel = LoginModel.Login.ViewModel()
+        self.viewController?.displayGoToFilmList(viewModel)
+    }
+
     func presentShowAlert(_ response: LoginModel.Login.Response) {
         let viewModel = LoginModel.Login.ViewModel(titleMessage:response.titleMessage , message: response.message)
         self.viewController?.diplayShowAlert(viewModel)

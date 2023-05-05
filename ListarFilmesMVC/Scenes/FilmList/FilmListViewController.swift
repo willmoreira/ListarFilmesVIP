@@ -13,72 +13,86 @@
 import UIKit
 
 protocol FilmListDisplayLogic where Self: UIViewController {
-  
-  func displayViewModel(_ viewModel: FilmListModel.ViewModel)
+    func displayViewModel(_ viewModel: FilmListModel.ViewModel)
+    func displaySetupMainView(_ viewModel: FilmListModel.FilmList.ViewModel)
 }
 
 final class FilmListViewController: UIViewController {
-  
-  private let mainView: FilmListView
-  private var interactor: FilmListInteractable!
-  private var router: FilmListRouting!
-  
-  init(mainView: FilmListView, dataSource: FilmListModel.DataSource) {
-    self.mainView = mainView
     
-    super.init(nibName: nil, bundle: nil)
-    interactor = FilmListInteractor(viewController: self, dataSource: dataSource)
-    router = FilmListRouter(viewController: self)
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    //interactor.doSomething(item: 22)
-  }
-  
-  override func loadView() {
-    view = mainView
-  }
-  
-  @available(*, unavailable)
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
-  }
+    private let mainView: FilmListView
+    private var interactor: FilmListInteractable!
+    private var router: FilmListRouting!
+    
+    init(mainView: FilmListView, dataSource: FilmListModel.DataSource) {
+        self.mainView = mainView
+        self.mainView.listFilms = dataSource.filmModelList.results
+        super.init(nibName: nil, bundle: nil)
+        interactor = FilmListInteractor(viewController: self, dataSource: dataSource)
+        router = FilmListRouter(viewController: self)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mainView.backgroundColor = .white
+        
+        let request = FilmListModel.FilmList.Request()
+        interactor.setupMainView(request)
+        
+        //configurar sair do app
+        //interactor.doSomething(item: 22)
+    }
+    
+    override func loadView() {
+        view = mainView
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
+    }
 }
 
 
 // MARK: - FilmListDisplayLogic
 extension FilmListViewController: FilmListDisplayLogic {
-  
-  func displayViewModel(_ viewModel: FilmListModel.ViewModel) {
-    DispatchQueue.main.async {
-      switch viewModel {
-        
-      case .doSomething(let viewModel):
-        self.displayDoSomething(viewModel)
-      }
+    func displaySetupMainView(_ viewModel: FilmListModel.FilmList.ViewModel) {
+        guard let view = self.view as? FilmListView else { return }
+        view.listFilms = viewModel.list.results
     }
-  }
+    
+    func displayViewModel(_ viewModel: FilmListModel.ViewModel) {
+        DispatchQueue.main.async {
+            switch viewModel {
+                
+            case .doSomething(let viewModel):
+                self.displayDoSomething(viewModel)
+            }
+        }
+    }
 }
 
 
 // MARK: - FilmListViewDelegate
 extension FilmListViewController: FilmListViewDelegate {
-  
-  func sendDataBackToParent(_ data: Data) {
-    //usually this delegate takes care of users actions and requests through UI
+    func goToDetailViewController(_ filmSelected: Result) {
+        //ajustar o objeto que passa
+        //interactor.goToDetail(filmSelected)
+    }
     
-    //do something with the data or message send back from mainView
-  }
+    func sendDataBackToParent(_ data: Data) {
+        //usually this delegate takes care of users actions and requests through UI
+        
+        //do something with the data or message send back from mainView
+    }
 }
 
 
 // MARK: - Private Zone
 private extension FilmListViewController {
-  
-  func displayDoSomething(_ viewModel: NSObject) {
-    print("Use the mainView to present the viewModel")
-    //example of using router
-    router.routeTo(.xScene(xData: 22))
-  }
+    
+    func displayDoSomething(_ viewModel: NSObject) {
+        print("Use the mainView to present the viewModel")
+        //example of using router
+        router.routeTo(.xScene(xData: 22))
+    }
 }

@@ -19,9 +19,14 @@ protocol LoginRouting {
     func routeToListfilms(_ route: LoginModel.Login.Route)
 }
 
-final class LoginRouter {
+protocol LoginDataPassing {
+    var dataStore: LoginDataStore? { get set }
+}
+
+final class LoginRouter: LoginDataPassing {
     
     private weak var viewController: UIViewController?
+    var dataStore: LoginDataStore?
     
     init(viewController: UIViewController?) {
         self.viewController = viewController
@@ -45,7 +50,15 @@ extension LoginRouter: LoginRouting {
     }
     
     func routeToListfilms(_ route: LoginModel.Login.Route) {
-        
+        DispatchQueue.main.async {
+            let mainView = FilmListView()
+            guard let dataStore = self.dataStore else { return }
+            let dataSource = FilmListModel.DataSource(filmModelList: dataStore.dataSource.filmModelList)
+            let resetLoginViewController = FilmListViewController(mainView: mainView, dataSource: dataSource)
+            let backButton = UIBarButtonItem(title: "Sair do APP", style: .plain, target: nil, action: nil)
+            self.viewController?.navigationItem.backBarButtonItem = backButton
+            self.viewController?.navigationController?.pushViewController(resetLoginViewController, animated: true)
+        }
     }
     
     func routeTo(_ route: LoginModel.Route) {

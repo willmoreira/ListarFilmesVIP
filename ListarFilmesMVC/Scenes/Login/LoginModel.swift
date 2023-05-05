@@ -21,6 +21,7 @@ enum LoginModel {
     }
     
     struct DataSource {
+        var filmModelList: FilmModel
         //var test: Int
     }
     

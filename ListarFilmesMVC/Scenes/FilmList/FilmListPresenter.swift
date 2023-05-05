@@ -13,39 +13,44 @@
 import Foundation
 
 protocol FilmListPresentationLogic {
-  func presentResponse(_ response: FilmListModel.Response)
+    func presentResponse(_ response: FilmListModel.Response)
+    func setupMainView(_ reponse: FilmListModel.FilmList.Response)
 }
 
 final class FilmListPresenter {
-  private weak var viewController: FilmListDisplayLogic?
-  
-  init(viewController: FilmListDisplayLogic?) {
-    self.viewController = viewController
-  }
+    private weak var viewController: FilmListDisplayLogic?
+    
+    init(viewController: FilmListDisplayLogic?) {
+        self.viewController = viewController
+    }
 }
 
 
 // MARK: - FilmListPresentationLogic
 extension FilmListPresenter: FilmListPresentationLogic {
-  
-  func presentResponse(_ response: FilmListModel.Response) {
-    
-    switch response {
-      
-    case .doSomething(let newItem, let isItem):
-      presentDoSomething(newItem, isItem)
+    func setupMainView(_ reponse: FilmListModel.FilmList.Response) {
+        let viewModel = FilmListModel.FilmList.ViewModel(list: reponse.list)
+        viewController?.displaySetupMainView(viewModel)
     }
-  }
+  
+    func presentResponse(_ response: FilmListModel.Response) {
+        
+        switch response {
+            
+        case .doSomething(let newItem, let isItem):
+            presentDoSomething(newItem, isItem)
+        }
+    }
 }
 
 
 // MARK: - Private Zone
 private extension FilmListPresenter {
-  
-  func presentDoSomething(_ newItem: Int, _ isItem: Bool) {
     
-    //prepare data for display and send it further
-    
-    viewController?.displayViewModel(.doSomething(viewModelData: NSObject()))
-  }
+    func presentDoSomething(_ newItem: Int, _ isItem: Bool) {
+        
+        //prepare data for display and send it further
+        
+        viewController?.displayViewModel(.doSomething(viewModelData: NSObject()))
+    }
 }
