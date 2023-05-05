@@ -13,72 +13,86 @@
 import UIKit
 
 protocol LoginDisplayLogic where Self: UIViewController {
-  
-  func displayViewModel(_ viewModel: LoginModel.ViewModel)
+    func diplayShowAlert(_ viewModel: LoginModel.Login.ViewModel)
+    func displayStartLoading()
+    func displayStopLoading()
 }
 
 final class LoginViewController: UIViewController {
-  
-  private let mainView: LoginView
-  private var interactor: LoginInteractable!
-  private var router: LoginRouting!
-  
-  init(mainView: LoginView, dataSource: LoginModel.DataSource) {
-    self.mainView = mainView
     
-    super.init(nibName: nil, bundle: nil)
-    interactor = LoginInteractor(viewController: self, dataSource: dataSource)
-    router = LoginRouter(viewController: self)
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    //interactor.doSomething(item: 22)
-  }
-  
-  override func loadView() {
-    view = mainView
-  }
-  
-  @available(*, unavailable)
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
-  }
+    private let mainView: LoginView
+    private var interactor: LoginInteractable!
+    private var router: LoginRouting!
+    
+    init(mainView: LoginView, dataSource: LoginModel.DataSource) {
+        self.mainView = mainView
+        super.init(nibName: nil, bundle: nil)
+        interactor = LoginInteractor(viewController: self, dataSource: dataSource)
+        router = LoginRouter(viewController: self)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mainView.backgroundColor = .white
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
+        mainView.delegate = self
+    }
+    
+    override func loadView() {
+        view = mainView
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
+    }
 }
 
 
 // MARK: - LoginDisplayLogic
 extension LoginViewController: LoginDisplayLogic {
-  
-  func displayViewModel(_ viewModel: LoginModel.ViewModel) {
-    DispatchQueue.main.async {
-      switch viewModel {
-        
-      case .doSomething(let viewModel):
-        self.displayDoSomething(viewModel)
-      }
+    func displayStartLoading() {
+        mainView.activityIndicator.startAnimating()
     }
-  }
+    
+    func displayStopLoading() {
+        mainView.activityIndicator.stopAnimating()
+    }
+    
+    func diplayShowAlert(_ viewModel: LoginModel.Login.ViewModel) {
+        let alert = UIAlertController(title: viewModel.titleMessage, message: viewModel.message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 
 // MARK: - LoginViewDelegate
 extension LoginViewController: LoginViewDelegate {
-  
-  func sendDataBackToParent(_ data: Data) {
-    //usually this delegate takes care of users actions and requests through UI
+    func loginButtonPressed() {
+        let request = LoginModel.Login.Request(password: mainView.inputSenha.text ,login: mainView.inputLogin.text)
+        interactor.doLogin(request)
+    }
     
-    //do something with the data or message send back from mainView
-  }
+    func resetButtonPressed() {
+        let route = LoginModel.Login.Route()
+        router.routeToResetLogin(route)
+    }
+    
+    func createButtonPressed() {
+        let route = LoginModel.Login.Route()
+        router.routeToCreateLogin(route)
+    }
+    
+    func sendDataBackToParent(_ data: Data) {
+        //usually this delegate takes care of users actions and requests through UI
+        //do something with the data or message send back from mainView
+    }
 }
 
 
 // MARK: - Private Zone
 private extension LoginViewController {
-  
-  func displayDoSomething(_ viewModel: NSObject) {
-    print("Use the mainView to present the viewModel")
-    //example of using router
-    router.routeTo(.xScene(xData: 22))
-  }
+    
 }

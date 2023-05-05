@@ -10,42 +10,43 @@
 //  see more http://clean-swift.com
 //
 
-import Foundation
+import UIKit
 
 protocol LoginPresentationLogic {
-  func presentResponse(_ response: LoginModel.Response)
+    func presentShowAlert(_ response: LoginModel.Login.Response)
+    func presentStartLoading()
+    func presentStopLoading()
+
 }
 
 final class LoginPresenter {
-  private weak var viewController: LoginDisplayLogic?
-  
-  init(viewController: LoginDisplayLogic?) {
-    self.viewController = viewController
-  }
+    private weak var viewController: LoginDisplayLogic?
+    
+    init(viewController: LoginDisplayLogic?) {
+        self.viewController = viewController
+    }
 }
 
 
 // MARK: - LoginPresentationLogic
 extension LoginPresenter: LoginPresentationLogic {
-  
-  func presentResponse(_ response: LoginModel.Response) {
-    
-    switch response {
-      
-    case .doSomething(let newItem, let isItem):
-      presentDoSomething(newItem, isItem)
+    func presentStartLoading() {
+        self.viewController?.displayStartLoading()
     }
-  }
+    
+    func presentStopLoading() {
+        self.viewController?.displayStopLoading()
+    }
+    
+    func presentShowAlert(_ response: LoginModel.Login.Response) {
+        let viewModel = LoginModel.Login.ViewModel(titleMessage:response.titleMessage , message: response.message)
+        self.viewController?.diplayShowAlert(viewModel)
+    }
 }
 
 
 // MARK: - Private Zone
 private extension LoginPresenter {
-  
-  func presentDoSomething(_ newItem: Int, _ isItem: Bool) {
     
-    //prepare data for display and send it further
     
-    viewController?.displayViewModel(.doSomething(viewModelData: NSObject()))
-  }
 }

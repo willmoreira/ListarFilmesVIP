@@ -13,39 +13,38 @@
 import Foundation
 
 protocol CreateLoginPresentationLogic {
-  func presentResponse(_ response: CreateLoginModel.Response)
+    func presentShowAlert(_ response: CreateLoginModel.CreateLogin.Response)
+    func presentStartLoading()
+    func presentStopLoading()
 }
 
 final class CreateLoginPresenter {
-  private weak var viewController: CreateLoginDisplayLogic?
-  
-  init(viewController: CreateLoginDisplayLogic?) {
-    self.viewController = viewController
-  }
+    private weak var viewController: CreateLoginDisplayLogic?
+    
+    init(viewController: CreateLoginDisplayLogic?) {
+        self.viewController = viewController
+    }
 }
 
 
 // MARK: - CreateLoginPresentationLogic
 extension CreateLoginPresenter: CreateLoginPresentationLogic {
-  
-  func presentResponse(_ response: CreateLoginModel.Response) {
-    
-    switch response {
-      
-    case .doSomething(let newItem, let isItem):
-      presentDoSomething(newItem, isItem)
+    func presentStartLoading() {
+        self.viewController?.displayStartLoading()
     }
-  }
+    
+    func presentStopLoading() {
+        self.viewController?.displayStopLoading()
+    }
+    
+    func presentShowAlert(_ response: CreateLoginModel.CreateLogin.Response) {
+        let viewModel = CreateLoginModel.CreateLogin.ViewModel(titleMessage: response.titleMessage, message: response.message)
+        self.viewController?.diplayShowAlert(viewModel)
+    }
 }
 
 
 // MARK: - Private Zone
 private extension CreateLoginPresenter {
-  
-  func presentDoSomething(_ newItem: Int, _ isItem: Bool) {
     
-    //prepare data for display and send it further
-    
-    viewController?.displayViewModel(.doSomething(viewModelData: NSObject()))
-  }
 }

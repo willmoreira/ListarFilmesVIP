@@ -10,59 +10,78 @@
 //  see http://clean-swift.com
 //
 
-import Foundation
+import UIKit
+import FirebaseAuth
 
 typealias LoginInteractable = LoginBusinessLogic & LoginDataStore
 
 protocol LoginBusinessLogic {
-  
-  func doRequest(_ request: LoginModel.Request)
+    func doLogin(_ request: LoginModel.Login.Request)
 }
 
 protocol LoginDataStore {
-  var dataSource: LoginModel.DataSource { get }
+    var dataSource: LoginModel.DataSource { get }
 }
 
 final class LoginInteractor: LoginDataStore {
-  
-  var dataSource: LoginModel.DataSource
-  
-  private var presenter: LoginPresentationLogic
-  
-  init(viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) {
-    self.dataSource = dataSource
-    self.presenter = LoginPresenter(viewController: viewController)
-  }
+    
+    var dataSource: LoginModel.DataSource
+    
+    private var presenter: LoginPresentationLogic
+    
+    init(viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) {
+        self.dataSource = dataSource
+        self.presenter = LoginPresenter(viewController: viewController)
+    }
+    
+    func tryLogin(request: LoginModel.Login.Request) {
+
+        presenter.presentStartLoading()
+        
+        if let login = request.login, let password = request.password {
+            Auth.auth().signIn(withEmail: login, password: password) { authResult, error in
+                
+                self.presenter.presentStopLoading()
+                
+                if let error = error {
+                    if error.localizedDescription == "The password is invalid or the user does not have a password." {
+                        let response = LoginModel.Login.Response(titleMessage: "Senha inválida!", message: "A senha é inválida ou o usuário não possui uma senha.")
+                        self.presenter.presentShowAlert(response)
+                    }
+                    if error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
+                        let response = LoginModel.Login.Response(titleMessage: "Usuario não encontrado!", message: "Não há registro de usuário correspondente a este email, confira o email ou cadastre um novo usuário.")
+                        self.presenter.presentShowAlert(response)
+                    }
+                    return
+                }
+                //self.goToScreenListFilms()
+            }
+        }
+    }
 }
 
 
 // MARK: - LoginBusinessLogic
 extension LoginInteractor: LoginBusinessLogic {
-  
-  func doRequest(_ request: LoginModel.Request) {
-    DispatchQueue.global(qos: .userInitiated).async {
-      
-      switch request {
-        
-      case .doSomething(let item):
-        self.doSomething(item)
-      }
+    
+    func doLogin(_ request: LoginModel.Login.Request) {
+        guard let username = request.login, !username.isEmpty else {
+            let response = LoginModel.Login.Response(titleMessage: "Erro no campo Login", message: "Preencha o campo Login")
+            presenter.presentShowAlert(response)
+            return
+        }
+        guard let password = request.password, !password.isEmpty else {
+            let response = LoginModel.Login.Response(titleMessage: "Erro no campo Senha", message: "Preencha o campo Senha")
+            presenter.presentShowAlert(response)
+            return
+        }
+        tryLogin(request: request)
     }
-  }
 }
 
 
 // MARK: - Private Zone
 private extension LoginInteractor {
-  
-  func doSomething(_ item: Int) {
     
-    //construct the Service right before using it
-    //let serviceX = factory.makeXService()
     
-    // get new data async or sync
-    //let newData = serviceX.getNewData()
-    
-    presenter.presentResponse(.doSomething(newItem: item + 1, isItem: true))
-  }
 }

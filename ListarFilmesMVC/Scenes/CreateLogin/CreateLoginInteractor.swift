@@ -11,58 +11,83 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 typealias CreateLoginInteractable = CreateLoginBusinessLogic & CreateLoginDataStore
 
 protocol CreateLoginBusinessLogic {
-  
-  func doRequest(_ request: CreateLoginModel.Request)
+    func doCreateLogin(_ request: CreateLoginModel.CreateLogin.Request)
 }
 
 protocol CreateLoginDataStore {
-  var dataSource: CreateLoginModel.DataSource { get }
+    var dataSource: CreateLoginModel.DataSource { get }
 }
 
 final class CreateLoginInteractor: CreateLoginDataStore {
-  
-  var dataSource: CreateLoginModel.DataSource
-  
-  private var presenter: CreateLoginPresentationLogic
-  
-  init(viewController: CreateLoginDisplayLogic?, dataSource: CreateLoginModel.DataSource) {
-    self.dataSource = dataSource
-    self.presenter = CreateLoginPresenter(viewController: viewController)
-  }
+    
+    var dataSource: CreateLoginModel.DataSource
+    
+    private var presenter: CreateLoginPresentationLogic
+    
+    init(viewController: CreateLoginDisplayLogic?, dataSource: CreateLoginModel.DataSource) {
+        self.dataSource = dataSource
+        self.presenter = CreateLoginPresenter(viewController: viewController)
+    }
+    
+    func tryLogin(request: CreateLoginModel.CreateLogin.Request) {
+        
+        if let login = request.login, let password = request.password {
+
+            presenter.presentStartLoading()
+
+            var response = CreateLoginModel.CreateLogin.Response(titleMessage: "Sucesso!", message: "Usuario cadastrado com sucesso, faça o Login agora!")
+
+            Auth.auth().createUser(withEmail: login, password: password) { authResult, error in
+                
+                self.presenter.presentStopLoading()
+                
+                if let error = error {
+                    if error.localizedDescription == "The email address is already in use by another account." {
+                        response = CreateLoginModel.CreateLogin.Response(titleMessage: "Email já em uso!", message: "O endereço de e-mail já está sendo usado por outra conta.")
+                        self.presenter.presentShowAlert(response)
+                    }
+                    if error.localizedDescription == "The email address is badly formatted." {
+                        response = CreateLoginModel.CreateLogin.Response(titleMessage: "Formato do email incorreto!", message:  "O endereço de e-mail não parece ser valido")
+                        self.presenter.presentShowAlert(response)
+                    }
+                    if error.localizedDescription == "The password must be 6 characters long or more." {
+                        response = CreateLoginModel.CreateLogin.Response(titleMessage: "Regra de senha", message:  "A senha deve ter 6 caracteres ou mais.")
+                        self.presenter.presentShowAlert(response)
+                    }
+                    return
+                }
+                self.presenter.presentShowAlert(response)
+            }
+        }
+    }
 }
 
 
 // MARK: - CreateLoginBusinessLogic
 extension CreateLoginInteractor: CreateLoginBusinessLogic {
-  
-  func doRequest(_ request: CreateLoginModel.Request) {
-    DispatchQueue.global(qos: .userInitiated).async {
-      
-      switch request {
-        
-      case .doSomething(let item):
-        self.doSomething(item)
-      }
+    
+    func doCreateLogin(_ request: CreateLoginModel.CreateLogin.Request) {
+        guard let username = request.login, !username.isEmpty else {
+            let response = CreateLoginModel.CreateLogin.Response(titleMessage: "Erro no campo Login", message: "Preencha o campo Login")
+            presenter.presentShowAlert(response)
+            return
+        }
+        guard let password = request.password, !password.isEmpty else {
+            let response = CreateLoginModel.CreateLogin.Response(titleMessage: "Erro no campo Senha", message: "Preencha o campo Senha")
+            presenter.presentShowAlert(response)
+            return
+        }
+        tryLogin(request: request)
     }
-  }
 }
 
 
 // MARK: - Private Zone
 private extension CreateLoginInteractor {
-  
-  func doSomething(_ item: Int) {
     
-    //construct the Service right before using it
-    //let serviceX = factory.makeXService()
-    
-    // get new data async or sync
-    //let newData = serviceX.getNewData()
-    
-    presenter.presentResponse(.doSomething(newItem: item + 1, isItem: true))
-  }
 }

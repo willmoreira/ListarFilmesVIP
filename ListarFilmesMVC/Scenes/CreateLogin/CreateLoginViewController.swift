@@ -13,72 +13,82 @@
 import UIKit
 
 protocol CreateLoginDisplayLogic where Self: UIViewController {
-  
-  func displayViewModel(_ viewModel: CreateLoginModel.ViewModel)
+    func diplayShowAlert(_ viewModel: CreateLoginModel.CreateLogin.ViewModel)
+    func displayStartLoading()
+    func displayStopLoading()
 }
 
 final class CreateLoginViewController: UIViewController {
-  
-  private let mainView: CreateLoginView
-  private var interactor: CreateLoginInteractable!
-  private var router: CreateLoginRouting!
-  
-  init(mainView: CreateLoginView, dataSource: CreateLoginModel.DataSource) {
-    self.mainView = mainView
     
-    super.init(nibName: nil, bundle: nil)
-    interactor = CreateLoginInteractor(viewController: self, dataSource: dataSource)
-    router = CreateLoginRouter(viewController: self)
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    //interactor.doSomething(item: 22)
-  }
-  
-  override func loadView() {
-    view = mainView
-  }
-  
-  @available(*, unavailable)
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
-  }
+    private let mainView: CreateLoginView
+    private var interactor: CreateLoginInteractable!
+    private var router: CreateLoginRouting!
+    
+    init(mainView: CreateLoginView, dataSource: CreateLoginModel.DataSource) {
+        self.mainView = mainView
+        super.init(nibName: nil, bundle: nil)
+        interactor = CreateLoginInteractor(viewController: self, dataSource: dataSource)
+        router = CreateLoginRouter(viewController: self)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
+        mainView.backgroundColor = .white
+        mainView.delegate = self
+    }
+    
+    override func loadView() {
+        view = mainView
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
+    }
 }
 
 
 // MARK: - CreateLoginDisplayLogic
 extension CreateLoginViewController: CreateLoginDisplayLogic {
-  
-  func displayViewModel(_ viewModel: CreateLoginModel.ViewModel) {
-    DispatchQueue.main.async {
-      switch viewModel {
-        
-      case .doSomething(let viewModel):
-        self.displayDoSomething(viewModel)
-      }
+    func displayStartLoading() {
+        mainView.activityIndicator.startAnimating()
     }
-  }
+    
+    func displayStopLoading() {
+        mainView.activityIndicator.stopAnimating()
+    }
+    
+    func diplayShowAlert(_ viewModel: CreateLoginModel.CreateLogin.ViewModel) {
+        let alert = UIAlertController(title: viewModel.titleMessage, message: viewModel.message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            if viewModel.titleMessage == "Sucesso!" {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
 
 
 // MARK: - CreateLoginViewDelegate
 extension CreateLoginViewController: CreateLoginViewDelegate {
-  
-  func sendDataBackToParent(_ data: Data) {
-    //usually this delegate takes care of users actions and requests through UI
+    func createButtonPressed() {
+        let request = CreateLoginModel.CreateLogin.Request(password: mainView.inputSenha.text ,login: mainView.inputLogin.text)
+        interactor.doCreateLogin(request)
+    }
     
-    //do something with the data or message send back from mainView
-  }
+    
+    func sendDataBackToParent(_ data: Data) {
+        //usually this delegate takes care of users actions and requests through UI
+        //do something with the data or message send back from mainView
+    }
 }
 
 
 // MARK: - Private Zone
 private extension CreateLoginViewController {
-  
-  func displayDoSomething(_ viewModel: NSObject) {
-    print("Use the mainView to present the viewModel")
-    //example of using router
-    router.routeTo(.xScene(xData: 22))
-  }
+    
 }

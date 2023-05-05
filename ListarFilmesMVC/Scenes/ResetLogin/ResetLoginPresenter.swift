@@ -13,39 +13,38 @@
 import Foundation
 
 protocol ResetLoginPresentationLogic {
-  func presentResponse(_ response: ResetLoginModel.Response)
+    func presentStartLoading()
+    func presentStopLoading()
+    func presentShowAlert(_ response: ResetLoginModel.ResetLogin.Response)
 }
 
 final class ResetLoginPresenter {
-  private weak var viewController: ResetLoginDisplayLogic?
-  
-  init(viewController: ResetLoginDisplayLogic?) {
-    self.viewController = viewController
-  }
+    private weak var viewController: ResetLoginDisplayLogic?
+    
+    init(viewController: ResetLoginDisplayLogic?) {
+        self.viewController = viewController
+    }
 }
 
 
 // MARK: - ResetLoginPresentationLogic
 extension ResetLoginPresenter: ResetLoginPresentationLogic {
-  
-  func presentResponse(_ response: ResetLoginModel.Response) {
-    
-    switch response {
-      
-    case .doSomething(let newItem, let isItem):
-      presentDoSomething(newItem, isItem)
+    func presentShowAlert(_ response: ResetLoginModel.ResetLogin.Response) {
+        let viewModel = ResetLoginModel.ResetLogin.ViewModel(titleMessage: response.titleMessage, message: response.message)
+        self.viewController?.diplayShowAlert(viewModel)
     }
-  }
+    
+    func presentStartLoading() {
+        self.viewController?.displayStartLoading()
+    }
+    
+    func presentStopLoading() {
+        self.viewController?.displayStopLoading()
+    }
 }
 
 
 // MARK: - Private Zone
 private extension ResetLoginPresenter {
   
-  func presentDoSomething(_ newItem: Int, _ isItem: Bool) {
-    
-    //prepare data for display and send it further
-    
-    viewController?.displayViewModel(.doSomething(viewModelData: NSObject()))
-  }
 }

@@ -24,6 +24,7 @@ class LoginViewController2: UIViewController, LoginViewDelegate2 {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //fazer np ok da requisição
         searchFilmList()
     }
     

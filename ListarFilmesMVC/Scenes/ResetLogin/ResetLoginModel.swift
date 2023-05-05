@@ -14,25 +14,45 @@
 import Foundation
 
 enum ResetLoginModel {
-  
-  enum Request {
-    case doSomething(item: Int)
-  }
-  
-  enum Response {
-    case doSomething(newItem: Int, isItem: Bool)
-  }
-  
-  enum ViewModel {
-    case doSomething(viewModelData: NSObject)
-  }
-  
-  enum Route {
-    case dismissResetLoginScene
-    case xScene(xData: Int)
-  }
-  
-  struct DataSource {
-    //var test: Int
-  }
+    
+    enum Request {
+        case doSomething(item: Int)
+    }
+    
+    enum Response {
+        case doSomething(newItem: Int, isItem: Bool)
+    }
+    
+    enum ViewModel {
+        case doSomething(viewModelData: NSObject)
+    }
+    
+    enum Route {
+        case dismissResetLoginScene
+        case xScene(xData: Int)
+    }
+    
+    struct DataSource {
+        //var test: Int
+    }
+    
+    enum ResetLogin {
+        struct Request {
+            var password: String?
+            var login: String?
+        }
+        
+        struct Response {
+            var titleMessage: String?
+            var message: String?
+        }
+        
+        struct ViewModel {
+            var titleMessage: String?
+            var message: String?
+        }
+        struct Route {
+            
+        }
+    }
 }

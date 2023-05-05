@@ -11,58 +11,64 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 typealias ResetLoginInteractable = ResetLoginBusinessLogic & ResetLoginDataStore
 
 protocol ResetLoginBusinessLogic {
-  
-  func doRequest(_ request: ResetLoginModel.Request)
+    func doResetLogin(_ request: ResetLoginModel.ResetLogin.Request)
 }
 
 protocol ResetLoginDataStore {
-  var dataSource: ResetLoginModel.DataSource { get }
+    var dataSource: ResetLoginModel.DataSource { get }
 }
 
 final class ResetLoginInteractor: ResetLoginDataStore {
-  
-  var dataSource: ResetLoginModel.DataSource
-  
-  private var presenter: ResetLoginPresentationLogic
-  
-  init(viewController: ResetLoginDisplayLogic?, dataSource: ResetLoginModel.DataSource) {
-    self.dataSource = dataSource
-    self.presenter = ResetLoginPresenter(viewController: viewController)
-  }
+    
+    var dataSource: ResetLoginModel.DataSource
+    
+    private var presenter: ResetLoginPresentationLogic
+    
+    init(viewController: ResetLoginDisplayLogic?, dataSource: ResetLoginModel.DataSource) {
+        self.dataSource = dataSource
+        self.presenter = ResetLoginPresenter(viewController: viewController)
+    }
+    
+    func tryLogin(request: ResetLoginModel.ResetLogin.Request){
+        presenter.presentStartLoading()
+        var response = ResetLoginModel.ResetLogin.Response(titleMessage: "Sucesso!", message: "As orientações foram enviadas para seu email!")
+
+        if let login = request.login {
+            Auth.auth().sendPasswordReset(withEmail: login) { error in
+                self.presenter.presentStopLoading()
+                if let error = error {
+                    if error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
+                        response = ResetLoginModel.ResetLogin.Response(titleMessage: "Usuário não encontrado", message: "Não há registro de usuário correspondente a este identificador. O usuário pode ter sido excluído." )
+                        self.presenter.presentShowAlert(response)
+                    }
+                    return
+                }
+                self.presenter.presentShowAlert(response)
+            }
+        }
+    }
 }
 
 
 // MARK: - ResetLoginBusinessLogic
 extension ResetLoginInteractor: ResetLoginBusinessLogic {
-  
-  func doRequest(_ request: ResetLoginModel.Request) {
-    DispatchQueue.global(qos: .userInitiated).async {
-      
-      switch request {
-        
-      case .doSomething(let item):
-        self.doSomething(item)
-      }
+    func doResetLogin(_ request: ResetLoginModel.ResetLogin.Request) {
+        guard let username = request.login, !username.isEmpty else {
+            let response = ResetLoginModel.ResetLogin.Response(titleMessage: "Erro no campo Login", message: "Preencha o campo Login")
+            presenter.presentShowAlert(response)
+            return
+        }
+        tryLogin(request: request)
     }
-  }
 }
 
 
 // MARK: - Private Zone
 private extension ResetLoginInteractor {
-  
-  func doSomething(_ item: Int) {
     
-    //construct the Service right before using it
-    //let serviceX = factory.makeXService()
-    
-    // get new data async or sync
-    //let newData = serviceX.getNewData()
-    
-    presenter.presentResponse(.doSomething(newItem: item + 1, isItem: true))
-  }
 }

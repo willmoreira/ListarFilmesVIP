@@ -15,7 +15,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         FirebaseApp.configure()
-        let viewController = LoginViewController2()
+        let mainView = LoginView()
+        let dataSource = LoginModel.DataSource()
+        
+        let viewController = LoginViewController(mainView: mainView, dataSource: dataSource)
         let navigationController = UINavigationController(rootViewController: viewController)
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
