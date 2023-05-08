@@ -13,46 +13,50 @@
 import UIKit
 
 protocol FilmDetailRouting {
-  
-  func routeTo(_ route: FilmDetailModel.Route)
+    func routeTo(_ route: FilmDetailModel.Route)
 }
 
-final class FilmDetailRouter {
-  
-  private weak var viewController: UIViewController?
-  
-  init(viewController: UIViewController?) {
-    self.viewController = viewController
-  }
+protocol FilmDetailDataPassing {
+    var dataStore: FilmDetailDataStore? { get set }
+}
+
+final class FilmDetailRouter:  FilmDetailDataPassing{
+   
+    private weak var viewController: UIViewController?
+    var dataStore: FilmDetailDataStore?
+
+    init(viewController: UIViewController?) {
+        self.viewController = viewController
+    }
 }
 
 
 // MARK: - FilmDetailRouting
 extension FilmDetailRouter: FilmDetailRouting {
-  
-  func routeTo(_ route: FilmDetailModel.Route) {
-    DispatchQueue.main.async {
-      switch route {
-        
-      case .dismissFilmDetailScene:
-        self.dismissFilmDetailScene()
-        
-      case .xScene(let data):
-        self.showXSceneBy(data)
-      }
+    
+    func routeTo(_ route: FilmDetailModel.Route) {
+        DispatchQueue.main.async {
+            switch route {
+                
+            case .dismissFilmDetailScene:
+                self.dismissFilmDetailScene()
+                
+            case .xScene(let data):
+                self.showXSceneBy(data)
+            }
+        }
     }
-  }
 }
 
 
 // MARK: - Private Zone
 private extension FilmDetailRouter {
-  
-  func dismissFilmDetailScene() {
-    viewController?.dismiss(animated: true)
-  }
-  
-  func showXSceneBy(_ data: Int) {
-    print("will show the next screen")
-  }
+    
+    func dismissFilmDetailScene() {
+        viewController?.dismiss(animated: true)
+    }
+    
+    func showXSceneBy(_ data: Int) {
+        print("will show the next screen")
+    }
 }

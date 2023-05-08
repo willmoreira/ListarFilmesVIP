@@ -14,6 +14,7 @@ import UIKit
 
 protocol FilmDetailDisplayLogic where Self: UIViewController {
     func displayViewModel(_ viewModel: FilmDetailModel.ViewModel)
+    func displaySetupMainView(_ viewModel: FilmDetailModel.FilmDetail.ViewModel)
 }
 
 final class FilmDetailViewController: UIViewController {
@@ -34,8 +35,10 @@ final class FilmDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.backgroundColor = .white
-        //TODO: chamar a interactor para setar a view com o filme esoclhido
-        //interactor.doSomething(item: 22)
+        mainView.delegate = self
+
+        let request = FilmDetailModel.FilmDetail.Request()
+        interactor.setupMainView(request)
     }
     
     override func loadView() {
@@ -51,6 +54,11 @@ final class FilmDetailViewController: UIViewController {
 
 // MARK: - FilmDetailDisplayLogic
 extension FilmDetailViewController: FilmDetailDisplayLogic {
+    func displaySetupMainView(_ viewModel: FilmDetailModel.FilmDetail.ViewModel) {
+        guard let view = self.view as? FilmDetailView else { return }
+        view.film  = viewModel.film
+        view.updateFilm()
+    }
     
     func displayViewModel(_ viewModel: FilmDetailModel.ViewModel) {
         DispatchQueue.main.async {

@@ -57,7 +57,6 @@ final class FilmDetailView: UIView {
     }
     
     private func setupLayout() {
-        
         if let img = film?.posterPath {
             configureImage(posterPath: img)
         }
@@ -87,6 +86,14 @@ final class FilmDetailView: UIView {
             descriptLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             descriptLabel.topAnchor.constraint(equalTo: customImageView.bottomAnchor, constant: 16),
         ])
+    }
+    
+    func updateFilm() {
+        if let img = film?.posterPath {
+            configureImage(posterPath: img)
+        }
+        titleView.text = film?.title ?? "Teste"
+        descriptLabel.text = film?.overview
     }
     
     func configureImage(posterPath: String) {

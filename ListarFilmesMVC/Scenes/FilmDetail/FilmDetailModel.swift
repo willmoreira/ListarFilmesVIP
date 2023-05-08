@@ -35,4 +35,23 @@ enum FilmDetailModel {
     struct DataSource {
         var film: Result
     }
+    
+    enum FilmDetail {
+        
+        struct Request {
+
+        }
+        
+        struct Response {
+            var film: Result
+        }
+        
+        struct ViewModel {
+            var film: Result
+        }
+        
+        struct Route {
+            
+        }
+    }
 }
