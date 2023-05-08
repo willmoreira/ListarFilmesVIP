@@ -14,25 +14,25 @@
 import Foundation
 
 enum FilmDetailModel {
-  
-  enum Request {
-    case doSomething(item: Int)
-  }
-  
-  enum Response {
-    case doSomething(newItem: Int, isItem: Bool)
-  }
-  
-  enum ViewModel {
-    case doSomething(viewModelData: NSObject)
-  }
-  
-  enum Route {
-    case dismissFilmDetailScene
-    case xScene(xData: Int)
-  }
-  
-  struct DataSource {
-    //var test: Int
-  }
+    
+    enum Request {
+        case doSomething(item: Int)
+    }
+    
+    enum Response {
+        case doSomething(newItem: Int, isItem: Bool)
+    }
+    
+    enum ViewModel {
+        case doSomething(viewModelData: NSObject)
+    }
+    
+    enum Route {
+        case dismissFilmDetailScene
+        case xScene(xData: Int)
+    }
+    
+    struct DataSource {
+        var film: Result
+    }
 }

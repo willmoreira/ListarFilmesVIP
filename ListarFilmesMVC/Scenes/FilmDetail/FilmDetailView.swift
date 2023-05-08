@@ -62,7 +62,7 @@ final class FilmDetailView: UIView {
             configureImage(posterPath: img)
         }
         
-        titleView.text = film?.title
+        titleView.text = film?.title ?? "Teste"
         descriptLabel.text = film?.overview
         titleView.translatesAutoresizingMaskIntoConstraints = false
         customImageView.translatesAutoresizingMaskIntoConstraints = false

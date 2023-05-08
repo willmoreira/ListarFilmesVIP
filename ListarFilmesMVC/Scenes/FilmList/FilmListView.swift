@@ -14,7 +14,7 @@ import UIKit
 
 protocol FilmListViewDelegate where Self: UIViewController {
     func sendDataBackToParent(_ data: Data)
-    func goToDetailViewController(_ result: Result)
+    func goToDetailViewController(_ index: Int)
 }
 
 final class FilmListView: UIView {
@@ -86,9 +86,9 @@ extension FilmListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let result = listFilms[indexPath.row]
+        let index = indexPath.row
         tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.goToDetailViewController(result)
+        delegate?.goToDetailViewController(index)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

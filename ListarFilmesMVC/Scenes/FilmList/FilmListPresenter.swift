@@ -13,9 +13,7 @@
 import Foundation
 
 protocol FilmListPresentationLogic {
-    func presentResponse(_ response: FilmListModel.Response)
     func setupMainView(_ response: FilmListModel.FilmList.Response)
-    func goToDetailList(_ response: FilmListModel.FilmListResult.Response)
 }
 
 final class FilmListPresenter {
@@ -29,33 +27,14 @@ final class FilmListPresenter {
 
 // MARK: - FilmListPresentationLogic
 extension FilmListPresenter: FilmListPresentationLogic {
-    func goToDetailList(_ response: FilmListModel.FilmListResult.Response) {
-        let viewModel = FilmListModel.FilmListResult.ViewModel(result: response.result)
-        viewController?.displayGoToDetailList(viewModel)
-    }
-    
     func setupMainView(_ response: FilmListModel.FilmList.Response) {
         let viewModel = FilmListModel.FilmList.ViewModel(list: response.list)
         viewController?.displaySetupMainView(viewModel)
-    }
-  
-    func presentResponse(_ response: FilmListModel.Response) {
-        
-        switch response {
-        case .doSomething(let newItem, let isItem):
-            presentDoSomething(newItem, isItem)
-        }
     }
 }
 
 
 // MARK: - Private Zone
 private extension FilmListPresenter {
-    
-    func presentDoSomething(_ newItem: Int, _ isItem: Bool) {
-        
-        //prepare data for display and send it further
-        
-        viewController?.displayViewModel(.doSomething(viewModelData: NSObject()))
-    }
+ 
 }

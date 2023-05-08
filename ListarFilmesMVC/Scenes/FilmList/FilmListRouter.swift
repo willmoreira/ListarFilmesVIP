@@ -14,12 +14,17 @@ import UIKit
 
 protocol FilmListRouting {
     func routeTo(_ route: FilmListModel.Route)
-    func routeToFilmDetail(_ route: FilmListModel.FilmList.Route)
+    func routeToFilmDetail(_ index: Int)
 }
 
-final class FilmListRouter {
+protocol FilmListDataPassing {
+    var dataStore: FilmListDataStore? { get set }
+}
+
+final class FilmListRouter: FilmListDataPassing{
     
     private weak var viewController: UIViewController?
+    var dataStore: FilmListDataStore?
     
     init(viewController: UIViewController?) {
         self.viewController = viewController
@@ -29,11 +34,13 @@ final class FilmListRouter {
 
 // MARK: - FilmListRouting
 extension FilmListRouter: FilmListRouting {
-    func routeToFilmDetail(_ route: FilmListModel.FilmList.Route) {
+    func routeToFilmDetail(_ index: Int) {
         DispatchQueue.main.async {
             let mainView = FilmDetailView()
-            let dataSource = FilmDetailModel.DataSource()
-            let FilmDetailViewController = FilmDetailViewController(mainView: mainView, dataSource: dataSource)
+            guard let dataSourceFilmList = self.dataStore?.dataSource else { return }
+            let film = dataSourceFilmList.filmModelList.results[index]
+            let dataSourceDetail = FilmDetailModel.DataSource(film: film)
+            let FilmDetailViewController = FilmDetailViewController(mainView: mainView, dataSource: dataSourceDetail)
             self.viewController?.navigationController?.pushViewController(FilmDetailViewController, animated: true)
         }
     }

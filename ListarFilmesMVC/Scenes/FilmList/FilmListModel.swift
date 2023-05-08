@@ -33,7 +33,7 @@ enum FilmListModel {
     }
     
     struct DataSource {
-        var filmModelList: FilmModel
+        var filmModelList: FilmModel        
     }
     
     enum FilmList {
@@ -54,24 +54,4 @@ enum FilmListModel {
             
         }
     }
-    
-    enum FilmListResult {
-        struct Request {
-            var result: Result
-        }
-        
-        struct Response {
-            var result: Result
-            //var list: FilmModel
-        }
-        
-        struct ViewModel {
-            var result: Result
-        }
-        
-        struct Route {
-            
-        }
-    }
-    
 }

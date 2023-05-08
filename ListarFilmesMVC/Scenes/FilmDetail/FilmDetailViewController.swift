@@ -13,7 +13,6 @@
 import UIKit
 
 protocol FilmDetailDisplayLogic where Self: UIViewController {
-    
     func displayViewModel(_ viewModel: FilmDetailModel.ViewModel)
 }
 
@@ -27,7 +26,6 @@ final class FilmDetailViewController: UIViewController {
     
     init(mainView: FilmDetailView, dataSource: FilmDetailModel.DataSource) {
         self.mainView = mainView
-        
         super.init(nibName: nil, bundle: nil)
         interactor = FilmDetailInteractor(viewController: self, dataSource: dataSource)
         router = FilmDetailRouter(viewController: self)
@@ -36,6 +34,7 @@ final class FilmDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.backgroundColor = .white
+        //TODO: chamar a interactor para setar a view com o filme esoclhido
         //interactor.doSomething(item: 22)
     }
     
@@ -70,7 +69,6 @@ extension FilmDetailViewController: FilmDetailViewDelegate {
     
     func sendDataBackToParent(_ data: Data) {
         //usually this delegate takes care of users actions and requests through UI
-        
         //do something with the data or message send back from mainView
     }
 }

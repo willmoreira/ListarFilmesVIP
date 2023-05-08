@@ -13,16 +13,14 @@
 import UIKit
 
 protocol FilmListDisplayLogic where Self: UIViewController {
-    func displayViewModel(_ viewModel: FilmListModel.ViewModel)
     func displaySetupMainView(_ viewModel: FilmListModel.FilmList.ViewModel)
-    func displayGoToDetailList(_ viewModel: FilmListModel.FilmListResult.ViewModel)
 }
 
 final class FilmListViewController: UIViewController {
     
     private let mainView: FilmListView
     private var interactor: FilmListInteractable!
-    private var router: FilmListRouting!
+    private var router: (FilmListRouting & FilmListDataPassing)!
     
     init(mainView: FilmListView, dataSource: FilmListModel.DataSource) {
         self.mainView = mainView
@@ -30,6 +28,7 @@ final class FilmListViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         interactor = FilmListInteractor(viewController: self, dataSource: dataSource)
         router = FilmListRouter(viewController: self)
+        router.dataStore = interactor
     }
     
     override func viewDidLoad() {
@@ -54,37 +53,20 @@ final class FilmListViewController: UIViewController {
     }
 }
 
-
 // MARK: - FilmListDisplayLogic
 extension FilmListViewController: FilmListDisplayLogic {
-    func displayGoToDetailList(_ viewModel: FilmListModel.FilmListResult.ViewModel) {
-        let route = FilmListModel.FilmList.Route()
-        router.routeToFilmDetail(route)
-    }
-    
+   
     func displaySetupMainView(_ viewModel: FilmListModel.FilmList.ViewModel) {
         guard let view = self.view as? FilmListView else { return }
         view.listFilms = viewModel.list.results
     }
-    
-    func displayViewModel(_ viewModel: FilmListModel.ViewModel) {
-        DispatchQueue.main.async {
-            switch viewModel {
-                
-            case .doSomething(let viewModel):
-                self.displayDoSomething(viewModel)
-            }
-        }
-    }
 }
-
 
 // MARK: - FilmListViewDelegate
 extension FilmListViewController: FilmListViewDelegate {
     
-    func goToDetailViewController(_ result: Result) {
-        let request = FilmListModel.FilmListResult.Request(result: result)
-        interactor.goToDetail(request)
+    func goToDetailViewController(_ index: Int) {
+        router.routeToFilmDetail(index)
     }
     
     func sendDataBackToParent(_ data: Data) {
@@ -93,13 +75,7 @@ extension FilmListViewController: FilmListViewDelegate {
     }
 }
 
-
 // MARK: - Private Zone
 private extension FilmListViewController {
-    
-    func displayDoSomething(_ viewModel: NSObject) {
-        print("Use the mainView to present the viewModel")
-        //example of using router
-        router.routeTo(.xScene(xData: 22))
-    }
+
 }
