@@ -13,7 +13,6 @@
 import UIKit
 
 protocol FilmListRouting {
-    func routeTo(_ route: FilmListModel.Route)
     func routeToFilmDetail(_ index: Int)
 }
 
@@ -31,7 +30,6 @@ final class FilmListRouter: FilmListDataPassing{
     }
 }
 
-
 // MARK: - FilmListRouting
 extension FilmListRouter: FilmListRouting {
     func routeToFilmDetail(_ index: Int) {
@@ -46,21 +44,7 @@ extension FilmListRouter: FilmListRouting {
             self.viewController?.navigationController?.pushViewController(FilmDetailViewController, animated: true)
         }
     }
-    
-    func routeTo(_ route: FilmListModel.Route) {
-        DispatchQueue.main.async {
-            switch route {
-                
-            case .dismissFilmListScene:
-                self.dismissFilmListScene()
-                
-            case .xScene(let data):
-                self.showXSceneBy(data)
-            }
-        }
-    }
 }
-
 
 // MARK: - Private Zone
 private extension FilmListRouter {

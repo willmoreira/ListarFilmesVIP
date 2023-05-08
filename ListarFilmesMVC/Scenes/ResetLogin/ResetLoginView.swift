@@ -13,12 +13,10 @@
 import UIKit
 
 protocol ResetLoginViewDelegate where Self: UIViewController {
-    func sendDataBackToParent(_ data: Data)
     func resetLoginButtonPressed()
 }
 
 final class ResetLoginView: UIView {
-    
     weak var delegate: ResetLoginViewDelegate?
     lazy var activityIndicator = UIActivityIndicatorView(style: .large)
     lazy var titleLoginLabel = UILabel()

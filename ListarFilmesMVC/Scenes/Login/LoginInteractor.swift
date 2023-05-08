@@ -24,9 +24,7 @@ protocol LoginDataStore {
 }
 
 final class LoginInteractor: LoginDataStore {
-    
     var dataSource: LoginModel.DataSource
-    
     private var presenter: LoginPresentationLogic
     
     init(viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) {
@@ -35,13 +33,11 @@ final class LoginInteractor: LoginDataStore {
     }
     
     func tryLogin(request: LoginModel.Login.Request) {
-        
         let response = LoginModel.Login.Response()
         presenter.presentStartLoading(response)
         
         if let login = request.login, let password = request.password {
             Auth.auth().signIn(withEmail: login, password: password) { authResult, error in
-                
                 self.presenter.presentStopLoading(response)
                 
                 if let error = error {
@@ -112,7 +108,6 @@ final class LoginInteractor: LoginDataStore {
 
 // MARK: - LoginBusinessLogic
 extension LoginInteractor: LoginBusinessLogic {
-    
     func doLogin(_ request: LoginModel.Login.Request) {
         guard let username = request.login, !username.isEmpty else {
             let response = LoginModel.Login.Response(

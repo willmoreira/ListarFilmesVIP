@@ -13,13 +13,12 @@
 import UIKit
 
 protocol ResetLoginDisplayLogic where Self: UIViewController {
-    func displayStartLoading()
-    func displayStopLoading()
-    func diplayShowAlert(_ viewModel: ResetLoginModel.ResetLogin.ViewModel)
+    func displayStartLoading()//TODO: aqui
+    func displayStopLoading()//TODO: aqui
+    func displayShowAlert(_ viewModel: ResetLoginModel.ResetLogin.ViewModel)
 }
 
 final class ResetLoginViewController: UIViewController {
-    
     private let mainView: ResetLoginView
     private var interactor: ResetLoginInteractable!
     private var router: ResetLoginRouting!
@@ -59,7 +58,7 @@ extension ResetLoginViewController: ResetLoginDisplayLogic {
         mainView.activityIndicator.stopAnimating()
     }
     
-    func diplayShowAlert(_ viewModel: ResetLoginModel.ResetLogin.ViewModel) {
+    func displayShowAlert(_ viewModel: ResetLoginModel.ResetLogin.ViewModel) {
         let alert = UIAlertController(title: viewModel.titleMessage, message: viewModel.message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             if viewModel.titleMessage == "Sucesso!" {
@@ -76,11 +75,6 @@ extension ResetLoginViewController: ResetLoginViewDelegate {
     func resetLoginButtonPressed() {
         let request = ResetLoginModel.ResetLogin.Request(login: mainView.inputLogin.text)
         interactor.doResetLogin(request)
-    }
-    
-    func sendDataBackToParent(_ data: Data) {
-        //usually this delegate takes care of users actions and requests through UI
-        //do something with the data or message send back from mainView
     }
 }
 

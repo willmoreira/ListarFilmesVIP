@@ -75,7 +75,6 @@ final class CreateLoginInteractor: CreateLoginDataStore {
 
 // MARK: - CreateLoginBusinessLogic
 extension CreateLoginInteractor: CreateLoginBusinessLogic {
-    
     func doCreateLogin(_ request: CreateLoginModel.CreateLogin.Request) {
         guard let username = request.login, !username.isEmpty else {
             let response = CreateLoginModel.CreateLogin.Response(

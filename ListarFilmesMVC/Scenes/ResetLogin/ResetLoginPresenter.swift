@@ -13,8 +13,8 @@
 import Foundation
 
 protocol ResetLoginPresentationLogic {
-    func presentStartLoading()
-    func presentStopLoading()
+    func presentStartLoading()//TODO: aqui
+    func presentStopLoading()//TODO: aqui
     func presentShowAlert(_ response: ResetLoginModel.ResetLogin.Response)
 }
 
@@ -30,7 +30,7 @@ final class ResetLoginPresenter {
 extension ResetLoginPresenter: ResetLoginPresentationLogic {
     func presentShowAlert(_ response: ResetLoginModel.ResetLogin.Response) {
         let viewModel = ResetLoginModel.ResetLogin.ViewModel(titleMessage: response.titleMessage, message: response.message)
-        self.viewController?.diplayShowAlert(viewModel)
+        self.viewController?.displayShowAlert(viewModel)
     }
     
     func presentStartLoading() {

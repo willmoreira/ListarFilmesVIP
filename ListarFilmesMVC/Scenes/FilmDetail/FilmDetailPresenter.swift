@@ -13,7 +13,6 @@
 import Foundation
 
 protocol FilmDetailPresentationLogic {
-    func presentResponse(_ response: FilmDetailModel.Response)
     func presentSetupMainView(_ response: FilmDetailModel.FilmDetail.Response)
 }
 
@@ -25,32 +24,15 @@ final class FilmDetailPresenter {
     }
 }
 
-
 // MARK: - FilmDetailPresentationLogic
 extension FilmDetailPresenter: FilmDetailPresentationLogic {
     func presentSetupMainView(_ response: FilmDetailModel.FilmDetail.Response) {
         let viewModel = FilmDetailModel.FilmDetail.ViewModel(film: response.film)
         self.viewController?.displaySetupMainView(viewModel)
     }
-    
-    func presentResponse(_ response: FilmDetailModel.Response) {
-        
-        switch response {
-            
-        case .doSomething(let newItem, let isItem):
-            presentDoSomething(newItem, isItem)
-        }
-    }
 }
-
 
 // MARK: - Private Zone
 private extension FilmDetailPresenter {
-    
-    func presentDoSomething(_ newItem: Int, _ isItem: Bool) {
-        
-        //prepare data for display and send it further
-        
-        viewController?.displayViewModel(.doSomething(viewModelData: NSObject()))
-    }
+  
 }

@@ -13,11 +13,10 @@
 import UIKit
 
 protocol CreateLoginRouting {
-    func routeTo(_ route: CreateLoginModel.Route)
+    
 }
 
 final class CreateLoginRouter {
-    
     private weak var viewController: UIViewController?
     
     init(viewController: UIViewController?) {
@@ -28,28 +27,9 @@ final class CreateLoginRouter {
 // MARK: - CreateLoginRouting
 extension CreateLoginRouter: CreateLoginRouting {
     
-    func routeTo(_ route: CreateLoginModel.Route) {
-        DispatchQueue.main.async {
-            switch route {
-                
-            case .dismissCreateLoginScene:
-                self.dismissCreateLoginScene()
-                
-            case .xScene(let data):
-                self.showXSceneBy(data)
-            }
-        }
-    }
 }
 
 // MARK: - Private Zone
 private extension CreateLoginRouter {
     
-    func dismissCreateLoginScene() {
-        viewController?.dismiss(animated: true)
-    }
-    
-    func showXSceneBy(_ data: Int) {
-        print("will show the next screen")
-    }
 }

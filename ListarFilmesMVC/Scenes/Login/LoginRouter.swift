@@ -13,7 +13,6 @@
 import UIKit
 
 protocol LoginRouting {
-    func routeTo(_ route: LoginModel.Route)
     func routeToCreateLogin(_ route: LoginModel.Login.Route)
     func routeToResetLogin(_ route: LoginModel.Login.Route)
     func routeToListfilms(_ route: LoginModel.Login.Route)
@@ -24,7 +23,6 @@ protocol LoginDataPassing {
 }
 
 final class LoginRouter: LoginDataPassing {
-    
     private weak var viewController: UIViewController?
     var dataStore: LoginDataStore?
     
@@ -60,29 +58,9 @@ extension LoginRouter: LoginRouting {
             self.viewController?.navigationController?.pushViewController(resetLoginViewController, animated: true)
         }
     }
-    
-    func routeTo(_ route: LoginModel.Route) {
-        DispatchQueue.main.async {
-            switch route {
-                
-            case .dismissLoginScene:
-                self.dismissLoginScene()
-                
-            case .xScene(let data):
-                self.showXSceneBy(data)
-            }
-        }
-    }
 }
 
 // MARK: - Private Zone
 private extension LoginRouter {
-    
-    func dismissLoginScene() {
-        viewController?.dismiss(animated: true)
-    }
-    
-    func showXSceneBy(_ data: Int) {
-        print("will show the next screen")
-    }
+   
 }

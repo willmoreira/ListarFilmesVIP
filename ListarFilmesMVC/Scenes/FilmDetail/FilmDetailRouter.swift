@@ -13,7 +13,7 @@
 import UIKit
 
 protocol FilmDetailRouting {
-    func routeTo(_ route: FilmDetailModel.Route)
+    
 }
 
 protocol FilmDetailDataPassing {
@@ -21,7 +21,6 @@ protocol FilmDetailDataPassing {
 }
 
 final class FilmDetailRouter:  FilmDetailDataPassing{
-   
     private weak var viewController: UIViewController?
     var dataStore: FilmDetailDataStore?
 
@@ -30,33 +29,12 @@ final class FilmDetailRouter:  FilmDetailDataPassing{
     }
 }
 
-
 // MARK: - FilmDetailRouting
 extension FilmDetailRouter: FilmDetailRouting {
     
-    func routeTo(_ route: FilmDetailModel.Route) {
-        DispatchQueue.main.async {
-            switch route {
-                
-            case .dismissFilmDetailScene:
-                self.dismissFilmDetailScene()
-                
-            case .xScene(let data):
-                self.showXSceneBy(data)
-            }
-        }
-    }
 }
-
 
 // MARK: - Private Zone
 private extension FilmDetailRouter {
-    
-    func dismissFilmDetailScene() {
-        viewController?.dismiss(animated: true)
-    }
-    
-    func showXSceneBy(_ data: Int) {
-        print("will show the next screen")
-    }
+   
 }

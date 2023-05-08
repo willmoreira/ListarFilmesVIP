@@ -13,12 +13,10 @@
 import UIKit
 
 protocol FilmDetailDisplayLogic where Self: UIViewController {
-    func displayViewModel(_ viewModel: FilmDetailModel.ViewModel)
     func displaySetupMainView(_ viewModel: FilmDetailModel.FilmDetail.ViewModel)
 }
 
 final class FilmDetailViewController: UIViewController {
-    
     private let mainView: FilmDetailView
     private var interactor: FilmDetailInteractable!
     private var router: FilmDetailRouting!
@@ -51,7 +49,6 @@ final class FilmDetailViewController: UIViewController {
     }
 }
 
-
 // MARK: - FilmDetailDisplayLogic
 extension FilmDetailViewController: FilmDetailDisplayLogic {
     func displaySetupMainView(_ viewModel: FilmDetailModel.FilmDetail.ViewModel) {
@@ -59,35 +56,14 @@ extension FilmDetailViewController: FilmDetailDisplayLogic {
         view.film  = viewModel.film
         view.updateFilm()
     }
-    
-    func displayViewModel(_ viewModel: FilmDetailModel.ViewModel) {
-        DispatchQueue.main.async {
-            switch viewModel {
-                
-            case .doSomething(let viewModel):
-                self.displayDoSomething(viewModel)
-            }
-        }
-    }
 }
-
 
 // MARK: - FilmDetailViewDelegate
 extension FilmDetailViewController: FilmDetailViewDelegate {
-    
-    func sendDataBackToParent(_ data: Data) {
-        //usually this delegate takes care of users actions and requests through UI
-        //do something with the data or message send back from mainView
-    }
+  
 }
-
 
 // MARK: - Private Zone
 private extension FilmDetailViewController {
-    
-    func displayDoSomething(_ viewModel: NSObject) {
-        print("Use the mainView to present the viewModel")
-        //example of using router
-        router.routeTo(.xScene(xData: 22))
-    }
+   
 }

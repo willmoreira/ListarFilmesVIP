@@ -17,7 +17,6 @@ protocol FilmListDisplayLogic where Self: UIViewController {
 }
 
 final class FilmListViewController: UIViewController {
-    
     private let mainView: FilmListView
     private var interactor: FilmListInteractable!
     private var router: (FilmListRouting & FilmListDataPassing)!
@@ -39,8 +38,7 @@ final class FilmListViewController: UIViewController {
         let request = FilmListModel.FilmList.Request()
         interactor.setupMainView(request)
         
-        //configurar sair do app
-        //interactor.doSomething(item: 22)
+        //TODO: configurar sair do app
     }
     
     override func loadView() {
@@ -55,7 +53,6 @@ final class FilmListViewController: UIViewController {
 
 // MARK: - FilmListDisplayLogic
 extension FilmListViewController: FilmListDisplayLogic {
-   
     func displaySetupMainView(_ viewModel: FilmListModel.FilmList.ViewModel) {
         guard let view = self.view as? FilmListView else { return }
         view.listFilms = viewModel.list.results
@@ -64,14 +61,8 @@ extension FilmListViewController: FilmListDisplayLogic {
 
 // MARK: - FilmListViewDelegate
 extension FilmListViewController: FilmListViewDelegate {
-    
     func goToDetailViewController(_ index: Int) {
         router.routeToFilmDetail(index)
-    }
-    
-    func sendDataBackToParent(_ data: Data) {
-        //usually this delegate takes care of users actions and requests through UI
-        //do something with the data or message send back from mainView
     }
 }
 

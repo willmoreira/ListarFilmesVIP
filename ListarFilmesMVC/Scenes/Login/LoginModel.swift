@@ -14,12 +14,7 @@
 import Foundation
 
 enum LoginModel {
-    
-    enum Route {
-        case dismissLoginScene
-        case xScene(xData: Int)
-    }
-    
+  
     struct DataSource {
         var filmModelList: FilmModel
     }

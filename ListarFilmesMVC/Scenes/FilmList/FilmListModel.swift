@@ -14,24 +14,7 @@
 import Foundation
 
 enum FilmListModel {
-    
-    enum Request {
-        case doSomething(item: Int)
-    }
-    
-    enum Response {
-        case doSomething(newItem: Int, isItem: Bool)
-    }
-    
-    enum ViewModel {
-        case doSomething(viewModelData: NSObject)
-    }
-    
-    enum Route {
-        case dismissFilmListScene
-        case xScene(xData: Int)
-    }
-    
+
     struct DataSource {
         var filmModelList: FilmModel        
     }

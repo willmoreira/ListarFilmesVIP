@@ -13,7 +13,7 @@
 import UIKit
 
 protocol LoginDisplayLogic where Self: UIViewController {
-    func diplayShowAlert(_ viewModel: LoginModel.Login.ViewModel)
+    func displayShowAlert(_ viewModel: LoginModel.Login.ViewModel)
     func displayGoToFilmList(_ viewModel: LoginModel.Login.ViewModel) 
     func displayStartLoading(_ viewModel: LoginModel.Login.ViewModel)
     func displayStopLoading(_ viewModel: LoginModel.Login.ViewModel)
@@ -70,7 +70,7 @@ extension LoginViewController: LoginDisplayLogic {
         router.routeToListfilms(route)
     }
     
-    func diplayShowAlert(_ viewModel: LoginModel.Login.ViewModel) {
+    func displayShowAlert(_ viewModel: LoginModel.Login.ViewModel) {
         let alert = UIAlertController(title: viewModel.titleMessage, message: viewModel.message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
@@ -93,11 +93,6 @@ extension LoginViewController: LoginViewDelegate {
     func createButtonPressed() {
         let route = LoginModel.Login.Route()
         router.routeToCreateLogin(route)
-    }
-    
-    func sendDataBackToParent(_ data: Data) {
-        //usually this delegate takes care of users actions and requests through UI
-        //do something with the data or message send back from mainView
     }
 }
 

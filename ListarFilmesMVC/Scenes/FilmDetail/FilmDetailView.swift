@@ -14,11 +14,9 @@ import UIKit
 
 protocol FilmDetailViewDelegate where Self: UIViewController {
     
-    func sendDataBackToParent(_ data: Data)
 }
 
 final class FilmDetailView: UIView {
-    
     weak var delegate: FilmDetailViewDelegate?
     var film: Result?
     
@@ -57,10 +55,6 @@ final class FilmDetailView: UIView {
     }
     
     private func setupLayout() {
-        if let img = film?.posterPath {
-            configureImage(posterPath: img)
-        }
-        
         titleView.text = film?.title ?? "Teste"
         descriptLabel.text = film?.overview
         titleView.translatesAutoresizingMaskIntoConstraints = false
@@ -99,9 +93,5 @@ final class FilmDetailView: UIView {
     func configureImage(posterPath: String) {
         let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500" + posterPath)
         customImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder"))
-    }
-    
-    private enum ViewTrait {
-        static let leftMargin: CGFloat = 10.0
     }
 }

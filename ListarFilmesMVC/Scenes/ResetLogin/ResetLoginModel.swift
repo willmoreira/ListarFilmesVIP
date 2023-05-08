@@ -15,13 +15,8 @@ import Foundation
 
 enum ResetLoginModel {
     
-    enum Route {
-        case dismissResetLoginScene
-        case xScene(xData: Int)
-    }
-    
     struct DataSource {
-        //var test: Int
+        
     }
     
     enum ResetLogin {

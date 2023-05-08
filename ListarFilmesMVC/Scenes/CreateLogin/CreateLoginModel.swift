@@ -15,13 +15,8 @@ import Foundation
 
 enum CreateLoginModel {
     
-    enum Route {
-        case dismissCreateLoginScene
-        case xScene(xData: Int)
-    }
-    
     struct DataSource {
-        //var test: Int
+
     }
     
     enum CreateLogin {

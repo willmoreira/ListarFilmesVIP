@@ -24,7 +24,6 @@ final class FilmListPresenter {
     }
 }
 
-
 // MARK: - FilmListPresentationLogic
 extension FilmListPresenter: FilmListPresentationLogic {
     func setupMainView(_ response: FilmListModel.FilmList.Response) {
@@ -32,7 +31,6 @@ extension FilmListPresenter: FilmListPresentationLogic {
         viewController?.displaySetupMainView(viewModel)
     }
 }
-
 
 // MARK: - Private Zone
 private extension FilmListPresenter {

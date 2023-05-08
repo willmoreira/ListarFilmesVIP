@@ -13,7 +13,6 @@
 import UIKit
 
 protocol LoginViewDelegate where Self: UIViewController {
-    func sendDataBackToParent(_ data: Data)
     func loginButtonPressed()
     func resetButtonPressed()
     func createButtonPressed()
@@ -22,10 +21,6 @@ protocol LoginViewDelegate where Self: UIViewController {
 final class LoginView: UIView {
     
     weak var delegate: LoginViewDelegate?
-    
-    private enum ViewTrait {
-        static let leftMargin: CGFloat = 10.0
-    }
     
     lazy var activityIndicator = UIActivityIndicatorView(style: .large)
     lazy var titleLoginLabel = UILabel()

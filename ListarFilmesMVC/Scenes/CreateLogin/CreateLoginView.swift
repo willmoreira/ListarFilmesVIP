@@ -13,12 +13,10 @@
 import UIKit
 
 protocol CreateLoginViewDelegate where Self: UIViewController {
-    func sendDataBackToParent(_ data: Data)
     func createButtonPressed()
 }
 
 final class CreateLoginView: UIView {
-    
     weak var delegate: CreateLoginViewDelegate?
     let activityIndicator = UIActivityIndicatorView(style: .large)
     

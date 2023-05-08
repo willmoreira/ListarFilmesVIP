@@ -13,13 +13,12 @@
 import UIKit
 
 protocol CreateLoginDisplayLogic where Self: UIViewController {
-    func diplayShowAlert(_ viewModel: CreateLoginModel.CreateLogin.ViewModel)
+    func displayShowAlert(_ viewModel: CreateLoginModel.CreateLogin.ViewModel)
     func displayStartLoading()
     func displayStopLoading()
 }
 
 final class CreateLoginViewController: UIViewController {
-    
     private let mainView: CreateLoginView
     private var interactor: CreateLoginInteractable!
     private var router: CreateLoginRouting!
@@ -59,7 +58,7 @@ extension CreateLoginViewController: CreateLoginDisplayLogic {
         mainView.activityIndicator.stopAnimating()
     }
     
-    func diplayShowAlert(_ viewModel: CreateLoginModel.CreateLogin.ViewModel) {
+    func displayShowAlert(_ viewModel: CreateLoginModel.CreateLogin.ViewModel) {
         let alert = UIAlertController(title: viewModel.titleMessage, message: viewModel.message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             if viewModel.titleMessage == "Sucesso!" {
@@ -69,7 +68,6 @@ extension CreateLoginViewController: CreateLoginDisplayLogic {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
 }
 
 // MARK: - CreateLoginViewDelegate
@@ -77,11 +75,6 @@ extension CreateLoginViewController: CreateLoginViewDelegate {
     func createButtonPressed() {
         let request = CreateLoginModel.CreateLogin.Request(password: mainView.inputSenha.text ,login: mainView.inputLogin.text)
         interactor.doCreateLogin(request)
-    }
-    
-    func sendDataBackToParent(_ data: Data) {
-        //usually this delegate takes care of users actions and requests through UI
-        //do something with the data or message send back from mainView
     }
 }
 

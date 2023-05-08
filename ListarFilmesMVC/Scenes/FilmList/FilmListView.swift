@@ -13,14 +13,11 @@
 import UIKit
 
 protocol FilmListViewDelegate where Self: UIViewController {
-    func sendDataBackToParent(_ data: Data)
     func goToDetailViewController(_ index: Int)
 }
 
 final class FilmListView: UIView {
-    
     weak var delegate: FilmListViewDelegate?
-    
     lazy var listFilms: [Result] = []
     
     lazy var tableView: UITableView = {
@@ -68,11 +65,6 @@ final class FilmListView: UIView {
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
-    }
-    
-    
-    private enum ViewTrait {
-        static let leftMargin: CGFloat = 10.0
     }
 }
 

@@ -15,10 +15,7 @@ import Foundation
 typealias FilmDetailInteractable = FilmDetailBusinessLogic & FilmDetailDataStore
 
 protocol FilmDetailBusinessLogic {
-    
-    func doRequest(_ request: FilmDetailModel.Request)
     func setupMainView(_ request: FilmDetailModel.FilmDetail.Request)
-    
 }
 
 protocol FilmDetailDataStore {
@@ -26,7 +23,6 @@ protocol FilmDetailDataStore {
 }
 
 final class FilmDetailInteractor: FilmDetailDataStore {
-    
     var dataSource: FilmDetailModel.DataSource
     
     private var presenter: FilmDetailPresentationLogic
@@ -37,7 +33,6 @@ final class FilmDetailInteractor: FilmDetailDataStore {
     }
 }
 
-
 // MARK: - FilmDetailBusinessLogic
 extension FilmDetailInteractor: FilmDetailBusinessLogic {
     func setupMainView(_ request: FilmDetailModel.FilmDetail.Request) {
@@ -45,31 +40,9 @@ extension FilmDetailInteractor: FilmDetailBusinessLogic {
         let response = FilmDetailModel.FilmDetail.Response(film: film)
         presenter.presentSetupMainView(response)
     }
-    
-    func doRequest(_ request: FilmDetailModel.Request) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            
-            switch request {
-                
-            case .doSomething(let item):
-                self.doSomething(item)
-            }
-        }
-    }
 }
-
 
 // MARK: - Private Zone
 private extension FilmDetailInteractor {
     
-    func doSomething(_ item: Int) {
-        
-        //construct the Service right before using it
-        //let serviceX = factory.makeXService()
-        
-        // get new data async or sync
-        //let newData = serviceX.getNewData()
-        
-        presenter.presentResponse(.doSomething(newItem: item + 1, isItem: true))
-    }
 }
