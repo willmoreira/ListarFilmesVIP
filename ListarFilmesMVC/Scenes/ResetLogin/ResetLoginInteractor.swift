@@ -35,12 +35,13 @@ final class ResetLoginInteractor: ResetLoginDataStore {
     }
     
     func tryResetLogin(request: ResetLoginModel.ResetLogin.Request){
-        presenter.presentStartLoading()
+        let reponseLoading = ResetLoginModel.ResetLogin.Response()
+        presenter.presentStartLoading(reponseLoading)
         var response = ResetLoginModel.ResetLogin.Response(titleMessage: "Sucesso!", message: "As orientações foram enviadas para seu email!")
         
         if let login = request.login {
             Auth.auth().sendPasswordReset(withEmail: login) { error in
-                self.presenter.presentStopLoading()
+                self.presenter.presentStopLoading(reponseLoading)
                 if let error = error {
                     if error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
                         response = ResetLoginModel.ResetLogin.Response(

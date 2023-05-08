@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - FilmModel
 struct FilmModel: Codable {
     let page: Int
     let results: [Result]
@@ -52,6 +53,6 @@ struct Result: Codable {
 enum OriginalLanguage: String, Codable {
     case en = "en"
     case es = "es"
-    case ko = "ko"
+    case fr = "fr"
     case nl = "nl"
 }

@@ -17,6 +17,7 @@ protocol LoginPresentationLogic {
     func presentStartLoading(_ response: LoginModel.Login.Response)
     func presentStopLoading(_ response: LoginModel.Login.Response)
     func presentGoToListFilms(_ response: LoginModel.Login.Response)
+    func presentCleanFields(_ response: LoginModel.Login.Response)
 }
 
 final class LoginPresenter {
@@ -29,6 +30,11 @@ final class LoginPresenter {
 
 // MARK: - LoginPresentationLogic
 extension LoginPresenter: LoginPresentationLogic {
+    func presentCleanFields(_ response: LoginModel.Login.Response) {
+        let viewModel = LoginModel.Login.ViewModel()
+        self.viewController?.displayCleanFields(viewModel)
+    }
+    
     func presentStartLoading(_ response: LoginModel.Login.Response) {
         let viewModel = LoginModel.Login.ViewModel()
         self.viewController?.displayStartLoading(viewModel)

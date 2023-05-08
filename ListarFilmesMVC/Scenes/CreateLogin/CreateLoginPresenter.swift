@@ -14,8 +14,8 @@ import Foundation
 
 protocol CreateLoginPresentationLogic {
     func presentShowAlert(_ response: CreateLoginModel.CreateLogin.Response)
-    func presentStartLoading()
-    func presentStopLoading()
+    func presentStartLoading(_ response: CreateLoginModel.CreateLogin.Response)
+    func presentStopLoading(_ response: CreateLoginModel.CreateLogin.Response)
 }
 
 final class CreateLoginPresenter {
@@ -28,12 +28,14 @@ final class CreateLoginPresenter {
 
 // MARK: - CreateLoginPresentationLogic
 extension CreateLoginPresenter: CreateLoginPresentationLogic {
-    func presentStartLoading() {
-        self.viewController?.displayStartLoading()
+    func presentStartLoading(_ response: CreateLoginModel.CreateLogin.Response) {
+        let viewModel = CreateLoginModel.CreateLogin.ViewModel()
+        self.viewController?.displayStartLoading(viewModel)
     }
     
-    func presentStopLoading() {
-        self.viewController?.displayStopLoading()
+    func presentStopLoading(_ response: CreateLoginModel.CreateLogin.Response) {
+        let viewModel = CreateLoginModel.CreateLogin.ViewModel()
+        self.viewController?.displayStopLoading(viewModel)
     }
     
     func presentShowAlert(_ response: CreateLoginModel.CreateLogin.Response) {

@@ -17,6 +17,7 @@ protocol LoginDisplayLogic where Self: UIViewController {
     func displayGoToFilmList(_ viewModel: LoginModel.Login.ViewModel) 
     func displayStartLoading(_ viewModel: LoginModel.Login.ViewModel)
     func displayStopLoading(_ viewModel: LoginModel.Login.ViewModel)
+    func displayCleanFields(_ viewModel: LoginModel.Login.ViewModel)
 }
 
 final class LoginViewController: UIViewController {
@@ -52,8 +53,14 @@ final class LoginViewController: UIViewController {
 
 // MARK: - LoginDisplayLogic
 extension LoginViewController: LoginDisplayLogic {
+    func displayCleanFields(_ viewModel: LoginModel.Login.ViewModel) {
+        clearFields()
+    }
+    
     func displayGoToFilmList(_ viewModel: LoginModel.Login.ViewModel) {
         let route = LoginModel.Login.Route()
+        let request = LoginModel.Login.Request()
+        interactor.cleanFields(request)
         router.routeToListfilms(route)
     }
     
@@ -63,11 +70,6 @@ extension LoginViewController: LoginDisplayLogic {
     
     func displayStopLoading(_ viewModel: LoginModel.Login.ViewModel) {
         mainView.activityIndicator.stopAnimating()
-    }
-    
-    func displayGoToFilmList() {
-        let route = LoginModel.Login.Route()
-        router.routeToListfilms(route)
     }
     
     func displayShowAlert(_ viewModel: LoginModel.Login.ViewModel) {
@@ -93,6 +95,14 @@ extension LoginViewController: LoginViewDelegate {
     func createButtonPressed() {
         let route = LoginModel.Login.Route()
         router.routeToCreateLogin(route)
+    }
+    
+    func clearFields() {
+        DispatchQueue.main.async {
+            self.mainView.inputLogin.becomeFirstResponder()
+            self.mainView.inputLogin.text = ""
+            self.mainView.inputSenha.text = ""
+        }
     }
 }
 

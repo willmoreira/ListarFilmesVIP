@@ -14,8 +14,8 @@ import UIKit
 
 protocol CreateLoginDisplayLogic where Self: UIViewController {
     func displayShowAlert(_ viewModel: CreateLoginModel.CreateLogin.ViewModel)
-    func displayStartLoading()
-    func displayStopLoading()
+    func displayStartLoading(_ viewModel: CreateLoginModel.CreateLogin.ViewModel)
+    func displayStopLoading(_ viewModel: CreateLoginModel.CreateLogin.ViewModel)
 }
 
 final class CreateLoginViewController: UIViewController {
@@ -50,11 +50,11 @@ final class CreateLoginViewController: UIViewController {
 
 // MARK: - CreateLoginDisplayLogic
 extension CreateLoginViewController: CreateLoginDisplayLogic {
-    func displayStartLoading() {
+    func displayStartLoading(_ viewModel: CreateLoginModel.CreateLogin.ViewModel) {
         mainView.activityIndicator.startAnimating()
     }
     
-    func displayStopLoading() {
+    func displayStopLoading(_ viewModel: CreateLoginModel.CreateLogin.ViewModel) {
         mainView.activityIndicator.stopAnimating()
     }
     

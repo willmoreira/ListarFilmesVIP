@@ -17,6 +17,7 @@ typealias LoginInteractable = LoginBusinessLogic & LoginDataStore
 
 protocol LoginBusinessLogic {
     func doLogin(_ request: LoginModel.Login.Request)
+    func cleanFields(_ request: LoginModel.Login.Request)
 }
 
 protocol LoginDataStore {
@@ -108,6 +109,11 @@ final class LoginInteractor: LoginDataStore {
 
 // MARK: - LoginBusinessLogic
 extension LoginInteractor: LoginBusinessLogic {
+    func cleanFields(_ request: LoginModel.Login.Request) {
+        let response = LoginModel.Login.Response()
+        presenter.presentCleanFields(response)
+    }
+    
     func doLogin(_ request: LoginModel.Login.Request) {
         guard let username = request.login, !username.isEmpty else {
             let response = LoginModel.Login.Response(

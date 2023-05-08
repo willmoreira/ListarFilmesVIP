@@ -37,6 +37,8 @@ extension LoginRouter: LoginRouting {
         let mainView = CreateLoginView()
         let dataSource = CreateLoginModel.DataSource()
         let createLoginViewController = CreateLoginViewController(mainView: mainView, dataSource: dataSource)
+        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
+        self.viewController?.navigationItem.backBarButtonItem = backButton
         self.viewController?.navigationController?.pushViewController(createLoginViewController, animated: true)
     }
     
@@ -44,6 +46,8 @@ extension LoginRouter: LoginRouting {
         let mainView = ResetLoginView()
         let dataSource = ResetLoginModel.DataSource()
         let resetLoginViewController = ResetLoginViewController(mainView: mainView, dataSource: dataSource)
+        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
+        self.viewController?.navigationItem.backBarButtonItem = backButton
         self.viewController?.navigationController?.pushViewController(resetLoginViewController, animated: true)
     }
     

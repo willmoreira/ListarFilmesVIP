@@ -13,8 +13,8 @@
 import UIKit
 
 protocol ResetLoginDisplayLogic where Self: UIViewController {
-    func displayStartLoading()//TODO: aqui
-    func displayStopLoading()//TODO: aqui
+    func displayStartLoading(_ viewModel: ResetLoginModel.ResetLogin.Response)
+    func displayStopLoading(_ viewModel: ResetLoginModel.ResetLogin.Response)
     func displayShowAlert(_ viewModel: ResetLoginModel.ResetLogin.ViewModel)
 }
 
@@ -50,12 +50,13 @@ final class ResetLoginViewController: UIViewController {
 
 // MARK: - ResetLoginDisplayLogic
 extension ResetLoginViewController: ResetLoginDisplayLogic {
-    func displayStartLoading() {
+    func displayStartLoading(_ viewModel: ResetLoginModel.ResetLogin.Response) {
         mainView.activityIndicator.startAnimating()
     }
     
-    func displayStopLoading() {
+    func displayStopLoading(_ viewModel: ResetLoginModel.ResetLogin.Response) {
         mainView.activityIndicator.stopAnimating()
+
     }
     
     func displayShowAlert(_ viewModel: ResetLoginModel.ResetLogin.ViewModel) {

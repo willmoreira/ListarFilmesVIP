@@ -37,14 +37,15 @@ final class CreateLoginInteractor: CreateLoginDataStore {
     func tryCreateLogin(request: CreateLoginModel.CreateLogin.Request) {
         
         if let login = request.login, let password = request.password {
-            presenter.presentStartLoading()
+            let responseLoading = CreateLoginModel.CreateLogin.Response()
+            presenter.presentStartLoading(responseLoading)
             
             var response = CreateLoginModel.CreateLogin.Response(
                 titleMessage: "Sucesso!",
                 message: "Usuario cadastrado com sucesso, faça o Login agora!")
             
             Auth.auth().createUser(withEmail: login, password: password) { authResult, error in
-                self.presenter.presentStopLoading()
+                self.presenter.presentStopLoading(responseLoading)
                 
                 if let error = error {
                     if error.localizedDescription == "The email address is already in use by another account." {
