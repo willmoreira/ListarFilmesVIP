@@ -188,12 +188,12 @@
 			path = ResetLogin;
 			sourceTree = "<group>";
 		};
-		749638A12A05342900225A3E /* ModelVIp */ = {
+		749638A12A05342900225A3E /* GenericModel */ = {
 			isa = PBXGroup;
 			children = (
 				749638A22A05344F00225A3E /* FilmsModel.swift */,
 			);
-			path = ModelVIp;
+			path = GenericModel;
 			sourceTree = "<group>";
 		};
 		74B7707829F9559500800E4F = {
@@ -215,9 +215,9 @@
 		74B7708329F9559500800E4F /* ListarFilmesMVC */ = {
 			isa = PBXGroup;
 			children = (
-				749638A12A05342900225A3E /* ModelVIp */,
-				746F8E2B2A017FA200BD6452 /* Scenes */,
 				74B7709929F957C000800E4F /* CustomCell */,
+				749638A12A05342900225A3E /* GenericModel */,
+				746F8E2B2A017FA200BD6452 /* Scenes */,
 				74B7708429F9559500800E4F /* AppDelegate.swift */,
 				74B7708629F9559500800E4F /* SceneDelegate.swift */,
 				74B7708A29F9559500800E4F /* Main.storyboard */,

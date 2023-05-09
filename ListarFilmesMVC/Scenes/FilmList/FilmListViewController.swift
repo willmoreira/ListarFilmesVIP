@@ -37,8 +37,6 @@ final class FilmListViewController: UIViewController {
 
         let request = FilmListModel.FilmList.Request()
         interactor.setupMainView(request)
-        
-        //TODO: configurar sair do app
     }
     
     override func loadView() {

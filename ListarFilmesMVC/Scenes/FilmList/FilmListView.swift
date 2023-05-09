@@ -17,6 +17,7 @@ protocol FilmListViewDelegate where Self: UIViewController {
 }
 
 final class FilmListView: UIView {
+    
     weak var delegate: FilmListViewDelegate?
     lazy var listFilms: [Result] = []
     
@@ -86,22 +87,8 @@ extension FilmListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
         cell.nameLabel.text = listFilms[indexPath.row].title
-        cell.subtitleLabel.text = "Lançado em " + formatDate(date: listFilms[indexPath.row].releaseDate)
+        cell.subtitleLabel.text = "Lançado em " + cell.formatDate(date: listFilms[indexPath.row].releaseDate)
         cell.configureImage(posterPath: listFilms[indexPath.row].posterPath)
         return cell
-    }
-    
-    func formatDate(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        var dateString: String = ""
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        if let date = dateFormatter.date(from: date) {
-            dateFormatter.dateStyle = .long
-            dateFormatter.timeStyle = .none
-            dateFormatter.locale = Locale(identifier: "pt_BR")
-            dateString = dateFormatter.string(from: date)
-        }
-        return dateString
     }
 }

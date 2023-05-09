@@ -54,4 +54,18 @@ class CustomTableViewCell: UITableViewCell {
         let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500" + posterPath)
         customImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder"))
     }
+    
+    func formatDate(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        var dateString: String = ""
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        if let date = dateFormatter.date(from: date) {
+            dateFormatter.dateStyle = .long
+            dateFormatter.timeStyle = .none
+            dateFormatter.locale = Locale(identifier: "pt_BR")
+            dateString = dateFormatter.string(from: date)
+        }
+        return dateString
+    }
 }
