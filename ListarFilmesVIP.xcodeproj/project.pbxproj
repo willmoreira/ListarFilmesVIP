@@ -196,23 +196,7 @@
 			path = GenericModel;
 			sourceTree = "<group>";
 		};
-		74B7707829F9559500800E4F = {
-			isa = PBXGroup;
-			children = (
-				74B7708329F9559500800E4F /* ListarFilmesMVC */,
-				74B7708229F9559500800E4F /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		74B7708229F9559500800E4F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				74B7708129F9559500800E4F /* ListarFilmesVIP.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		74B7708329F9559500800E4F /* ListarFilmesMVC */ = {
+		74AF5D212A0AC4BD00A26173 /* ListFilmsVIP */ = {
 			isa = PBXGroup;
 			children = (
 				74B7709929F957C000800E4F /* CustomCell */,
@@ -223,10 +207,26 @@
 				74B7708A29F9559500800E4F /* Main.storyboard */,
 				74B7708D29F9559700800E4F /* Assets.xcassets */,
 				74B7708F29F9559700800E4F /* LaunchScreen.storyboard */,
-				74B7709229F9559700800E4F /* Info.plist */,
 				746F8DDF2A01558500BD6452 /* GoogleService-Info.plist */,
+				74B7709229F9559700800E4F /* Info.plist */,
 			);
-			path = ListarFilmesMVC;
+			path = ListFilmsVIP;
+			sourceTree = "<group>";
+		};
+		74B7707829F9559500800E4F = {
+			isa = PBXGroup;
+			children = (
+				74AF5D212A0AC4BD00A26173 /* ListFilmsVIP */,
+				74B7708229F9559500800E4F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		74B7708229F9559500800E4F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				74B7708129F9559500800E4F /* ListarFilmesVIP.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		74B7709929F957C000800E4F /* CustomCell */ = {
@@ -502,7 +502,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZZG85XAAJ4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ListarFilmesMVC/Info.plist;
+				INFOPLIST_FILE = ListFilmsVip/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -530,7 +530,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZZG85XAAJ4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ListarFilmesMVC/Info.plist;
+				INFOPLIST_FILE = ListFilmsVip/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
