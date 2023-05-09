@@ -47,7 +47,7 @@
 		74B770B029FA9FD100800E4F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770AF29FA9FD100800E4F /* FirebaseAnalytics */; };
 		74B770B229FA9FD100800E4F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770B129FA9FD100800E4F /* FirebaseAuth */; };
 		74B770B429FA9FD100800E4F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770B329FA9FD100800E4F /* FirebaseFirestore */; };
-		74B770C029FC06ED00800E4F /* CellCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770BF29FC06ED00800E4F /* CellCustomView.swift */; };
+		74B770C029FC06ED00800E4F /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770BF29FC06ED00800E4F /* CustomTableViewCell.swift */; };
 		74B770C329FC0D5700800E4F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770C229FC0D5700800E4F /* SDWebImage */; };
 		74B770C529FC0D5700800E4F /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770C429FC0D5700800E4F /* SDWebImageMapKit */; };
 /* End PBXBuildFile section */
@@ -92,7 +92,7 @@
 		74B7708D29F9559700800E4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74B7709029F9559700800E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74B7709229F9559700800E4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		74B770BF29FC06ED00800E4F /* CellCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCustomView.swift; sourceTree = "<group>"; };
+		74B770BF29FC06ED00800E4F /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,7 +232,7 @@
 		74B7709929F957C000800E4F /* CustomCell */ = {
 			isa = PBXGroup;
 			children = (
-				74B770BF29FC06ED00800E4F /* CellCustomView.swift */,
+				74B770BF29FC06ED00800E4F /* CustomTableViewCell.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -343,7 +343,7 @@
 				746F8EB42A018A1D00BD6452 /* LoginModel.swift in Sources */,
 				746F8EA72A01899800BD6452 /* ResetLoginView.swift in Sources */,
 				746F8E8C2A01867000BD6452 /* FilmListRouter.swift in Sources */,
-				74B770C029FC06ED00800E4F /* CellCustomView.swift in Sources */,
+				74B770C029FC06ED00800E4F /* CustomTableViewCell.swift in Sources */,
 				746F8EA62A01899800BD6452 /* ResetLoginInteractor.swift in Sources */,
 				746F8E832A01865000BD6452 /* FilmDetailView.swift in Sources */,
 				746F8E822A01865000BD6452 /* FilmDetailInteractor.swift in Sources */,
