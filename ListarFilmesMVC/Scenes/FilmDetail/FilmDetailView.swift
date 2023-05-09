@@ -55,7 +55,7 @@ final class FilmDetailView: UIView {
     }
     
     private func setupLayout() {
-        titleView.text = film?.title ?? "Teste"
+        titleView.text = film?.title
         descriptLabel.text = film?.overview
         titleView.translatesAutoresizingMaskIntoConstraints = false
         customImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,15 +83,11 @@ final class FilmDetailView: UIView {
     }
     
     func updateFilm() {
-        if let img = film?.posterPath {
-            configureImage(posterPath: img)
+        if let imgPathUrl = film?.posterPath {
+            let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500" + imgPathUrl)
+            customImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder"))
         }
-        titleView.text = film?.title ?? "Teste"
+        titleView.text = film?.title
         descriptLabel.text = film?.overview
-    }
-    
-    func configureImage(posterPath: String) {
-        let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500" + posterPath)
-        customImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder"))
     }
 }

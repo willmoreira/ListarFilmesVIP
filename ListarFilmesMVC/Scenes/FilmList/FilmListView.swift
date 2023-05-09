@@ -88,7 +88,7 @@ extension FilmListView: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
         cell.nameLabel.text = listFilms[indexPath.row].title
         cell.subtitleLabel.text = "Lançado em " + listFilms[indexPath.row].releaseDate
-        cell.configureImage(posterPath: listFilms[indexPath.row].posterPath)
+        cell.customImageView.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500" + listFilms[indexPath.row].posterPath), placeholderImage: UIImage(named: "placeholder"))
         return cell
     }
 }
