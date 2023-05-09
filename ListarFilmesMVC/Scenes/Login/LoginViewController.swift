@@ -49,6 +49,12 @@ final class LoginViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
     }
+    
+    @objc func dismissKeyboard() {
+        if mainView.inputLogin.isFirstResponder || mainView.inputSenha.isFirstResponder {
+            view.endEditing(true)
+        }
+    }
 }
 
 // MARK: - LoginDisplayLogic

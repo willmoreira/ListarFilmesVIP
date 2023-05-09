@@ -16,6 +16,7 @@ protocol LoginViewDelegate where Self: UIViewController {
     func loginButtonPressed()
     func resetButtonPressed()
     func createButtonPressed()
+    func dismissKeyboard()
 }
 
 final class LoginView: UIView {
@@ -93,6 +94,8 @@ final class LoginView: UIView {
         self.titleSenhaLabel.text = "Senha"
         self.inputSenha = inputSenha
         self.loginButton.setTitle("Entrar", for: .normal)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.addGestureRecognizer(tapGesture)
         setupLayout()
     }
     
@@ -164,4 +167,9 @@ final class LoginView: UIView {
     @objc func createButtonPressed() {
         delegate?.createButtonPressed()
     }
+    
+    @objc func dismissKeyboard() {
+        delegate?.dismissKeyboard()
+    }
+    
 }
