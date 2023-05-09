@@ -15,7 +15,7 @@ import Foundation
 typealias FilmListInteractable = FilmListBusinessLogic & FilmListDataStore
 
 protocol FilmListBusinessLogic {
-    func setupMainView(_ request: FilmListModel.FilmList.Request)
+    func configureList(_ request: FilmListModel.FilmList.Request)
 }
 
 protocol FilmListDataStore {
@@ -36,10 +36,9 @@ final class FilmListInteractor: FilmListDataStore {
 
 // MARK: - FilmListBusinessLogic
 extension FilmListInteractor: FilmListBusinessLogic {
-    
-    func setupMainView(_ request: FilmListModel.FilmList.Request) {
+    func configureList(_ request: FilmListModel.FilmList.Request) {
         let response = FilmListModel.FilmList.Response(list: dataSource.filmModelList)
-        presenter.setupMainView(response)
+        presenter.configureList(response)
     }
 }
 

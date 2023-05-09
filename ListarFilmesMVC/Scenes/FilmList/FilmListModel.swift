@@ -22,7 +22,26 @@ enum FilmListModel {
     enum FilmList {
         
         struct Request {
+
+        }
+        
+        struct Response {
+            var list: FilmModel
+        }
+        
+        struct ViewModel {
+            var list: FilmModel
+        }
+        
+        struct Route {
             
+        }
+    }
+    
+    enum FormattedFilmList {
+        
+        struct Request {
+            var list: FilmModel
         }
         
         struct Response {

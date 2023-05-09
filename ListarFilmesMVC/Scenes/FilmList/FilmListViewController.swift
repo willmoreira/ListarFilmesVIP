@@ -13,7 +13,7 @@
 import UIKit
 
 protocol FilmListDisplayLogic where Self: UIViewController {
-    func displaySetupMainView(_ viewModel: FilmListModel.FilmList.ViewModel)
+    func displayConfigureList(_ viewModel: FilmListModel.FormattedFilmList.ViewModel)
 }
 
 final class FilmListViewController: UIViewController {
@@ -36,7 +36,9 @@ final class FilmListViewController: UIViewController {
         mainView.delegate = self
 
         let request = FilmListModel.FilmList.Request()
-        interactor.setupMainView(request)
+        interactor.configureList(request)
+        
+        //interactor.setupMainView(request)
     }
     
     override func loadView() {
@@ -51,7 +53,7 @@ final class FilmListViewController: UIViewController {
 
 // MARK: - FilmListDisplayLogic
 extension FilmListViewController: FilmListDisplayLogic {
-    func displaySetupMainView(_ viewModel: FilmListModel.FilmList.ViewModel) {
+    func displayConfigureList(_ viewModel: FilmListModel.FormattedFilmList.ViewModel) {
         guard let view = self.view as? FilmListView else { return }
         view.listFilms = viewModel.list.results
     }

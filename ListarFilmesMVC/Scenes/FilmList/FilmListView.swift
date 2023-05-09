@@ -87,7 +87,7 @@ extension FilmListView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
         cell.nameLabel.text = listFilms[indexPath.row].title
-        cell.subtitleLabel.text = "Lançado em " + cell.formatDate(date: listFilms[indexPath.row].releaseDate)
+        cell.subtitleLabel.text = "Lançado em " + listFilms[indexPath.row].releaseDate
         cell.configureImage(posterPath: listFilms[indexPath.row].posterPath)
         return cell
     }
