@@ -27,15 +27,20 @@ final class CreateLoginInteractor: CreateLoginDataStore {
     
     var dataSource: CreateLoginModel.DataSource
     
-    private var presenter: CreateLoginPresentationLogic
+    var presenter: CreateLoginPresentationLogic
     
-    init(viewController: CreateLoginDisplayLogic?, dataSource: CreateLoginModel.DataSource) {
+    var createLoginWorker: CreateLoginWorkerProtocol
+    
+    init(viewController: CreateLoginDisplayLogic?,
+         dataSource: CreateLoginModel.DataSource,
+         createLoginWorker: CreateLoginWorkerProtocol = CreateLoginWorker()) {
         self.dataSource = dataSource
+        self.createLoginWorker = createLoginWorker
         self.presenter = CreateLoginPresenter(viewController: viewController)
     }
     
     func tryCreateLogin(request: CreateLoginModel.CreateLogin.Request) {
-        
+    
         if let login = request.login, let password = request.password {
             let responseLoading = CreateLoginModel.CreateLogin.Response()
             presenter.presentStartLoading(responseLoading)
@@ -44,23 +49,23 @@ final class CreateLoginInteractor: CreateLoginDataStore {
                 titleMessage: "Sucesso!",
                 message: "Usuario cadastrado com sucesso, faça o Login agora!")
             
-            Auth.auth().createUser(withEmail: login, password: password) { authResult, error in
+            createLoginWorker.createUser(withEmail: login, password: password) { _, error in
                 self.presenter.presentStopLoading(responseLoading)
                 
-                if let error = error {
-                    if error.localizedDescription == "The email address is already in use by another account." {
+                if let error = error as? NSError{
+                    if error.code == 17007 {
                         response = CreateLoginModel.CreateLogin.Response(
                             titleMessage: "Email já em uso!",
                             message: "O endereço de e-mail já está sendo usado por outra conta.")
                         self.presenter.presentShowAlert(response)
                     }
-                    if error.localizedDescription == "The email address is badly formatted." {
+                    if error.code == 17008 {
                         response = CreateLoginModel.CreateLogin.Response(
                             titleMessage: "Formato do email incorreto!",
                             message:  "O endereço de e-mail não parece ser valido")
                         self.presenter.presentShowAlert(response)
                     }
-                    if error.localizedDescription == "The password must be 6 characters long or more." {
+                    if error.code == 17026 {
                         response = CreateLoginModel.CreateLogin.Response(
                             titleMessage: "Regra de senha",
                             message:  "A senha deve ter 6 caracteres ou mais.")
@@ -79,8 +84,8 @@ extension CreateLoginInteractor: CreateLoginBusinessLogic {
     func doCreateLogin(_ request: CreateLoginModel.CreateLogin.Request) {
         guard let username = request.login, !username.isEmpty else {
             let response = CreateLoginModel.CreateLogin.Response(
-                titleMessage: "Erro no campo Login",
-                message: "Preencha o campo Login")
+                titleMessage: "Erro no campo Email",
+                message: "Preencha o campo Email")
             presenter.presentShowAlert(response)
             return
         }

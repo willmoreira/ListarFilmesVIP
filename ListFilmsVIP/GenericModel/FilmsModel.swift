@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - FilmModel
-struct FilmModel: Codable {
+struct FilmModel: Codable, Equatable {
     let page: Int
     let results: [Result]
     let totalPages, totalResults: Int
@@ -21,7 +21,7 @@ struct FilmModel: Codable {
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct Result: Codable, Equatable {
     let adult: Bool
     let backdropPath: String
     let genreIDS: [Int]

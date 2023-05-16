@@ -26,10 +26,16 @@ protocol LoginDataStore {
 
 final class LoginInteractor: LoginDataStore {
     var dataSource: LoginModel.DataSource
-    private var presenter: LoginPresentationLogic
     
-    init(viewController: LoginDisplayLogic?, dataSource: LoginModel.DataSource) {
+    var presenter: LoginPresentationLogic
+    
+    var loginWorker: LoginWorkerProtocol
+    
+    init(viewController: LoginDisplayLogic?,
+         dataSource: LoginModel.DataSource,
+         loginWorker: LoginWorkerProtocol = LoginWorker()) {
         self.dataSource = dataSource
+        self.loginWorker = loginWorker
         self.presenter = LoginPresenter(viewController: viewController)
     }
     
@@ -38,20 +44,25 @@ final class LoginInteractor: LoginDataStore {
         presenter.presentStartLoading(response)
         
         if let login = request.login, let password = request.password {
-            Auth.auth().signIn(withEmail: login, password: password) { authResult, error in
+            loginWorker.signIn(withEmail: login, password: password) { authResult, error in
                 self.presenter.presentStopLoading(response)
-                
-                if let error = error {
-                    if error.localizedDescription == "The password is invalid or the user does not have a password." {
+                if let error = error as? NSError{
+                    if error.code == 17009 {
                         let response = LoginModel.Login.Response(
                             titleMessage: "Senha inválida!",
                             message: "A senha é inválida ou o usuário não possui uma senha.")
                         self.presenter.presentShowAlert(response)
                     }
-                    if error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
+                    if error.code == 17011 {
                         let response = LoginModel.Login.Response(
                             titleMessage: "Usuario não encontrado!",
                             message: "Não há registro de usuário correspondente a este email, confira o email ou cadastre um novo usuário.")
+                        self.presenter.presentShowAlert(response)
+                    }
+                    if error.code == 17008 {
+                        let response = LoginModel.Login.Response(
+                            titleMessage: "Formato do email incorreto!",
+                            message:  "O endereço de e-mail não parece ser valido")
                         self.presenter.presentShowAlert(response)
                     }
                     return
@@ -62,14 +73,14 @@ final class LoginInteractor: LoginDataStore {
     }
     
     func goToScreenListFilms() {
-        searchFilmList()
-    }
-    
-    func searchFilmList() {
-        // Defina a URL da API e a chave de API
         let apiKey = "ac894a60b6f5b4abf7ff6c58dbc67ced"
         let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)"
-        
+        searchFilmList(apiKey: apiKey, urlString: urlString)
+    }
+    
+    func searchFilmList(apiKey: String, urlString: String) {
+        // Defina a URL da API e a chave de API
+           
         // Crie uma instância de URLSession
         let session = URLSession.shared
         
@@ -117,8 +128,8 @@ extension LoginInteractor: LoginBusinessLogic {
     func doLogin(_ request: LoginModel.Login.Request) {
         guard let username = request.login, !username.isEmpty else {
             let response = LoginModel.Login.Response(
-                titleMessage: "Erro no campo Login",
-                message: "Preencha o campo Login")
+                titleMessage: "Erro no campo Email",
+                message: "Preencha o campo Email")
             presenter.presentShowAlert(response)
             return
         }

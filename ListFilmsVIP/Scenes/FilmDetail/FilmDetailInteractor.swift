@@ -25,7 +25,7 @@ protocol FilmDetailDataStore {
 final class FilmDetailInteractor: FilmDetailDataStore {
     var dataSource: FilmDetailModel.DataSource
     
-    private var presenter: FilmDetailPresentationLogic
+    var presenter: FilmDetailPresentationLogic
     
     init(viewController: FilmDetailDisplayLogic?, dataSource: FilmDetailModel.DataSource) {
         self.dataSource = dataSource

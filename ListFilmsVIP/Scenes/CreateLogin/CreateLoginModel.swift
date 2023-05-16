@@ -16,7 +16,7 @@ import Foundation
 enum CreateLoginModel {
     
     struct DataSource {
-
+        
     }
     
     enum CreateLogin {

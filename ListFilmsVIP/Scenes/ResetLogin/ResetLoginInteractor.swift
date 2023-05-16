@@ -27,10 +27,15 @@ final class ResetLoginInteractor: ResetLoginDataStore {
     
     var dataSource: ResetLoginModel.DataSource
     
-    private var presenter: ResetLoginPresentationLogic
+    var presenter: ResetLoginPresentationLogic
     
-    init(viewController: ResetLoginDisplayLogic?, dataSource: ResetLoginModel.DataSource) {
+    var resetLoginWorker: ResetLoginWorkerProtocol
+    
+    init(viewController: ResetLoginDisplayLogic?,
+         dataSource: ResetLoginModel.DataSource,
+         resetLoginWorker: ResetLoginWorkerProtocol = ResetLoginWorker()) {
         self.dataSource = dataSource
+        self.resetLoginWorker = resetLoginWorker
         self.presenter = ResetLoginPresenter(viewController: viewController)
     }
     
@@ -40,10 +45,10 @@ final class ResetLoginInteractor: ResetLoginDataStore {
         var response = ResetLoginModel.ResetLogin.Response(titleMessage: "Sucesso!", message: "As orientações foram enviadas para seu email!")
         
         if let login = request.login {
-            Auth.auth().sendPasswordReset(withEmail: login) { error in
+            resetLoginWorker.resetUser(withEmail: login) { error in
                 self.presenter.presentStopLoading(reponseLoading)
-                if let error = error {
-                    if error.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
+                if let error = error as? NSError{
+                    if error.code == 17011 {
                         response = ResetLoginModel.ResetLogin.Response(
                             titleMessage: "Usuário não encontrado",
                             message: "Não há registro de usuário correspondente a este identificador. O usuário pode ter sido excluído." )

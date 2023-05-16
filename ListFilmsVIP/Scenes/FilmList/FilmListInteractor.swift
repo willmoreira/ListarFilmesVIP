@@ -26,7 +26,7 @@ final class FilmListInteractor: FilmListDataStore {
     
     var dataSource: FilmListModel.DataSource
     
-    private var presenter: FilmListPresentationLogic
+    var presenter: FilmListPresentationLogic
     
     init(viewController: FilmListDisplayLogic?, dataSource: FilmListModel.DataSource) {
         self.dataSource = dataSource
