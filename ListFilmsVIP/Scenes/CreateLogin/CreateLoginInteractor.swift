@@ -26,9 +26,7 @@ protocol CreateLoginDataStore {
 final class CreateLoginInteractor: CreateLoginDataStore {
     
     var dataSource: CreateLoginModel.DataSource
-    
     var presenter: CreateLoginPresentationLogic
-    
     var createLoginWorker: CreateLoginWorkerProtocol
     
     init(viewController: CreateLoginDisplayLogic?,

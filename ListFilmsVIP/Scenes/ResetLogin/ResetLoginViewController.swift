@@ -56,7 +56,6 @@ extension ResetLoginViewController: ResetLoginDisplayLogic {
     
     func displayStopLoading(_ viewModel: ResetLoginModel.ResetLogin.Response) {
         mainView.activityIndicator.stopAnimating()
-
     }
     
     func displayShowAlert(_ viewModel: ResetLoginModel.ResetLogin.ViewModel) {

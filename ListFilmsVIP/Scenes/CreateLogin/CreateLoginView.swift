@@ -16,9 +16,11 @@ protocol CreateLoginViewDelegate where Self: UIViewController {
     func createButtonPressed()
 }
 
-final class CreateLoginView: UIView {
+class CreateLoginView: UIView {
     weak var delegate: CreateLoginViewDelegate?
-    let activityIndicator = UIActivityIndicatorView(style: .large)
+    var viewController: CreateLoginViewController?
+    
+    lazy var activityIndicator = UIActivityIndicatorView(style: .large)
     
     lazy var titleLoginLabel = UILabel()
     lazy var titlePasswordLabel = UILabel()
@@ -59,6 +61,14 @@ final class CreateLoginView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupInit()
+    }
+    
+    func startAnimating() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopAnimating() {
+        activityIndicator.stopAnimating()
     }
     
     private func setupInit() {

@@ -17,9 +17,9 @@ protocol FilmDetailDisplayLogic where Self: UIViewController {
 }
 
 final class FilmDetailViewController: UIViewController {
-    private let mainView: FilmDetailView
-    private var interactor: FilmDetailInteractable!
-    private var router: FilmDetailRouting!
+    let mainView: FilmDetailView
+    var interactor: FilmDetailInteractable!
+    var router: FilmDetailRouting!
     
     var film: Result?
     

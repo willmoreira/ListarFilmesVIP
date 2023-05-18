@@ -19,9 +19,9 @@ protocol CreateLoginDisplayLogic where Self: UIViewController {
 }
 
 final class CreateLoginViewController: UIViewController {
-    private let mainView: CreateLoginView
-    private var interactor: CreateLoginInteractable!
-    private var router: CreateLoginRouting!
+    let mainView: CreateLoginView
+    var interactor: CreateLoginInteractable!
+    var router: CreateLoginRouting!
     
     init(mainView: CreateLoginView, dataSource: CreateLoginModel.DataSource) {
         self.mainView = mainView
@@ -51,11 +51,11 @@ final class CreateLoginViewController: UIViewController {
 // MARK: - CreateLoginDisplayLogic
 extension CreateLoginViewController: CreateLoginDisplayLogic {
     func displayStartLoading(_ viewModel: CreateLoginModel.CreateLogin.ViewModel) {
-        mainView.activityIndicator.startAnimating()
+        self.mainView.startAnimating()
     }
     
     func displayStopLoading(_ viewModel: CreateLoginModel.CreateLogin.ViewModel) {
-        mainView.activityIndicator.stopAnimating()
+        self.mainView.stopAnimating()
     }
     
     func displayShowAlert(_ viewModel: CreateLoginModel.CreateLogin.ViewModel) {
@@ -69,6 +69,16 @@ extension CreateLoginViewController: CreateLoginDisplayLogic {
         self.present(alert, animated: true, completion: nil)
     }
 }
+
+extension UIViewController {
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+}
+
 
 // MARK: - CreateLoginViewDelegate
 extension CreateLoginViewController: CreateLoginViewDelegate {
