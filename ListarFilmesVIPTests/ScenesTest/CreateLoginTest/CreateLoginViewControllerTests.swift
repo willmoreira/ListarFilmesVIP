@@ -80,6 +80,18 @@ final class CreateLoginViewControllerTests: XCTestCase {
         XCTAssertTrue(mainViewMock.activityIndicatorStopAnimatingCalled)
     }
     
+    
+    func testDisplayShowAlertCalled() {
+        //Given
+        let viewModel = CreateLoginModel.CreateLogin.ViewModel(titleMessage: "teste", message: "teste")
+        
+        //When
+        sut.displayShowAlert(viewModel)
+        
+        //Then
+        XCTAssertTrue(mainViewMock.alertControllerPresentedCalled)
+    }
+    
     class CreateLoginInteractableMock: CreateLoginInteractable {
         var dataSource: CreateLoginModel.DataSource {
             return CreateLoginModel.DataSource()
@@ -106,7 +118,6 @@ final class CreateLoginViewControllerTests: XCTestCase {
         var activityIndicatorStartAnimatingCalled = false
         var activityIndicatorStopAnimatingCalled = false
         var alertControllerPresentedCalled = false
-        var presentedAlertController: UIAlertController?
         
         override func startAnimating() {
             activityIndicatorStartAnimatingCalled = true
@@ -114,6 +125,10 @@ final class CreateLoginViewControllerTests: XCTestCase {
         
         override func stopAnimating() {
             activityIndicatorStopAnimatingCalled = true
+        }
+        
+        override func showAlert(title: String, message: String, completion: (() -> Void)?) {
+            alertControllerPresentedCalled = true
         }
     }
     

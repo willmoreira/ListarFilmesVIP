@@ -10,18 +10,18 @@ import XCTest
 
 final class CreateLoginPresenterTests: XCTestCase {
     
-    var presenter: CreateLoginPresenter!
+    var sut: CreateLoginPresenter!
     var viewController: CreateLoginViewControllerSpy!
     
     override func setUp() {
         super.setUp()
         viewController = CreateLoginViewControllerSpy()
-        presenter = CreateLoginPresenter(viewController: viewController)
+        sut = CreateLoginPresenter(viewController: viewController)
     }
     
     override func tearDown() {
         viewController = nil
-        presenter = nil
+        sut = nil
         super.tearDown()
     }
     
@@ -30,7 +30,7 @@ final class CreateLoginPresenterTests: XCTestCase {
         let response = CreateLoginModel.CreateLogin.Response()
         
         // When
-        presenter.presentStartLoading(response)
+        sut.presentStartLoading(response)
         
         // Then
         XCTAssertTrue(viewController.displayStartLoadingCalled)
@@ -41,7 +41,7 @@ final class CreateLoginPresenterTests: XCTestCase {
         let response = CreateLoginModel.CreateLogin.Response()
         
         // When
-        presenter.presentStopLoading(response)
+        sut.presentStopLoading(response)
         
         // Then
         XCTAssertTrue(viewController.displayStopLoadingCalled)
@@ -52,7 +52,7 @@ final class CreateLoginPresenterTests: XCTestCase {
         let response = CreateLoginModel.CreateLogin.Response(titleMessage: "Title", message: "Message")
         
         // When
-        presenter.presentShowAlert(response)
+        sut.presentShowAlert(response)
         
         // Then
         XCTAssertTrue(viewController.displayShowAlertCalled)

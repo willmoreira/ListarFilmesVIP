@@ -60,6 +60,18 @@ class ResetLoginView: UIView {
         activityIndicator.stopAnimating()
     }
     
+    func showAlert(title: String, message: String, completion: (() -> Void)?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            completion?()
+        }
+        alertController.addAction(okAction)
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
     private func setupInit() {
         self.titleView.text = "RECUPERAR SENHA"
         self.titleLoginLabel.text = "Email"

@@ -69,15 +69,15 @@ class ResetLoginViewControllerSpy: UIViewController, ResetLoginDisplayLogic {
     var displayShowAlertCalled = false
     var viewmodel: ResetLoginModel.ResetLogin.ViewModel?
     
-    func displayStartLoading(_ viewModel: ListarFilmesVIP.ResetLoginModel.ResetLogin.Response) {
+    func displayStartLoading(_ viewModel: ResetLoginModel.ResetLogin.Response) {
         displayStartLoadingCalled = true
     }
     
-    func displayStopLoading(_ viewModel: ListarFilmesVIP.ResetLoginModel.ResetLogin.Response) {
+    func displayStopLoading(_ viewModel: ResetLoginModel.ResetLogin.Response) {
         displayStopLoadingCalled = true
     }
     
-    func displayShowAlert(_ viewModel: ListarFilmesVIP.ResetLoginModel.ResetLogin.ViewModel) {
+    func displayShowAlert(_ viewModel: ResetLoginModel.ResetLogin.ViewModel) {
         displayShowAlertCalled = true
         self.viewmodel = viewModel
     }

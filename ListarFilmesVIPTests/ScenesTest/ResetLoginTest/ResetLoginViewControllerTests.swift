@@ -81,11 +81,23 @@ final class ResetLoginViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.mainView.backgroundColor, .white)
         XCTAssertTrue(sut.mainView.delegate === sut)
     }
+    
+    func testDisplayShowAlertCalled() {
+        //Given
+        let viewModel = ResetLoginModel.ResetLogin.ViewModel(titleMessage: "teste", message: "teste")
+        
+        //When
+        sut.displayShowAlert(viewModel)
+        
+        //Then
+        XCTAssertTrue(mainViewMock.alertControllerPresentedCalled)
+    }
 }
 
 class ResetLoginViewMock: ResetLoginView {
     var activityIndicatorStartAnimatingCalled = false
     var activityIndicatorStopAnimatingCalled = false
+    var alertControllerPresentedCalled = false
 
     override func startAnimating() {
         activityIndicatorStartAnimatingCalled = true
@@ -93,6 +105,10 @@ class ResetLoginViewMock: ResetLoginView {
     
     override func stopAnimating() {
         activityIndicatorStopAnimatingCalled = true
+    }
+    
+    override func showAlert(title: String, message: String, completion: (() -> Void)?) {
+        alertControllerPresentedCalled = true
     }
 }
 

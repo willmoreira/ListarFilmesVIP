@@ -72,15 +72,16 @@ class CreateLoginView: UIView {
         activityIndicator.stopAnimating()
     }
     
-    func showAlert(title: String, message: String) {
-        alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { action in
-            if title == "Sucesso!" {
-                self.viewController?.navigationController?.popViewController(animated: true)
-            }
+    func showAlert(title: String, message: String, completion: (() -> Void)?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            completion?()
         }
-        self.alertViewController.addAction(okAction)
-        self.viewController?.present(alertViewController, animated: true, completion: nil)
+        alertController.addAction(okAction)
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        }
     }
     
     private func setupInit() {

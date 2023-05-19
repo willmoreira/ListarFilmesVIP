@@ -54,15 +54,11 @@ extension CreateLoginViewController: CreateLoginDisplayLogic {
     }
     
     func displayShowAlert(_ viewModel: CreateLoginModel.CreateLogin.ViewModel) {
-        //TODO: PReciso encapsular o alert para testa-lo
-        let alert = UIAlertController(title: viewModel.titleMessage, message: viewModel.message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { action in
-            if viewModel.titleMessage == "Sucesso!" {
-                self.navigationController?.popViewController(animated: true)
+        if let title = viewModel.titleMessage, let message = viewModel.message {
+            mainView.showAlert(title: title, message: message) { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
             }
         }
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
     }
 }
 
