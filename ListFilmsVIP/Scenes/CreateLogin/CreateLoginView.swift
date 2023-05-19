@@ -19,6 +19,7 @@ protocol CreateLoginViewDelegate where Self: UIViewController {
 class CreateLoginView: UIView {
     weak var delegate: CreateLoginViewDelegate?
     var viewController: CreateLoginViewController?
+    var alertViewController = UIAlertController()
     
     lazy var activityIndicator = UIActivityIndicatorView(style: .large)
     
@@ -71,7 +72,21 @@ class CreateLoginView: UIView {
         activityIndicator.stopAnimating()
     }
     
+    func showAlert(title: String, message: String) {
+        alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            if title == "Sucesso!" {
+                self.viewController?.navigationController?.popViewController(animated: true)
+            }
+        }
+        self.alertViewController.addAction(okAction)
+        self.viewController?.present(alertViewController, animated: true, completion: nil)
+    }
+    
     private func setupInit() {
+        self.alertViewController.message = ""
+        self.alertViewController.title = ""
+
         self.titleView.text = "CADASTRAR LOGIN"
         self.titleLoginLabel.text = "Email"
         self.inputLogin = inputLogin

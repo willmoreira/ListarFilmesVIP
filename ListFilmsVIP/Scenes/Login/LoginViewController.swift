@@ -20,7 +20,7 @@ protocol LoginDisplayLogic where Self: UIViewController {
     func displayCleanFields(_ viewModel: LoginModel.Login.ViewModel)
 }
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: BaseUIViewController {
     
     private let mainView: LoginView
     private var interactor: LoginInteractable!
@@ -43,11 +43,6 @@ final class LoginViewController: UIViewController {
     
     override func loadView() {
         view = mainView
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
     }
     
     @objc func dismissKeyboard() {
@@ -110,9 +105,4 @@ extension LoginViewController: LoginViewDelegate {
             self.mainView.inputSenha.text = ""
         }
     }
-}
-
-// MARK: - Private Zone
-private extension LoginViewController {
-    
 }

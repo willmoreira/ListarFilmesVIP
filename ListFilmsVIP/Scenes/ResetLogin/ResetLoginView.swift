@@ -16,7 +16,7 @@ protocol ResetLoginViewDelegate where Self: UIViewController {
     func resetLoginButtonPressed()
 }
 
-final class ResetLoginView: UIView {
+class ResetLoginView: UIView {
     weak var delegate: ResetLoginViewDelegate?
     lazy var activityIndicator = UIActivityIndicatorView(style: .large)
     lazy var titleLoginLabel = UILabel()
@@ -50,6 +50,14 @@ final class ResetLoginView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupInit()
+    }
+    
+    func startAnimating() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopAnimating() {
+        activityIndicator.stopAnimating()
     }
     
     private func setupInit() {

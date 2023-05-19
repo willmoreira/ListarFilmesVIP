@@ -18,10 +18,10 @@ protocol ResetLoginDisplayLogic where Self: UIViewController {
     func displayShowAlert(_ viewModel: ResetLoginModel.ResetLogin.ViewModel)
 }
 
-final class ResetLoginViewController: UIViewController {
-    private let mainView: ResetLoginView
-    private var interactor: ResetLoginInteractable!
-    private var router: ResetLoginRouting!
+final class ResetLoginViewController: BaseUIViewController {
+    var mainView: ResetLoginView
+    var interactor: ResetLoginInteractable!
+    var router: ResetLoginRouting!
     
     init(mainView: ResetLoginView, dataSource: ResetLoginModel.DataSource) {
         self.mainView = mainView
@@ -41,24 +41,20 @@ final class ResetLoginViewController: UIViewController {
     override func loadView() {
         view = mainView
     }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
-    }
 }
 
 // MARK: - ResetLoginDisplayLogic
 extension ResetLoginViewController: ResetLoginDisplayLogic {
     func displayStartLoading(_ viewModel: ResetLoginModel.ResetLogin.Response) {
-        mainView.activityIndicator.startAnimating()
+        mainView.startAnimating()
     }
     
     func displayStopLoading(_ viewModel: ResetLoginModel.ResetLogin.Response) {
-        mainView.activityIndicator.stopAnimating()
+        mainView.stopAnimating()
     }
     
     func displayShowAlert(_ viewModel: ResetLoginModel.ResetLogin.ViewModel) {
+        //TODO: PReciso encapsular o alert para testa-lo
         let alert = UIAlertController(title: viewModel.titleMessage, message: viewModel.message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             if viewModel.titleMessage == "Sucesso!" {
@@ -76,9 +72,4 @@ extension ResetLoginViewController: ResetLoginViewDelegate {
         let request = ResetLoginModel.ResetLogin.Request(login: mainView.inputLogin.text)
         interactor.doResetLogin(request)
     }
-}
-
-// MARK: - Private Zone
-private extension ResetLoginViewController {
-    
 }

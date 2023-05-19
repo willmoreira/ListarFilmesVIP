@@ -55,8 +55,3 @@ extension LoginPresenter: LoginPresentationLogic {
         self.viewController?.displayShowAlert(viewModel)
     }
 }
-
-// MARK: - Private Zone
-private extension LoginPresenter {
-    
-}

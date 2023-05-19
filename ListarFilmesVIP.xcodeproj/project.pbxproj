@@ -76,6 +76,7 @@
 		74B770C029FC06ED00800E4F /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B770BF29FC06ED00800E4F /* CustomTableViewCell.swift */; };
 		74B770C329FC0D5700800E4F /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770C229FC0D5700800E4F /* SDWebImage */; };
 		74B770C529FC0D5700800E4F /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 74B770C429FC0D5700800E4F /* SDWebImageMapKit */; };
+		74EA8C822A17B20600184F35 /* BaseUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EA8C812A17B20600184F35 /* BaseUIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +160,7 @@
 		74B7709029F9559700800E4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74B7709229F9559700800E4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74B770BF29FC06ED00800E4F /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		74EA8C812A17B20600184F35 /* BaseUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +289,7 @@
 		74AF5D212A0AC4BD00A26173 /* ListFilmsVIP */ = {
 			isa = PBXGroup;
 			children = (
+				74EA8C802A17B1C700184F35 /* Commons */,
 				74B7709929F957C000800E4F /* CustomCell */,
 				749638A12A05342900225A3E /* GenericModel */,
 				746F8E2B2A017FA200BD6452 /* Scenes */,
@@ -415,6 +418,14 @@
 				74B770BF29FC06ED00800E4F /* CustomTableViewCell.swift */,
 			);
 			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		74EA8C802A17B1C700184F35 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				74EA8C812A17B20600184F35 /* BaseUIViewController.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -628,6 +639,7 @@
 				74B770C029FC06ED00800E4F /* CustomTableViewCell.swift in Sources */,
 				746F8EA62A01899800BD6452 /* ResetLoginInteractor.swift in Sources */,
 				746F8E832A01865000BD6452 /* FilmDetailView.swift in Sources */,
+				74EA8C822A17B20600184F35 /* BaseUIViewController.swift in Sources */,
 				746F8E822A01865000BD6452 /* FilmDetailInteractor.swift in Sources */,
 				749638A32A05344F00225A3E /* FilmsModel.swift in Sources */,
 				746F8E8D2A01867000BD6452 /* FilmListViewController.swift in Sources */,

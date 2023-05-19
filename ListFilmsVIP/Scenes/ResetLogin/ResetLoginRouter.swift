@@ -28,8 +28,3 @@ final class ResetLoginRouter {
 extension ResetLoginRouter: ResetLoginRouting {
     
 }
-
-// MARK: - Private Zone
-private extension ResetLoginRouter {
-    
-}

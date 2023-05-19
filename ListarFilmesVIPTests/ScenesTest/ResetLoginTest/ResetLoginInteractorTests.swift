@@ -75,10 +75,8 @@ final class ResetLoginInteractorTests: XCTestCase {
         //Given
         let request = ResetLoginModel.ResetLogin.Request(login:"")
         
-        
         //When
         sut.doResetLogin(request)
-        
         
         //Then
         XCTAssertTrue(presenterMock.presentShowAlertCalled)

@@ -31,7 +31,7 @@ final class FilmListPresenter {
             if let date = dateFormatter.date(from: movie.releaseDate) {
                 dateFormatter.dateFormat = "dd 'de' MMMM 'de' yyyy"
                 let newLaunchDate = dateFormatter.string(from: date)
-                return Result(adult: movie.adult, backdropPath: movie.backdropPath, genreIDS: movie.genreIDS, id: movie.id, originalLanguage: movie.originalLanguage, originalTitle: movie.originalTitle, overview: movie.overview, popularity: movie.popularity, posterPath: movie.posterPath, releaseDate: newLaunchDate, title: movie.title, video: movie.video, voteAverage: movie.voteAverage, voteCount: movie.voteCount)
+                return Result(adult: movie.adult, backdropPath: movie.backdropPath, genreIDS: movie.genreIDS, id: movie.id, originalLanguage: movie.overview, originalTitle: movie.originalLanguage, overview: movie.originalTitle, popularity: movie.popularity, posterPath: movie.posterPath, releaseDate: newLaunchDate, title: movie.title, video: movie.video, voteAverage: movie.voteAverage, voteCount: movie.voteCount)
             } else {
                 return movie
             }
@@ -50,9 +50,4 @@ extension FilmListPresenter: FilmListPresentationLogic {
         let viewModel = FilmListModel.FormattedFilmList.ViewModel(list: correctList)
         viewController?.displayConfigureList(viewModel)
     }
-}
-
-// MARK: - Private Zone
-private extension FilmListPresenter {
- 
 }

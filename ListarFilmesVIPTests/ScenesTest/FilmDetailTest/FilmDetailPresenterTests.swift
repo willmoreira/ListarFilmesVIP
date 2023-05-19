@@ -13,7 +13,6 @@ final class FilmDetailPresenterTests: XCTestCase {
     var sut: FilmDetailPresenter!
     var vcSpy: FilmDetailViewControllerSpy!
     
-   
     override func setUp() {
         vcSpy = FilmDetailViewControllerSpy()
         sut = FilmDetailPresenter(viewController: vcSpy)
@@ -25,14 +24,13 @@ final class FilmDetailPresenterTests: XCTestCase {
         super.tearDown()
     }
     
-    
     func test() {
         // Given
         let film = Result(adult: false,
                           backdropPath: "teste",
                           genreIDS: [0],
                           id: 0,
-                          originalLanguage: .en,
+                          originalLanguage: "en",
                           originalTitle: "teste",
                           overview: "teste",
                           popularity: 0.0,
@@ -44,18 +42,14 @@ final class FilmDetailPresenterTests: XCTestCase {
                           voteCount: 0)
         let response = FilmDetailModel.FilmDetail.Response(film: film)
         
-        
-        
         // When
         sut.presentSetupMainView(response)
-
         
         // Then
         XCTAssertTrue(vcSpy.displaySetupMainViewCalled)
         XCTAssertEqual(vcSpy.viewModel?.film, response.film)
     }
 }
-
 
 class FilmDetailViewControllerSpy: UIViewController, FilmDetailDisplayLogic {
     

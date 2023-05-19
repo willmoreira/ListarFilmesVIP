@@ -16,7 +16,7 @@ protocol FilmListViewDelegate where Self: UIViewController {
     func goToDetailViewController(_ index: Int)
 }
 
-final class FilmListView: UIView {
+class FilmListView: UIView {
     
     weak var delegate: FilmListViewDelegate?
     lazy var listFilms: [Result] = []

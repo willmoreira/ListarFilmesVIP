@@ -43,8 +43,3 @@ extension CreateLoginPresenter: CreateLoginPresentationLogic {
         self.viewController?.displayShowAlert(viewModel)
     }
 }
-
-// MARK: - Private Zone
-private extension CreateLoginPresenter {
-    
-}

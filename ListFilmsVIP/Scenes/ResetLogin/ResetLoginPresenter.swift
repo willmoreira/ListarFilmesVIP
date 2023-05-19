@@ -43,8 +43,3 @@ extension ResetLoginPresenter: ResetLoginPresentationLogic {
         self.viewController?.displayStopLoading(viewModel)
     }
 }
-
-// MARK: - Private Zone
-private extension ResetLoginPresenter {
-    
-}

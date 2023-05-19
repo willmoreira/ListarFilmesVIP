@@ -41,8 +41,3 @@ extension FilmListInteractor: FilmListBusinessLogic {
         presenter.configureList(response)
     }
 }
-
-// MARK: - Private Zone
-private extension FilmListInteractor {
-  
-}

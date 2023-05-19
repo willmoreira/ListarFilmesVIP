@@ -143,8 +143,3 @@ extension LoginInteractor: LoginBusinessLogic {
         tryLogin(request: request)
     }
 }
-
-// MARK: - Private Zone
-private extension LoginInteractor {
-    
-}

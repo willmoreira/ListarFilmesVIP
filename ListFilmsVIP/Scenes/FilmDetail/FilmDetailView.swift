@@ -16,7 +16,7 @@ protocol FilmDetailViewDelegate where Self: UIViewController {
     
 }
 
-final class FilmDetailView: UIView {
+class FilmDetailView: UIView {
     weak var delegate: FilmDetailViewDelegate?
     var film: Result?
     

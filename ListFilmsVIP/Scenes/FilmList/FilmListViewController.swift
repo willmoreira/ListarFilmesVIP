@@ -16,10 +16,10 @@ protocol FilmListDisplayLogic where Self: UIViewController {
     func displayConfigureList(_ viewModel: FilmListModel.FormattedFilmList.ViewModel)
 }
 
-final class FilmListViewController: UIViewController {
-    private let mainView: FilmListView
-    private var interactor: FilmListInteractable!
-    private var router: (FilmListRouting & FilmListDataPassing)!
+class FilmListViewController: BaseUIViewController {
+    var mainView: FilmListView
+    var interactor: FilmListInteractable!
+    var router: (FilmListRouting & FilmListDataPassing)!
     
     init(mainView: FilmListView, dataSource: FilmListModel.DataSource) {
         self.mainView = mainView
@@ -44,18 +44,14 @@ final class FilmListViewController: UIViewController {
     override func loadView() {
         view = mainView
     }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
-    }
 }
 
 // MARK: - FilmListDisplayLogic
 extension FilmListViewController: FilmListDisplayLogic {
     func displayConfigureList(_ viewModel: FilmListModel.FormattedFilmList.ViewModel) {
-        guard let view = self.view as? FilmListView else { return }
-        view.listFilms = viewModel.list.results
+        if let view = self.view as? FilmListView {
+            view.listFilms = viewModel.list.results
+        }
     }
 }
 
@@ -64,9 +60,4 @@ extension FilmListViewController: FilmListViewDelegate {
     func goToDetailViewController(_ index: Int) {
         router.routeToFilmDetail(index)
     }
-}
-
-// MARK: - Private Zone
-private extension FilmListViewController {
-
 }

@@ -33,8 +33,3 @@ final class FilmDetailRouter:  FilmDetailDataPassing{
 extension FilmDetailRouter: FilmDetailRouting {
     
 }
-
-// MARK: - Private Zone
-private extension FilmDetailRouter {
-   
-}

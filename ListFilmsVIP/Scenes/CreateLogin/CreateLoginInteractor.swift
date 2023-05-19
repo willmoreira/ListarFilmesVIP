@@ -97,8 +97,3 @@ extension CreateLoginInteractor: CreateLoginBusinessLogic {
         tryCreateLogin(request: request)
     }
 }
-
-// MARK: - Private Zone
-private extension CreateLoginInteractor {
-    
-}

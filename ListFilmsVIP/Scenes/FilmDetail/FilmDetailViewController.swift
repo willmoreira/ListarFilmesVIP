@@ -16,8 +16,8 @@ protocol FilmDetailDisplayLogic where Self: UIViewController {
     func displaySetupMainView(_ viewModel: FilmDetailModel.FilmDetail.ViewModel)
 }
 
-final class FilmDetailViewController: UIViewController {
-    let mainView: FilmDetailView
+final class FilmDetailViewController: BaseUIViewController {
+    var mainView: FilmDetailView
     var interactor: FilmDetailInteractable!
     var router: FilmDetailRouting!
     
@@ -42,28 +42,19 @@ final class FilmDetailViewController: UIViewController {
     override func loadView() {
         view = mainView
     }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
-    }
 }
 
 // MARK: - FilmDetailDisplayLogic
 extension FilmDetailViewController: FilmDetailDisplayLogic {
     func displaySetupMainView(_ viewModel: FilmDetailModel.FilmDetail.ViewModel) {
-        guard let view = self.view as? FilmDetailView else { return }
-        view.film  = viewModel.film
-        view.updateFilm()
+        if let view = self.view as? FilmDetailView {
+            view.film  = viewModel.film
+            view.updateFilm()
+        }
     }
 }
 
 // MARK: - FilmDetailViewDelegate
 extension FilmDetailViewController: FilmDetailViewDelegate {
   
-}
-
-// MARK: - Private Zone
-private extension FilmDetailViewController {
-   
 }

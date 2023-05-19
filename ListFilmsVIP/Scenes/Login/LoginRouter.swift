@@ -63,8 +63,3 @@ extension LoginRouter: LoginRouting {
         }
     }
 }
-
-// MARK: - Private Zone
-private extension LoginRouter {
-   
-}

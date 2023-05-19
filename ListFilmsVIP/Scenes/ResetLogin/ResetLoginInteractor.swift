@@ -73,8 +73,3 @@ extension ResetLoginInteractor: ResetLoginBusinessLogic {
         tryResetLogin(request: request)
     }
 }
-
-// MARK: - Private Zone
-private extension ResetLoginInteractor {
-    
-}

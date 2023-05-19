@@ -24,7 +24,7 @@ final class FilmListInteractorTests: XCTestCase {
                     backdropPath: "",
                     genreIDS: [0],
                     id: 0,
-                    originalLanguage: .en,
+                    originalLanguage: "",
                     originalTitle: "",
                     overview: "",
                     popularity: 0.0,
@@ -54,6 +54,7 @@ final class FilmListInteractorTests: XCTestCase {
     func testConfigureList() {
         //Given
         let request = FilmListModel.FilmList.Request()
+        
         //When
         sut.configureList(request)
         
@@ -72,7 +73,7 @@ class FilmListPresentationLogicMock: FilmListPresentationLogic {
                 backdropPath: "",
                 genreIDS: [0],
                 id: 0,
-                originalLanguage: .en,
+                originalLanguage: "en",
                 originalTitle: "",
                 overview: "",
                 popularity: 0.0,

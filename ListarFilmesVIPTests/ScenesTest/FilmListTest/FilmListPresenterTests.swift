@@ -9,7 +9,7 @@ import XCTest
 @testable import ListarFilmesVIP
 
 final class FilmListPresenterTests: XCTestCase {
-
+    
     var sut: FilmListPresenter!
     var vcSpy: FilmListViewControllerSpy!
     
@@ -25,63 +25,65 @@ final class FilmListPresenterTests: XCTestCase {
     }
     
     func testConfigureList() {
-        
         // Given
-        let response = FilmListModel.FilmList.Response(list: FilmModel(
-            page: 0,
-            results: [Result(adult: false,
-                             backdropPath: "teste",
-                             genreIDS: [0],
-                             id: 0,
-                             originalLanguage: .en,
-                             originalTitle: "teste",
-                             overview: "teste",
-                             popularity: 0.0,
-                             posterPath: "teste",
-                             releaseDate: "01 de outubro de 2023",
-                             title: "teste",
-                             video: false,
-                             voteAverage: 0.0,
-                             voteCount: 0)],
-            totalPages: 1,
-            totalResults: 1))
-        // When
+        let response = FilmListModel.FilmList.Response(
+            list: FilmModel(
+                page: 0,
+                results: [Result(
+                    adult: false,
+                    backdropPath: "teste",
+                    genreIDS: [0],
+                    id: 0,
+                    originalLanguage: "en",
+                    originalTitle: "teste",
+                    overview: "teste",
+                    popularity: 0.0,
+                    posterPath: "teste",
+                    releaseDate: "01 de outubro de 2023",
+                    title: "teste",
+                    video: false,
+                    voteAverage: 0.0,
+                    voteCount: 0)],
+                totalPages: 1,
+                totalResults: 1))
         
+        // When
         sut.configureList(response)
         
         // Then
         XCTAssertTrue(vcSpy.displayConfigureListCalled)
         XCTAssertEqual(vcSpy.viewModel.list, response.list)
-        
     }
     
     func testFormatReleaseDate() {
-            // Crie dados de teste
-        let filmModel = FilmModel(page: 1,
-                                  results: [Result(adult: false,
-                                                   backdropPath: "/image.jpg",
-                                                   genreIDS: [1,2,3],
-                                                   id: 1,
-                                                   originalLanguage: .en,
-                                                   originalTitle: "Movie",
-                                                   overview: "Description",
-                                                   popularity: 1.2,
-                                                   posterPath: "/image.jpg",
-                                                   releaseDate: "2021-05-11",
-                                                   title: "Movie",
-                                                   video: false,
-                                                   voteAverage: 7.5,
-                                                   voteCount: 500)],
-                                  totalPages: 1,
-                                  totalResults: 1)
-            
-            // Chame a função a ser testada
-            let result = sut.formatReleaseDate(films: filmModel)
-            
-            // Verifique se o resultado está correto
-            let expectedReleaseDate = "11 de maio de 2021"
-            XCTAssertEqual(result.results.first?.releaseDate, expectedReleaseDate)
-        }
+        // Given
+        let filmModel = FilmModel(
+            page: 1,
+            results: [Result(
+                adult: false,
+                backdropPath: "/image.jpg",
+                genreIDS: [1,2,3],
+                id: 1,
+                originalLanguage: "en",
+                originalTitle: "Movie",
+                overview: "Description",
+                popularity: 1.2,
+                posterPath: "/image.jpg",
+                releaseDate: "2021-05-11",
+                title: "Movie",
+                video: false,
+                voteAverage: 7.5,
+                voteCount: 500)],
+            totalPages: 1,
+            totalResults: 1)
+        
+        // When
+        let result = sut.formatReleaseDate(films: filmModel)
+        
+        // Then
+        let expectedReleaseDate = "11 de maio de 2021"
+        XCTAssertEqual(result.results.first?.releaseDate, expectedReleaseDate)
+    }
 }
 
 
@@ -90,20 +92,21 @@ class FilmListViewControllerSpy: UIViewController, FilmListDisplayLogic {
     var displayConfigureListCalled = false
     var viewModel = FilmListModel.FormattedFilmList.ViewModel(list: FilmModel(
         page: 0,
-        results: [Result(adult: false,
-                         backdropPath: "teste",
-                         genreIDS: [0],
-                         id: 0,
-                         originalLanguage: .en,
-                         originalTitle: "teste",
-                         overview: "teste",
-                         popularity: 0.0,
-                         posterPath: "teste",
-                         releaseDate: "2023-10-01",
-                         title: "teste",
-                         video: false,
-                         voteAverage: 0.0,
-                         voteCount: 0)],
+        results: [Result(
+            adult: false,
+            backdropPath: "teste",
+            genreIDS: [0],
+            id: 0,
+            originalLanguage: "en",
+            originalTitle: "teste",
+            overview: "teste",
+            popularity: 0.0,
+            posterPath: "teste",
+            releaseDate: "2023-10-01",
+            title: "teste",
+            video: false,
+            voteAverage: 0.0,
+            voteCount: 0)],
         totalPages: 1,
         totalResults: 1))
     

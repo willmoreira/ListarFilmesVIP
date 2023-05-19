@@ -18,7 +18,7 @@ protocol CreateLoginDisplayLogic where Self: UIViewController {
     func displayStopLoading(_ viewModel: CreateLoginModel.CreateLogin.ViewModel)
 }
 
-final class CreateLoginViewController: UIViewController {
+final class CreateLoginViewController: BaseUIViewController {
     let mainView: CreateLoginView
     var interactor: CreateLoginInteractable!
     var router: CreateLoginRouting!
@@ -40,11 +40,6 @@ final class CreateLoginViewController: UIViewController {
     override func loadView() {
         view = mainView
     }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented, You should't initialize the ViewController through Storyboards")
-    }
 }
 
 
@@ -59,6 +54,7 @@ extension CreateLoginViewController: CreateLoginDisplayLogic {
     }
     
     func displayShowAlert(_ viewModel: CreateLoginModel.CreateLogin.ViewModel) {
+        //TODO: PReciso encapsular o alert para testa-lo
         let alert = UIAlertController(title: viewModel.titleMessage, message: viewModel.message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             if viewModel.titleMessage == "Sucesso!" {
@@ -70,25 +66,10 @@ extension CreateLoginViewController: CreateLoginDisplayLogic {
     }
 }
 
-extension UIViewController {
-    func showAlert(title: String, message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
-    }
-}
-
-
 // MARK: - CreateLoginViewDelegate
 extension CreateLoginViewController: CreateLoginViewDelegate {
     func createButtonPressed() {
         let request = CreateLoginModel.CreateLogin.Request(password: mainView.inputSenha.text ,login: mainView.inputLogin.text)
         interactor.doCreateLogin(request)
     }
-}
-
-// MARK: - Private Zone
-private extension CreateLoginViewController {
-    
 }

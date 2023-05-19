@@ -26,7 +26,7 @@ final class LoginInteractorTests: XCTestCase {
                     backdropPath: "",
                     genreIDS: [0],
                     id: 0,
-                    originalLanguage: .en,
+                    originalLanguage: "",
                     originalTitle: "",
                     overview: "",
                     popularity: 0.0,
@@ -137,7 +137,6 @@ final class LoginInteractorTests: XCTestCase {
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
         XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Erro no campo Senha")
         XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "Preencha o campo Senha")
-
     }
     
     func testDoLoginFieldLoginEmpty() {
@@ -151,7 +150,6 @@ final class LoginInteractorTests: XCTestCase {
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
         XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Erro no campo Email")
         XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "Preencha o campo Email")
-
     }
     
     func testDoLoginSuccess() {
@@ -163,7 +161,6 @@ final class LoginInteractorTests: XCTestCase {
       
         // Then
         XCTAssertTrue(presenterMock.presentStartLoadingCalled)
-
     }
     
     func testCleanTextFields() {
@@ -185,16 +182,13 @@ final class LoginInteractorTests: XCTestCase {
      
         // When
         sut.searchFilmList(apiKey: apiKey, urlString: urlString)
-        
-        
-        // Verificar se a lista de filmes foi preenchida após receber a resposta da API
+                
         // Then
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             XCTAssertNotNil(self.sut.dataSource.filmModelList, "A lista de filmes não deve ser nula")
             XCTAssertFalse(self.sut.dataSource.filmModelList.results.isEmpty, "A lista de filmes não deve estar vazia")
             expectation.fulfill()
         }
-        
         wait(for: [expectation], timeout: 10.0)
     }
 }

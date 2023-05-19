@@ -28,8 +28,3 @@ final class CreateLoginRouter {
 extension CreateLoginRouter: CreateLoginRouting {
     
 }
-
-// MARK: - Private Zone
-private extension CreateLoginRouter {
-    
-}

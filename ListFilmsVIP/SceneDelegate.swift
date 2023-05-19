@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                   backdropPath: "",
                                                   genreIDS: [0],
                                                   id: 0,
-                                                  originalLanguage: .en,
+                                                  originalLanguage: "",
                                                   originalTitle: "",
                                                   overview: "",
                                                   popularity: 0.0,

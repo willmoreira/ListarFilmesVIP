@@ -45,29 +45,38 @@ final class CreateLoginViewControllerTests: XCTestCase {
     }
     
     func testCreateButtonPressed_ShouldCallInteractorWithRequest() {
-        sut.mainView.inputSenha.text = "password"
-        sut.mainView.inputLogin.text = "email@example.com"
+        //Given
+        mainViewMock.inputSenha.text = "password"
+        mainViewMock.inputLogin.text = "email@example.com"
         
+        //When
         sut.createButtonPressed()
         
+        //Then
         XCTAssertTrue(interactorMock.doCreateLoginCalled)
         XCTAssertEqual(interactorMock.request?.password, "password")
         XCTAssertEqual(interactorMock.request?.login, "email@example.com")
     }
     
     func testDisplayStartLoading_ShouldStartActivityIndicator() {
+        //Given
         let viewModel = CreateLoginModel.CreateLogin.ViewModel()
         
+        //When
         sut.displayStartLoading(viewModel)
         
+        //Then
         XCTAssertTrue(mainViewMock.activityIndicatorStartAnimatingCalled)
     }
     
     func testDisplayStopLoading_ShouldStopActivityIndicator() {
+        //Given
         let viewModel = CreateLoginModel.CreateLogin.ViewModel()
         
+        //When
         sut.displayStopLoading(viewModel)
         
+        //Then
         XCTAssertTrue(mainViewMock.activityIndicatorStopAnimatingCalled)
     }
     
@@ -106,11 +115,7 @@ final class CreateLoginViewControllerTests: XCTestCase {
         override func stopAnimating() {
             activityIndicatorStopAnimatingCalled = true
         }
-        
-        func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?) {
-            alertControllerPresentedCalled = true
-            presentedAlertController = viewControllerToPresent as? UIAlertController
-        }
     }
+    
 }
 

@@ -41,8 +41,3 @@ extension FilmDetailInteractor: FilmDetailBusinessLogic {
         presenter.presentSetupMainView(response)
     }
 }
-
-// MARK: - Private Zone
-private extension FilmDetailInteractor {
-    
-}
