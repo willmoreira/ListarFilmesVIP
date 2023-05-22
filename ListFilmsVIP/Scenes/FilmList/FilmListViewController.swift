@@ -37,8 +37,6 @@ class FilmListViewController: BaseUIViewController {
 
         let request = FilmListModel.FilmList.Request()
         interactor.configureList(request)
-        
-        //interactor.setupMainView(request)
     }
     
     override func loadView() {

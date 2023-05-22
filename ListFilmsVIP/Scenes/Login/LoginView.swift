@@ -19,7 +19,7 @@ protocol LoginViewDelegate where Self: UIViewController {
     func dismissKeyboard()
 }
 
-final class LoginView: UIView {
+class LoginView: UIView {
     
     weak var delegate: LoginViewDelegate?
     
@@ -85,6 +85,23 @@ final class LoginView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupInit()
+    }
+    
+    func startAnimating() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopAnimating() {
+        activityIndicator.stopAnimating()
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        DispatchQueue.main.async { [weak self] in
+            self?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        }
     }
     
     private func setupInit() {

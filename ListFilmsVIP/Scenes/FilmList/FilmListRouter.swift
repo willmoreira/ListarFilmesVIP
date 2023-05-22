@@ -45,15 +45,3 @@ extension FilmListRouter: FilmListRouting {
         }
     }
 }
-
-// MARK: - Private Zone
-private extension FilmListRouter {
-    
-    func dismissFilmListScene() {
-        viewController?.dismiss(animated: true)
-    }
-    
-    func showXSceneBy(_ data: Int) {
-        print("will show the next screen")
-    }
-}

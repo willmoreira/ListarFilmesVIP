@@ -18,7 +18,7 @@ protocol ResetLoginDisplayLogic where Self: UIViewController {
     func displayShowAlert(_ viewModel: ResetLoginModel.ResetLogin.ViewModel)
 }
 
-final class ResetLoginViewController: BaseUIViewController {
+class ResetLoginViewController: BaseUIViewController {
     var mainView: ResetLoginView
     var interactor: ResetLoginInteractable!
     var router: ResetLoginRouting!

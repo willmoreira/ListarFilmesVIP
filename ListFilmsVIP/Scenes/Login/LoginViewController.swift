@@ -22,9 +22,9 @@ protocol LoginDisplayLogic where Self: UIViewController {
 
 final class LoginViewController: BaseUIViewController {
     
-    private let mainView: LoginView
-    private var interactor: LoginInteractable!
-    private var router: (LoginRouting & LoginDataPassing)!
+    var mainView: LoginView
+    var interactor: LoginInteractable!
+    var router: (LoginRouting & LoginDataPassing)!
     
     init(mainView: LoginView, dataSource: LoginModel.DataSource) {
         self.mainView = mainView
@@ -66,18 +66,17 @@ extension LoginViewController: LoginDisplayLogic {
     }
     
     func displayStartLoading(_ viewModel: LoginModel.Login.ViewModel) {
-        mainView.activityIndicator.startAnimating()
+        mainView.startAnimating()
     }
     
     func displayStopLoading(_ viewModel: LoginModel.Login.ViewModel) {
-        mainView.activityIndicator.stopAnimating()
+        mainView.stopAnimating()
     }
     
     func displayShowAlert(_ viewModel: LoginModel.Login.ViewModel) {
-        let alert = UIAlertController(title: viewModel.titleMessage, message: viewModel.message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
+        if let title = viewModel.titleMessage, let message = viewModel.message {
+            mainView.showAlert(title: title, message: message)
+        }
     }
 }
 
