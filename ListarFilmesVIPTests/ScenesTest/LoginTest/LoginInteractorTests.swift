@@ -193,13 +193,6 @@ final class LoginInteractorTests: XCTestCase {
     }
 }
 
-class LoginWorkerMock: LoginWorkerProtocol {
-    var singInCompletion: ((String, String,((AuthDataResult?, Error?) -> Void)?) -> Void)?
-    func signIn(withEmail: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?) {
-        singInCompletion?(withEmail, password, completion)
-    }
-}
-
 class LoginPresentationLogicMock: LoginPresentationLogic {
     
     var presentGoToListFilmCalled = false

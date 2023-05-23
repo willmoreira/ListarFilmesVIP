@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		743621A62A1CE45E00FE3C9B /* LoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743621A52A1CE45E00FE3C9B /* LoginWorkerTests.swift */; };
+		743621A82A1CE8CF00FE3C9B /* ResetLoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743621A72A1CE8CF00FE3C9B /* ResetLoginWorkerTests.swift */; };
+		743621AA2A1CEC1C00FE3C9B /* CreateLoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743621A92A1CEC1C00FE3C9B /* CreateLoginWorkerTests.swift */; };
 		743952472A1C05CC009772AE /* FilmListRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743952462A1C05CC009772AE /* FilmListRouterTests.swift */; };
 		743952492A1C0867009772AE /* LoginRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743952482A1C0867009772AE /* LoginRouterTests.swift */; };
 		74688EAC2A12A331001CD85F /* CreateLoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74688EAB2A12A331001CD85F /* CreateLoginWorker.swift */; };
@@ -98,6 +101,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		743621A52A1CE45E00FE3C9B /* LoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
+		743621A72A1CE8CF00FE3C9B /* ResetLoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginWorkerTests.swift; sourceTree = "<group>"; };
+		743621A92A1CEC1C00FE3C9B /* CreateLoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginWorkerTests.swift; sourceTree = "<group>"; };
 		743952462A1C05CC009772AE /* FilmListRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListRouterTests.swift; sourceTree = "<group>"; };
 		743952482A1C0867009772AE /* LoginRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouterTests.swift; sourceTree = "<group>"; };
 		74688EAB2A12A331001CD85F /* CreateLoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginWorker.swift; sourceTree = "<group>"; };
@@ -329,6 +335,7 @@
 				74AF5D5D2A0BE30900A26173 /* ResetLoginInteractorTests.swift */,
 				74AF5D5B2A0BE2B900A26173 /* ResetLoginPresenterTests.swift */,
 				74AF5D422A0ACEE900A26173 /* ResetLoginViewControllerTests.swift */,
+				743621A72A1CE8CF00FE3C9B /* ResetLoginWorkerTests.swift */,
 			);
 			path = ResetLoginTest;
 			sourceTree = "<group>";
@@ -339,6 +346,7 @@
 				74AF5D4C2A0BDA3F00A26173 /* CreateLoginInteractorTests.swift */,
 				74AF5D592A0BE24D00A26173 /* CreateLoginPresenterTests.swift */,
 				74AF5D4A2A0BD94C00A26173 /* CreateLoginViewControllerTests.swift */,
+				743621A92A1CEC1C00FE3C9B /* CreateLoginWorkerTests.swift */,
 			);
 			path = CreateLoginTest;
 			sourceTree = "<group>";
@@ -371,6 +379,7 @@
 				74AF5D612A0BE38000A26173 /* LoginPresenterTests.swift */,
 				743952482A1C0867009772AE /* LoginRouterTests.swift */,
 				74AF5D5F2A0BE36100A26173 /* LoginViewControllerTests.swift */,
+				743621A52A1CE45E00FE3C9B /* LoginWorkerTests.swift */,
 			);
 			path = LoginTest;
 			sourceTree = "<group>";
@@ -582,14 +591,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				74AF5D5C2A0BE2B900A26173 /* ResetLoginPresenterTests.swift in Sources */,
+				743621AA2A1CEC1C00FE3C9B /* CreateLoginWorkerTests.swift in Sources */,
 				74AF5D622A0BE38000A26173 /* LoginPresenterTests.swift in Sources */,
 				74AF5D4D2A0BDA3F00A26173 /* CreateLoginInteractorTests.swift in Sources */,
 				74AF5D702A0BE45F00A26173 /* FilmDetailInteractorTests.swift in Sources */,
+				743621A82A1CE8CF00FE3C9B /* ResetLoginWorkerTests.swift in Sources */,
 				74AF5D5A2A0BE24D00A26173 /* CreateLoginPresenterTests.swift in Sources */,
 				74AF5D432A0ACEE900A26173 /* ResetLoginViewControllerTests.swift in Sources */,
 				74AF5D602A0BE36100A26173 /* LoginViewControllerTests.swift in Sources */,
 				74AF5D6A2A0BE3FE00A26173 /* FilmListInteractorTests.swift in Sources */,
 				74AF5D5E2A0BE30900A26173 /* ResetLoginInteractorTests.swift in Sources */,
+				743621A62A1CE45E00FE3C9B /* LoginWorkerTests.swift in Sources */,
 				743952472A1C05CC009772AE /* FilmListRouterTests.swift in Sources */,
 				74AF5D662A0BE3C700A26173 /* FilmListViewControllerTests.swift in Sources */,
 				743952492A1C0867009772AE /* LoginRouterTests.swift in Sources */,

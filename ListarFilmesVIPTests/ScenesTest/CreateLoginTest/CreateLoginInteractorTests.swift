@@ -171,11 +171,3 @@ class CreateLoginPresentationLogicMock: CreateLoginPresentationLogic {
         presentStopLoadingCalled = true
     }
 }
-
-class CreateLoginWorkerMock: CreateLoginWorkerProtocol {
-    var createUserCompletion: ((String, String,((AuthDataResult?, Error?) -> Void)?) -> Void)?
-    
-    func createUser(withEmail: String, password: String, completion: ((AuthDataResult?, Error?) -> Void)?) {
-        createUserCompletion?(withEmail, password, completion)
-    }
-}

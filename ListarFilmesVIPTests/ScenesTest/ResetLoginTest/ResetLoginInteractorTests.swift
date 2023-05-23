@@ -120,12 +120,5 @@ class ResetLoginPresentationLogicMock: ResetLoginPresentationLogic {
     }
 }
 
-class ResetLoginWorkerMock: ResetLoginWorkerProtocol {
-    
-    var resetUserCompletion: ((String,((Error?) -> Void)?) -> Void)?
-    
-    func resetUser(withEmail: String, completion: ((Error?) -> Void)?) {
-        resetUserCompletion?(withEmail, completion)
-    }
-}
+
 

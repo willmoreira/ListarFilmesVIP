@@ -6,30 +6,59 @@
 //
 
 import XCTest
+@testable import ListarFilmesVIP
 
 final class FilmListRouterTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    var viewControllerMock: UIViewController!
+    var sut: FilmListRouter!
+    var dataSourceMock: FilmListDataStore!
+    
+    override func setUp() {
+        super.setUp()
+        
+        viewControllerMock = UIViewController()
+        sut = FilmListRouter(viewController: viewControllerMock)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func tearDown() {
+        viewControllerMock = nil
+        sut = nil
+        
+        super.tearDown()
     }
+}
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+class NavigationMock: UINavigationController {
+    var pushViewControllerCalled = false
+    var pushedViewController: UIViewController?
+    var pushedCompletion: (() -> Void)?
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        pushViewControllerCalled = true
+        pushedViewController = viewController
+        pushedCompletion?()
     }
+}
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+class FilmListDataStoreMock: FilmListDataStore {
+    var dataSource: FilmListModel.DataSource = FilmListModel.DataSource(filmModelList: FilmModel(
+        page: 0,
+        results: [Result(
+            adult: false,
+            backdropPath: "teste",
+            genreIDS: [0],
+            id: 0,
+            originalLanguage: "en",
+            originalTitle: "teste",
+            overview: "teste",
+            popularity: 0.0,
+            posterPath: "teste",
+            releaseDate: "01 de outubro de 2023",
+            title: "teste",
+            video: false,
+            voteAverage: 0.0,
+            voteCount: 0)],
+        totalPages: 1,
+        totalResults: 1))
 }
