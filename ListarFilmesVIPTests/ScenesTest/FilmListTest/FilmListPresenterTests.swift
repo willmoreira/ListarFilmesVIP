@@ -49,9 +49,7 @@ final class FilmListPresenterTests: XCTestCase {
     }
 }
 
-
 class FilmListViewControllerSpy: UIViewController, FilmListDisplayLogic {
-    
     var displayConfigureListCalled = false
     var viewModel = FilmListModel.FormattedFilmList.ViewModel(list: ObjectSeeds.filmModel)
     func displayConfigureList(_ viewModel: ListarFilmesVIP.FilmListModel.FormattedFilmList.ViewModel) {

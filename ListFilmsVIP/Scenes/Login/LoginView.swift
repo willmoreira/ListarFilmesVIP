@@ -35,14 +35,14 @@ class LoginView: UIView {
     
     lazy var inputLogin: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Digite seu email"
+        textField.placeholder = ProjectStrings.enterEmail.localized
         textField.borderStyle = .roundedRect
         return textField
     }()
     
     lazy var inputSenha: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "Digite sua senha"
+        textField.placeholder = ProjectStrings.enterPassword.localized
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -59,7 +59,7 @@ class LoginView: UIView {
         let button = UIButton()
         button.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
         let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
-        let underlineAttributedString = NSAttributedString(string: "Recuperar senha", attributes: underlineAttribute)
+        let underlineAttributedString = NSAttributedString(string: ProjectStrings.recoverPassword.localized, attributes: underlineAttribute)
         button.setAttributedTitle(underlineAttributedString, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -70,7 +70,7 @@ class LoginView: UIView {
         let button = UIButton()
         button.addTarget(self, action: #selector(createButtonPressed), for: .touchUpInside)
         let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
-        let underlineAttributedString = NSAttributedString(string: "Criar Conta", attributes: underlineAttribute)
+        let underlineAttributedString = NSAttributedString(string: ProjectStrings.createAccount.localized, attributes: underlineAttribute)
         button.setAttributedTitle(underlineAttributedString, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -96,7 +96,7 @@ class LoginView: UIView {
     
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default)
+        let okAction = UIAlertAction(title: ProjectStrings.ok.localized, style: .default)
         alertController.addAction(okAction)
         DispatchQueue.main.async { [weak self] in
             self?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
@@ -104,12 +104,12 @@ class LoginView: UIView {
     }
     
     private func setupInit() {
-        self.titleView.text = "APP LISTA DE FILMES"
-        self.titleLoginLabel.text = "Email"
+        self.titleView.text = ProjectStrings.titleLoginView.localized
+        self.titleLoginLabel.text = ProjectStrings.email.localized
         self.inputLogin = inputLogin
-        self.titleSenhaLabel.text = "Senha"
+        self.titleSenhaLabel.text = ProjectStrings.password.localized
         self.inputSenha = inputSenha
-        self.loginButton.setTitle("Entrar", for: .normal)
+        self.loginButton.setTitle(ProjectStrings.enter.localized, for: .normal)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.addGestureRecognizer(tapGesture)
         setupLayout()

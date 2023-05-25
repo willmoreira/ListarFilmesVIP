@@ -1,0 +1,50 @@
+//
+//  String.string
+//  ListarFilmesVIPTests
+//
+//  Created by William Moreira on 25/05/23.
+//
+
+"success" = "Sucesso!";
+"anyPassword" = "teste123";
+"sortPassword" = "teste";
+"incorretEmail" = "teste.com";
+"newEmail" = "teste&teste@mgail.com";
+"existingRealEmail" = "q@gmail.com";
+"existingPassword" = "123456";
+"anyLogin" = "teste@gmail.com";
+"stringEmpty" = "";
+"userSuccessfullyCreatedMessage" = "Usuario cadastrado com sucesso, faça o Login agora!";
+"incorrectEmailFormat" = "Formato do email incorreto!";
+"incorrectEmailFormatMessage" = "O endereço de e-mail não parece ser valido";
+"emailAlreadyInUse" = "Email já em uso!";
+"emailAlreadyInUseMessage" = "O endereço de e-mail já está sendo usado por outra conta.";
+"passwordRule" = "Regra de senha";
+"passwordRuleMessage" = "A senha deve ter 6 caracteres ou mais.";
+"errorInPasswordField" = "Erro no campo Senha";
+"errorInPasswordFieldMessage" = "Preencha o campo Senha";
+"errorInLoginField" = "Erro no campo Email";
+"errorInLoginFieldMessage" = "Preencha o campo Email";
+"alertTitle" = "Title";
+"alertMessage" = "Message";
+"userNotFound" = "Usuário não encontrado";
+"userNotFoundMessage" = "Não há registro de usuário correspondente a este email, confira o email ou cadastre um novo usuário.";
+"invalidPassword" = "Senha inválida!";
+"invalidPasswordMessage" = "A senha é inválida ou o usuário não possui uma senha.";
+"apiKey" = "ac894a60b6f5b4abf7ff6c58dbc67ced";
+"urlString" = "https://api.themoviedb.org/3/movie/popular?api_key=";
+"listOfMoviesMustNotBeNull" = "A lista de filmes não deve ser nula";
+"movieListMustNotBeEmpty" =  "A lista de filmes não deve estar vazia";
+"guidelinesHaveBeenSentToYourEmail" = "As orientações foram enviadas para seu email!";
+"userNotFoundMessage2" = "Não há registro de usuário correspondente a este identificador. O usuário pode ter sido excluído.";
+"back" = "Voltar";
+"especificDate" = "11 de maio de 2021";
+"enterEmail" = "Digite seu email";
+"enterPassword" = "Digite sua senha";
+"recoverPassword" = "Recuperar senha";
+"createAccount" = "Criar Conta";
+"titleLoginView" = "APP LISTA DE FILMES";
+"email" = "Email";
+"password" = "Senha";
+"enter" = "Entrar";
+"ok" = "OK";
