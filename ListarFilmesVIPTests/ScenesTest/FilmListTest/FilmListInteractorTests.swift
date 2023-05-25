@@ -51,13 +51,7 @@ final class FilmListInteractorTests: XCTestCase {
 
 class FilmListPresentationLogicMock: FilmListPresentationLogic {
     var presentConfigureListCalled = false
-    var presentConfigureListResponse = FilmListModel.FilmList.Response(
-        list: FilmModel(
-            page: 0,
-            results: [ObjectSeeds.result],
-            totalPages: 0,
-            totalResults: 0)
-    )
+    var presentConfigureListResponse = FilmListModel.FilmList.Response(list: ObjectSeeds.filmModel)
     
     func configureList(_ response: FilmListModel.FilmList.Response) {
         presentConfigureListCalled = true

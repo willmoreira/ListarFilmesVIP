@@ -105,9 +105,5 @@ final class LoginRouterTests: XCTestCase {
 }
 
 class LoginDataStoreMock: LoginDataStore {
-    var dataSource: LoginModel.DataSource = LoginModel.DataSource(filmModelList: FilmModel(
-        page: 0,
-        results: [ObjectSeeds.result],
-        totalPages: 1,
-        totalResults: 1))
+    var dataSource: LoginModel.DataSource = LoginModel.DataSource(filmModelList: ObjectSeeds.filmModel)
 }

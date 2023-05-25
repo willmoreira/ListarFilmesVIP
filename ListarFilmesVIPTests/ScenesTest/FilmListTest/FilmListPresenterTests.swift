@@ -26,26 +26,7 @@ final class FilmListPresenterTests: XCTestCase {
     
     func testConfigureList() {
         // Given
-        let response = FilmListModel.FilmList.Response(
-            list: FilmModel(
-                page: 0,
-                results: [Result(
-                    adult: false,
-                    backdropPath: "teste",
-                    genreIDS: [0],
-                    id: 0,
-                    originalLanguage: "en",
-                    originalTitle: "teste",
-                    overview: "teste",
-                    popularity: 0.0,
-                    posterPath: "teste",
-                    releaseDate: "01 de outubro de 2023",
-                    title: "teste",
-                    video: false,
-                    voteAverage: 0.0,
-                    voteCount: 0)],
-                totalPages: 1,
-                totalResults: 1))
+        let response = FilmListModel.FilmList.Response(list: ObjectSeeds.filmModelConvertedDate)
         
         // When
         sut.configureList(response)
@@ -57,17 +38,13 @@ final class FilmListPresenterTests: XCTestCase {
     
     func testFormatReleaseDate() {
         // Given
-        let filmModel = FilmModel(
-            page: 1,
-            results: [ObjectSeeds.result],
-            totalPages: 1,
-            totalResults: 1)
+        let filmModel = ObjectSeeds.filmModel
         
         // When
         let result = sut.formatReleaseDate(films: filmModel)
         
         // Then
-        let expectedReleaseDate = "11 de maio de 2021"
+        let expectedReleaseDate = TestStrings.especificDate
         XCTAssertEqual(result.results.first?.releaseDate, expectedReleaseDate)
     }
 }
@@ -76,12 +53,7 @@ final class FilmListPresenterTests: XCTestCase {
 class FilmListViewControllerSpy: UIViewController, FilmListDisplayLogic {
     
     var displayConfigureListCalled = false
-    var viewModel = FilmListModel.FormattedFilmList.ViewModel(list: FilmModel(
-        page: 0,
-        results: [ObjectSeeds.result],
-        totalPages: 1,
-        totalResults: 1))
-    
+    var viewModel = FilmListModel.FormattedFilmList.ViewModel(list: ObjectSeeds.filmModel)
     func displayConfigureList(_ viewModel: ListarFilmesVIP.FilmListModel.FormattedFilmList.ViewModel) {
         displayConfigureListCalled = true
         self.viewModel = viewModel

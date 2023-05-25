@@ -104,10 +104,10 @@ final class LoginViewControllerTests: XCTestCase {
     func testDisplayGoToFilmListCallsRoutesToListFilms() {
         
         // Given
-        let request = LoginModel.Login.Request()
+        let viewModel = LoginModel.Login.ViewModel()
         
         // When
-        sut.displayGoToFilmList(LoginModel.Login.ViewModel())
+        sut.displayGoToFilmList(viewModel)
         
         // Then
         XCTAssertTrue(routerMock.routeToListfilmsCalled)

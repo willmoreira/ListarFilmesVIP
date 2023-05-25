@@ -20,12 +20,7 @@ final class FilmListViewControllerTests: XCTestCase {
         super.setUp()
         mainViewMock = FilmListViewMock()
         routerMock = FilmListRouterMock()
-        dataSourceMock = FilmListModel.DataSource(
-            filmModelList: FilmModel(
-                page: 0,
-                results: [ObjectSeeds.result],
-                totalPages: 0,
-                totalResults: 0))
+        dataSourceMock = FilmListModel.DataSource(filmModelList: ObjectSeeds.filmModel)
         interactorMock = FilmListInteractableMock(dataSource: dataSourceMock)
         sut = FilmListViewController(mainView: mainViewMock, dataSource: dataSourceMock)
         sut.interactor = interactorMock
@@ -51,12 +46,7 @@ final class FilmListViewControllerTests: XCTestCase {
     
     func testDisplayConfigureList() {
         // Given
-        let viewModel = FilmListModel.FormattedFilmList.ViewModel(
-            list: FilmModel(
-                page: 0,
-                results: [ObjectSeeds.result],
-                totalPages: 0,
-                totalResults: 0))
+        let viewModel = FilmListModel.FormattedFilmList.ViewModel(list: ObjectSeeds.filmModel)
         
         // When
         sut.displayConfigureList(viewModel)

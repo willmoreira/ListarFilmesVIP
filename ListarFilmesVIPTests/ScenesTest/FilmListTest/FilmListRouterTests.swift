@@ -66,9 +66,5 @@ class NavigationMock: UINavigationController {
 }
 
 class FilmListDataStoreMock: FilmListDataStore {
-    var dataSource: FilmListModel.DataSource = FilmListModel.DataSource(filmModelList: FilmModel(
-        page: 0,
-        results: [ObjectSeeds.result],
-        totalPages: 1,
-        totalResults: 1))
+    var dataSource: FilmListModel.DataSource = FilmListModel.DataSource(filmModelList: ObjectSeeds.filmModel)
 }

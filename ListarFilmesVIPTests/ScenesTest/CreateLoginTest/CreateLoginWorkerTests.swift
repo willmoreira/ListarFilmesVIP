@@ -33,7 +33,7 @@ final class CreateLoginWorkerTests: XCTestCase {
         
         // When
         //Quando rodar os testes mudar o email, pois se o email existir vai dar erro
-        worker.createUser(withEmail: "q123456789@gmail.com", password: TestStrings.anyPassword) { result, error in
+        worker.createUser(withEmail: "q12345678901@gmail.com", password: TestStrings.anyPassword) { result, error in
             authResult = result
             authError = error
             expectation.fulfill()

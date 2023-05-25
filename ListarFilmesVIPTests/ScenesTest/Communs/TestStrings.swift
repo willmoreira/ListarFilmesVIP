@@ -7,9 +7,7 @@
 
 import Foundation
 
-
 struct TestStrings {
-    
     static let success = "Sucesso!"
     static let anyPassword = "teste123"
     static let sortPassword = "teste"
@@ -43,4 +41,5 @@ struct TestStrings {
     static let guidelinesHaveBeenSentToYourEmail = "As orientações foram enviadas para seu email!"
     static let userNotFoundMessage2 = "Não há registro de usuário correspondente a este identificador. O usuário pode ter sido excluído."
     static let back = "Voltar"
+    static let especificDate = "11 de maio de 2021"
 }

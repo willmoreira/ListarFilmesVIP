@@ -45,7 +45,6 @@ final class ResetLoginWorkerTests: XCTestCase {
         // Given
         let worker = ResetLoginWorker()
         let expectation = XCTestExpectation(description: "Reset in expectation error not found Login")
-        var authError: Error?
         
         // When
         worker.resetUser(withEmail: TestStrings.newEmail) { error in
@@ -55,7 +54,6 @@ final class ResetLoginWorkerTests: XCTestCase {
         
         // Then
         wait(for: [expectation], timeout: 5.0)
-        XCTAssertNil(authError)
     }
 }
 

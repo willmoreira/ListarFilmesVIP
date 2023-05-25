@@ -18,12 +18,7 @@ final class LoginInteractorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        dataSourceMock = LoginModel.DataSource(
-            filmModelList: FilmModel(
-                page: 0,
-                results: [ObjectSeeds.result],
-                totalPages: 0,
-                totalResults: 0))
+        dataSourceMock = LoginModel.DataSource(filmModelList: ObjectSeeds.filmModel)
         presenterMock = LoginPresentationLogicMock()
         loginWorkerMock = LoginWorkerMock()
         sut = LoginInteractor(viewController: nil,
@@ -166,7 +161,6 @@ final class LoginInteractorTests: XCTestCase {
         let apiKey = TestStrings.apiKey
         let urlString = TestStrings.urlString + apiKey
         
-     
         // When
         sut.searchFilmList(apiKey: apiKey, urlString: urlString)
                 
