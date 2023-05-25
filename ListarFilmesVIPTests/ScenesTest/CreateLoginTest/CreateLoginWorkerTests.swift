@@ -25,35 +25,36 @@ final class CreateLoginWorkerTests: XCTestCase {
     }
     
     func testCreateUserSuccess() {
-        //Given
+        // Given
         let worker = CreateLoginWorker()
         let expectation = XCTestExpectation(description: "Create user in expectation")
         var authResult: AuthDataResult?
         var authError: Error?
         
-        //When
+        // When
         //Quando rodar os testes mudar o email, pois se o email existir vai dar erro
-        worker.createUser(withEmail: "qwertyre@gmail.com", password: "123456") { result, error in
+        worker.createUser(withEmail: "q123456789@gmail.com", password: TestStrings.anyPassword) { result, error in
             authResult = result
             authError = error
             expectation.fulfill()
         }
         
-        //Then
+        // Then
         wait(for: [expectation], timeout: 5.0)
         XCTAssertNotNil(authResult)
         XCTAssertNil(authError)
     }
     
     func testCreateUserErrorUserExists() {
-        //Given
+        // Given
         let expectation = XCTestExpectation(description: "Sign in expectation")
         let worker = CreateLoginWorker()
-        let invalidEmail = "q@gmail.com"
-        let password = "123456"
+        let invalidEmail = TestStrings.existingRealEmail
+        let password = TestStrings.anyPassword
 
-        //When
+        // When
         worker.createUser(withEmail: invalidEmail, password: password) { (result, error) in
+            
             //Then
             XCTAssertNil(result)
             XCTAssertEqual((error as NSError?)?.code, AuthErrorCode.emailAlreadyInUse.rawValue)

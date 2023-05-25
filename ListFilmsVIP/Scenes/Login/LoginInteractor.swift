@@ -55,7 +55,7 @@ final class LoginInteractor: LoginDataStore {
                     }
                     if error.code == 17011 {
                         let response = LoginModel.Login.Response(
-                            titleMessage: "Usuario não encontrado!",
+                            titleMessage: "Usuário não encontrado",
                             message: "Não há registro de usuário correspondente a este email, confira o email ou cadastre um novo usuário.")
                         self.presenter.presentShowAlert(response)
                     }

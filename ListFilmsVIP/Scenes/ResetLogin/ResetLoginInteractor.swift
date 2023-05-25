@@ -66,7 +66,7 @@ final class ResetLoginInteractor: ResetLoginDataStore {
 extension ResetLoginInteractor: ResetLoginBusinessLogic {
     func doResetLogin(_ request: ResetLoginModel.ResetLogin.Request) {
         guard let username = request.login, !username.isEmpty else {
-            let response = ResetLoginModel.ResetLogin.Response(titleMessage: "Erro no campo Login", message: "Preencha o campo Login")
+            let response = ResetLoginModel.ResetLogin.Response(titleMessage: "Erro no campo Email", message: "Preencha o campo Email")
             presenter.presentShowAlert(response)
             return
         }

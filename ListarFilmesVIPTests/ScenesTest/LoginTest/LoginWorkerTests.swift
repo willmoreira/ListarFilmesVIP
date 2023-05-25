@@ -23,21 +23,21 @@ class LoginWorkerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testSignIn_WithValidCredentials_ReturnsAuthDataResult() {
-        //Given
+    func testSignInWithValidCredentialsReturnsAuthDataResult() {
+        // Given
         let worker = LoginWorker()
         let expectation = XCTestExpectation(description: "Sign in expectation")
         var authResult: AuthDataResult?
         var authError: Error?
         
-        //When
-        worker.signIn(withEmail: "q@gmail.com", password: "123456") { result, error in
+        // When
+        worker.signIn(withEmail: TestStrings.existingRealEmail, password: TestStrings.existingPassword) { result, error in
             authResult = result
             authError = error
             expectation.fulfill()
         }
         
-        //Then
+        // Then
         wait(for: [expectation], timeout: 5.0)
         XCTAssertNotNil(authResult)
         XCTAssertNil(authError)
@@ -45,16 +45,16 @@ class LoginWorkerTests: XCTestCase {
     
     func testSignInWithInvalidEmailReturnsErrorUserNotFound() {
         
-        //Given
+        // Given
         let expectation = XCTestExpectation(description: "Sign in expectation")
         let worker = LoginWorker()
-        let invalidEmail = "invalid@example.com"
-        let password = "password"
+        let invalidEmail = TestStrings.newEmail
+        let password = TestStrings.anyPassword
 
-        //When
+        // When
         worker.signIn(withEmail: invalidEmail, password: password) { (result, error) in
             
-            //Then
+            // Then
             XCTAssertNil(result)
             XCTAssertEqual((error as NSError?)?.code, AuthErrorCode.userNotFound.rawValue)
             expectation.fulfill()

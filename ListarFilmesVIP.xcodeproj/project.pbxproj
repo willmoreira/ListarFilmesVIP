@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74106C762A1F8FB500FF6740 /* FilmDetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74106C752A1F8FB500FF6740 /* FilmDetailViewTests.swift */; };
+		74106C782A1F952000FF6740 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74106C772A1F952000FF6740 /* BaseView.swift */; };
+		74106C7E2A1F996700FF6740 /* TestStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74106C7D2A1F996700FF6740 /* TestStrings.swift */; };
+		74106C802A1FC1AA00FF6740 /* ObjectSeeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74106C7F2A1FC1AA00FF6740 /* ObjectSeeds.swift */; };
 		743621A62A1CE45E00FE3C9B /* LoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743621A52A1CE45E00FE3C9B /* LoginWorkerTests.swift */; };
 		743621A82A1CE8CF00FE3C9B /* ResetLoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743621A72A1CE8CF00FE3C9B /* ResetLoginWorkerTests.swift */; };
 		743621AA2A1CEC1C00FE3C9B /* CreateLoginWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743621A92A1CEC1C00FE3C9B /* CreateLoginWorkerTests.swift */; };
@@ -101,6 +105,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		74106C752A1F8FB500FF6740 /* FilmDetailViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailViewTests.swift; sourceTree = "<group>"; };
+		74106C772A1F952000FF6740 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		74106C7D2A1F996700FF6740 /* TestStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStrings.swift; sourceTree = "<group>"; };
+		74106C7F2A1FC1AA00FF6740 /* ObjectSeeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSeeds.swift; sourceTree = "<group>"; };
 		743621A52A1CE45E00FE3C9B /* LoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorkerTests.swift; sourceTree = "<group>"; };
 		743621A72A1CE8CF00FE3C9B /* ResetLoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginWorkerTests.swift; sourceTree = "<group>"; };
 		743621A92A1CEC1C00FE3C9B /* CreateLoginWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginWorkerTests.swift; sourceTree = "<group>"; };
@@ -206,6 +214,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74106C7C2A1F995400FF6740 /* Communs */ = {
+			isa = PBXGroup;
+			children = (
+				74106C7D2A1F996700FF6740 /* TestStrings.swift */,
+				74106C7F2A1FC1AA00FF6740 /* ObjectSeeds.swift */,
+			);
+			path = Communs;
+			sourceTree = "<group>";
+		};
 		746F8E2B2A017FA200BD6452 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +374,7 @@
 				74AF5D6F2A0BE45F00A26173 /* FilmDetailInteractorTests.swift */,
 				74AF5D6D2A0BE44400A26173 /* FilmDetailPresenterTests.swift */,
 				74AF5D6B2A0BE42400A26173 /* FilmDetailViewControllerTests.swift */,
+				74106C752A1F8FB500FF6740 /* FilmDetailViewTests.swift */,
 			);
 			path = FilmDetailTest;
 			sourceTree = "<group>";
@@ -387,6 +405,7 @@
 		74AF5D492A0ACF9F00A26173 /* ScenesTest */ = {
 			isa = PBXGroup;
 			children = (
+				74106C7C2A1F995400FF6740 /* Communs */,
 				74AF5D452A0ACF3900A26173 /* CreateLoginTest */,
 				74AF5D462A0ACF4700A26173 /* FilmDetailTest */,
 				74AF5D472A0ACF6300A26173 /* FilmListTest */,
@@ -436,6 +455,7 @@
 			isa = PBXGroup;
 			children = (
 				74EA8C812A17B20600184F35 /* BaseUIViewController.swift */,
+				74106C772A1F952000FF6740 /* BaseView.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -597,12 +617,15 @@
 				74AF5D702A0BE45F00A26173 /* FilmDetailInteractorTests.swift in Sources */,
 				743621A82A1CE8CF00FE3C9B /* ResetLoginWorkerTests.swift in Sources */,
 				74AF5D5A2A0BE24D00A26173 /* CreateLoginPresenterTests.swift in Sources */,
+				74106C802A1FC1AA00FF6740 /* ObjectSeeds.swift in Sources */,
 				74AF5D432A0ACEE900A26173 /* ResetLoginViewControllerTests.swift in Sources */,
 				74AF5D602A0BE36100A26173 /* LoginViewControllerTests.swift in Sources */,
+				74106C762A1F8FB500FF6740 /* FilmDetailViewTests.swift in Sources */,
 				74AF5D6A2A0BE3FE00A26173 /* FilmListInteractorTests.swift in Sources */,
 				74AF5D5E2A0BE30900A26173 /* ResetLoginInteractorTests.swift in Sources */,
 				743621A62A1CE45E00FE3C9B /* LoginWorkerTests.swift in Sources */,
 				743952472A1C05CC009772AE /* FilmListRouterTests.swift in Sources */,
+				74106C7E2A1F996700FF6740 /* TestStrings.swift in Sources */,
 				74AF5D662A0BE3C700A26173 /* FilmListViewControllerTests.swift in Sources */,
 				743952492A1C0867009772AE /* LoginRouterTests.swift in Sources */,
 				74AF5D642A0BE3A600A26173 /* LoginInteractorTests.swift in Sources */,
@@ -653,6 +676,7 @@
 				74688EAE2A13BAAE001CD85F /* ResetLoginWorker.swift in Sources */,
 				746F8E8C2A01867000BD6452 /* FilmListRouter.swift in Sources */,
 				74B770C029FC06ED00800E4F /* CustomTableViewCell.swift in Sources */,
+				74106C782A1F952000FF6740 /* BaseView.swift in Sources */,
 				746F8EA62A01899800BD6452 /* ResetLoginInteractor.swift in Sources */,
 				746F8E832A01865000BD6452 /* FilmDetailView.swift in Sources */,
 				74EA8C822A17B20600184F35 /* BaseUIViewController.swift in Sources */,

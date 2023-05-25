@@ -21,21 +21,7 @@ final class LoginInteractorTests: XCTestCase {
         dataSourceMock = LoginModel.DataSource(
             filmModelList: FilmModel(
                 page: 0,
-                results: [Result(
-                    adult: false,
-                    backdropPath: "",
-                    genreIDS: [0],
-                    id: 0,
-                    originalLanguage: "",
-                    originalTitle: "",
-                    overview: "",
-                    popularity: 0.0,
-                    posterPath: "",
-                    releaseDate: "",
-                    title: "",
-                    video: false,
-                    voteAverage: 0.0,
-                    voteCount: 0)],
+                results: [ObjectSeeds.result],
                 totalPages: 0,
                 totalResults: 0))
         presenterMock = LoginPresentationLogicMock()
@@ -56,7 +42,7 @@ final class LoginInteractorTests: XCTestCase {
     
     func testTryLoginSucess() {
         // Given
-        let request = LoginModel.Login.Request(password: "teste123", login: "teste@gmail.com")
+        let request = LoginModel.Login.Request(password: TestStrings.anyPassword, login: TestStrings.anyLogin)
         loginWorkerMock.singInCompletion = { email, password, completion in
             completion?(nil, nil)
         }
@@ -71,7 +57,7 @@ final class LoginInteractorTests: XCTestCase {
     
     func testTryLoginErrorWrongEmailFormat() {
         // Given
-        let request = LoginModel.Login.Request(password: "teste123", login: "teste@gmail.com")
+        let request = LoginModel.Login.Request(password: TestStrings.anyPassword, login: TestStrings.incorretEmail)
         loginWorkerMock.singInCompletion = { email, password, completion in
             completion?(nil, NSError(domain:"", code: 17008, userInfo:nil))
         }
@@ -84,13 +70,13 @@ final class LoginInteractorTests: XCTestCase {
         XCTAssertTrue(presenterMock.presentStopLoadingCalled)
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
 
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Formato do email incorreto!")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "O endereço de e-mail não parece ser valido")
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.incorrectEmailFormat)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.incorrectEmailFormatMessage)
     }
     
     func testTryLoginUserNotFound() {
         // Given
-        let request = LoginModel.Login.Request(password: "teste123", login: "teste@gmail.com")
+        let request = LoginModel.Login.Request(password: TestStrings.anyPassword, login: TestStrings.newEmail)
         loginWorkerMock.singInCompletion = { email, password, completion in
             completion?(nil, NSError(domain:"", code: 17011, userInfo:nil))
         }
@@ -103,13 +89,13 @@ final class LoginInteractorTests: XCTestCase {
         XCTAssertTrue(presenterMock.presentStopLoadingCalled)
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
 
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Usuario não encontrado!")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "Não há registro de usuário correspondente a este email, confira o email ou cadastre um novo usuário.")
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.userNotFound)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.userNotFoundMessage)
     }
     
     func testTryLoginWrongPassword() {
         // Given
-        let request = LoginModel.Login.Request(password: "teste123", login: "teste@gmail.com")
+        let request = LoginModel.Login.Request(password: TestStrings.anyPassword, login: TestStrings.existingRealEmail)
         loginWorkerMock.singInCompletion = { email, password, completion in
             completion?(nil, NSError(domain:"", code: 17009, userInfo:nil))
         }
@@ -122,39 +108,39 @@ final class LoginInteractorTests: XCTestCase {
         XCTAssertTrue(presenterMock.presentStopLoadingCalled)
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
 
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Senha inválida!")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "A senha é inválida ou o usuário não possui uma senha.")
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.invalidPassword)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.invalidPasswordMessage)
     }
     
     func testDoLoginFieldPasswordEmpty() {
         // Given
-        let request = LoginModel.Login.Request(password: "", login: "teste@gmail.com")
+        let request = LoginModel.Login.Request(password: TestStrings.stringEmpty, login: TestStrings.anyLogin)
         
         // When
         sut.doLogin(request)
       
         // Then
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Erro no campo Senha")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "Preencha o campo Senha")
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.errorInPasswordField)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.errorInPasswordFieldMessage)
     }
     
     func testDoLoginFieldLoginEmpty() {
         // Given
-        let request = LoginModel.Login.Request(password: "123456", login: "")
+        let request = LoginModel.Login.Request(password: TestStrings.anyPassword, login: TestStrings.stringEmpty)
         
         // When
         sut.doLogin(request)
       
         // Then
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Erro no campo Email")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "Preencha o campo Email")
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.errorInLoginField)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.errorInLoginFieldMessage)
     }
     
     func testDoLoginSuccess() {
         // Given
-        let request = LoginModel.Login.Request(password: "123456", login: "teste@gmail.com")
+        let request = LoginModel.Login.Request(password: TestStrings.anyPassword, login: TestStrings.anyLogin)
         
         // When
         sut.doLogin(request)
@@ -165,7 +151,7 @@ final class LoginInteractorTests: XCTestCase {
     
     func testCleanTextFields() {
         // Given
-        let request = LoginModel.Login.Request(password: "123456", login: "teste@gmail.com")
+        let request = LoginModel.Login.Request(password: TestStrings.anyPassword, login: TestStrings.anyLogin)
         
         // When
         sut.cleanFields(request)
@@ -177,16 +163,17 @@ final class LoginInteractorTests: XCTestCase {
     func testSearchFilmList() {
         // Given
         let expectation = XCTestExpectation(description: "Receber resposta da API")
-        let apiKey = "ac894a60b6f5b4abf7ff6c58dbc67ced"
-        let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)"
+        let apiKey = TestStrings.apiKey
+        let urlString = TestStrings.urlString + apiKey
+        
      
         // When
         sut.searchFilmList(apiKey: apiKey, urlString: urlString)
                 
         // Then
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            XCTAssertNotNil(self.sut.dataSource.filmModelList, "A lista de filmes não deve ser nula")
-            XCTAssertFalse(self.sut.dataSource.filmModelList.results.isEmpty, "A lista de filmes não deve estar vazia")
+            XCTAssertNotNil(self.sut.dataSource.filmModelList, TestStrings.listOfMoviesMustNotBeNull)
+            XCTAssertFalse(self.sut.dataSource.filmModelList.results.isEmpty, TestStrings.movieListMustNotBeEmpty)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 10.0)

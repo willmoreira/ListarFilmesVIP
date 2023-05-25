@@ -37,7 +37,7 @@ final class ResetLoginInteractorTests: XCTestCase {
     
     func testResetLoginSucess() {
         // Given
-        let request = ResetLoginModel.ResetLogin.Request(login: "teste@gmail.com")
+        let request = ResetLoginModel.ResetLogin.Request(login: TestStrings.anyLogin)
         resetLoginMock.resetUserCompletion = { email, completion in
             completion?(nil)
         }
@@ -48,13 +48,13 @@ final class ResetLoginInteractorTests: XCTestCase {
         XCTAssertTrue(presenterMock.presentStartLoadingCalled)
         XCTAssertTrue(presenterMock.presentStopLoadingCalled)
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Sucesso!")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "As orientações foram enviadas para seu email!")
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.success)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.guidelinesHaveBeenSentToYourEmail)
     }
     
     func testResetLoginErrorUserNotFound() {
         // Given
-        let request = ResetLoginModel.ResetLogin.Request(login: "teste@gmail.com")
+        let request = ResetLoginModel.ResetLogin.Request(login: TestStrings.anyLogin)
         resetLoginMock.resetUserCompletion = { email, completion in
             completion?(NSError(domain:"", code: 17011, userInfo:nil))
         }
@@ -66,34 +66,33 @@ final class ResetLoginInteractorTests: XCTestCase {
         XCTAssertTrue(presenterMock.presentStartLoadingCalled)
         XCTAssertTrue(presenterMock.presentStopLoadingCalled)
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Usuário não encontrado")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "Não há registro de usuário correspondente a este identificador. O usuário pode ter sido excluído.")
-    }
-    
-    func testDoResetLoginSuccess() {
-        
-        //Given
-        let request = ResetLoginModel.ResetLogin.Request(login:"")
-        
-        //When
-        sut.doResetLogin(request)
-        
-        //Then
-        XCTAssertTrue(presenterMock.presentShowAlertCalled)
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Erro no campo Login")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "Preencha o campo Login")
-        
-        
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.userNotFound)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.userNotFoundMessage2)
     }
     
     func testDoResetLoginErrorEmptyField() {
-        //Given
-        let request = ResetLoginModel.ResetLogin.Request(login:"teste@gmail.com")
         
-        //When
+        // Given
+        let request = ResetLoginModel.ResetLogin.Request(login: TestStrings.stringEmpty)
+        
+        // When
         sut.doResetLogin(request)
         
-        //Then
+        // Then
+        XCTAssertTrue(presenterMock.presentShowAlertCalled)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.errorInLoginField)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.errorInLoginFieldMessage)
+        
+    }
+    
+    func testDoResetLoginSuccess() {
+        // Given
+        let request = ResetLoginModel.ResetLogin.Request(login: TestStrings.anyLogin)
+        
+        // When
+        sut.doResetLogin(request)
+        
+        // Then
         XCTAssertTrue(presenterMock.presentStartLoadingCalled)
     }
 }

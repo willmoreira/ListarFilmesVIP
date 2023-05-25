@@ -59,37 +59,37 @@ final class ResetLoginViewControllerTests: XCTestCase {
     }
     
     func testCreateButtonPressed_ShouldCallInteractorWithRequest() {
-        //Given
-        mainViewMock.inputLogin.text = "email@example.com"
+        // Given
+        mainViewMock.inputLogin.text = TestStrings.anyLogin
         
-        //When
+        // When
         sut.resetLoginButtonPressed()
         
-        //Then
+        // Then
         XCTAssertTrue(interactorMock.doResetLoginCalled)
-        XCTAssertEqual(interactorMock.request?.login, "email@example.com")
+        XCTAssertEqual(interactorMock.request?.login, TestStrings.anyLogin)
     }
     
     func testViewDidLoad() {
-        //Given
+        // Given
         
-        //When
+        // When
         sut.viewDidLoad()
         
-        //Then
-        XCTAssertEqual(sut.navigationItem.backBarButtonItem?.title, "Voltar")
+        // Then
+        XCTAssertEqual(sut.navigationItem.backBarButtonItem?.title, TestStrings.back)
         XCTAssertEqual(sut.mainView.backgroundColor, .white)
         XCTAssertTrue(sut.mainView.delegate === sut)
     }
     
     func testDisplayShowAlertCalled() {
-        //Given
-        let viewModel = ResetLoginModel.ResetLogin.ViewModel(titleMessage: "teste", message: "teste")
+        // Given
+        let viewModel = ResetLoginModel.ResetLogin.ViewModel(titleMessage: TestStrings.alertTitle, message: TestStrings.alertMessage)
         
-        //When
+        // When
         sut.displayShowAlert(viewModel)
         
-        //Then
+        // Then
         XCTAssertTrue(mainViewMock.alertControllerPresentedCalled)
     }
 }

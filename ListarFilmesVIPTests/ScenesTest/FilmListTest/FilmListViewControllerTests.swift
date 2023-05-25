@@ -23,21 +23,7 @@ final class FilmListViewControllerTests: XCTestCase {
         dataSourceMock = FilmListModel.DataSource(
             filmModelList: FilmModel(
                 page: 0,
-                results: [Result(
-                    adult: false,
-                    backdropPath: "",
-                    genreIDS: [0],
-                    id: 0,
-                    originalLanguage: "en",
-                    originalTitle: "",
-                    overview: "",
-                    popularity: 0.0,
-                    posterPath: "",
-                    releaseDate: "",
-                    title: "",
-                    video: false,
-                    voteAverage: 0.0,
-                    voteCount: 0)],
+                results: [ObjectSeeds.result],
                 totalPages: 0,
                 totalResults: 0))
         interactorMock = FilmListInteractableMock(dataSource: dataSourceMock)
@@ -64,43 +50,30 @@ final class FilmListViewControllerTests: XCTestCase {
     }
     
     func testDisplayConfigureList() {
-        //Given
+        // Given
         let viewModel = FilmListModel.FormattedFilmList.ViewModel(
             list: FilmModel(
                 page: 0,
-                results: [Result(adult: false,
-                                 backdropPath: "",
-                                 genreIDS: [0],
-                                 id: 0,
-                                 originalLanguage: "",
-                                 originalTitle: "",
-                                 overview: "",
-                                 popularity: 0.0,
-                                 posterPath: "",
-                                 releaseDate: "",
-                                 title: "",
-                                 video: false,
-                                 voteAverage: 0.0,
-                                 voteCount: 0)],
+                results: [ObjectSeeds.result],
                 totalPages: 0,
                 totalResults: 0))
         
-        //When
+        // When
         sut.displayConfigureList(viewModel)
         
-        //Then
+        // Then
         XCTAssertFalse(sut.mainView.listFilms.isEmpty)
     }
     
     
     func testCallRouterToFilmDetail() {
-        //Given
+        // Given
         let index = 0
         
-        //When
+        // When
         sut.goToDetailViewController(index)
         
-        //Then
+        // Then
         XCTAssertTrue(routerMock.routeToFilmDetailCalled)
         XCTAssertEqual(routerMock.routeToFilmDetailIndex, index)
     }

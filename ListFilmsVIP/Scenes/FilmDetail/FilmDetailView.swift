@@ -47,7 +47,6 @@ class FilmDetailView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupInit()
     }
     
     private func setupInit() {

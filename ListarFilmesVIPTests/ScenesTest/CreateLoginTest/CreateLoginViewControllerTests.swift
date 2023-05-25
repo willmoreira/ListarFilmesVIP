@@ -45,50 +45,50 @@ final class CreateLoginViewControllerTests: XCTestCase {
     }
     
     func testCreateButtonPressed_ShouldCallInteractorWithRequest() {
-        //Given
-        mainViewMock.inputSenha.text = "password"
-        mainViewMock.inputLogin.text = "email@example.com"
+        // Given
+        mainViewMock.inputSenha.text = TestStrings.anyPassword
+        mainViewMock.inputLogin.text = TestStrings.anyLogin
         
-        //When
+        // When
         sut.createButtonPressed()
         
-        //Then
+        // Then
         XCTAssertTrue(interactorMock.doCreateLoginCalled)
-        XCTAssertEqual(interactorMock.request?.password, "password")
-        XCTAssertEqual(interactorMock.request?.login, "email@example.com")
+        XCTAssertEqual(interactorMock.request?.password, TestStrings.anyPassword)
+        XCTAssertEqual(interactorMock.request?.login, TestStrings.anyLogin)
     }
     
     func testDisplayStartLoading_ShouldStartActivityIndicator() {
-        //Given
+        // Given
         let viewModel = CreateLoginModel.CreateLogin.ViewModel()
         
-        //When
+        // When
         sut.displayStartLoading(viewModel)
         
-        //Then
+        // Then
         XCTAssertTrue(mainViewMock.activityIndicatorStartAnimatingCalled)
     }
     
     func testDisplayStopLoading_ShouldStopActivityIndicator() {
-        //Given
+        // Given
         let viewModel = CreateLoginModel.CreateLogin.ViewModel()
         
-        //When
+        // When
         sut.displayStopLoading(viewModel)
         
-        //Then
+        // Then
         XCTAssertTrue(mainViewMock.activityIndicatorStopAnimatingCalled)
     }
     
     
     func testDisplayShowAlertCalled() {
-        //Given
-        let viewModel = CreateLoginModel.CreateLogin.ViewModel(titleMessage: "teste", message: "teste")
+        // Given
+        let viewModel = CreateLoginModel.CreateLogin.ViewModel(titleMessage: TestStrings.alertTitle, message: TestStrings.alertMessage)
         
-        //When
+        // When
         sut.displayShowAlert(viewModel)
         
-        //Then
+        // Then
         XCTAssertTrue(mainViewMock.alertControllerPresentedCalled)
     }
     

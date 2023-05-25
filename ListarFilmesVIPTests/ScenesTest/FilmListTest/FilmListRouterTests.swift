@@ -13,52 +13,62 @@ final class FilmListRouterTests: XCTestCase {
     var viewControllerMock: UIViewController!
     var sut: FilmListRouter!
     var dataSourceMock: FilmListDataStore!
+    var navigationMock: NavigationMock!
     
     override func setUp() {
         super.setUp()
-        
         viewControllerMock = UIViewController()
+        navigationMock = NavigationMock()
+        navigationMock.viewControllers = [viewControllerMock]
+        dataSourceMock = FilmListDataStoreMock()
         sut = FilmListRouter(viewController: viewControllerMock)
+        sut.dataStore = dataSourceMock
     }
     
     override func tearDown() {
         viewControllerMock = nil
         sut = nil
-        
         super.tearDown()
+    }
+    
+    func testRouterFilmDetailViewControllerCalled() {
+        
+        // Given
+        let index = 0
+        let expection = expectation(description: "push filmDetailViewController called")
+        var validateController: UIViewController?
+        
+        navigationMock.pushViewControllerCompletion = { viewController, animated in
+            validateController = viewController
+            expection.fulfill()
+        }
+        
+        // When
+        sut.routeToFilmDetail(index)
+        
+        // Then
+        waitForExpectations(timeout: 3.0)
+
+        //wait(for: [expection], timeout: 3.0)
+        guard let safeValidateController = validateController else { return XCTFail()}
+        XCTAssertTrue(safeValidateController is FilmDetailViewController)
     }
 }
 
 class NavigationMock: UINavigationController {
     var pushViewControllerCalled = false
-    var pushedViewController: UIViewController?
-    var pushedCompletion: (() -> Void)?
+    var pushViewControllerCompletion: ((UIViewController, Bool) -> Void)?
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         pushViewControllerCalled = true
-        pushedViewController = viewController
-        pushedCompletion?()
+        pushViewControllerCompletion?(viewController, animated)
     }
 }
 
 class FilmListDataStoreMock: FilmListDataStore {
     var dataSource: FilmListModel.DataSource = FilmListModel.DataSource(filmModelList: FilmModel(
         page: 0,
-        results: [Result(
-            adult: false,
-            backdropPath: "teste",
-            genreIDS: [0],
-            id: 0,
-            originalLanguage: "en",
-            originalTitle: "teste",
-            overview: "teste",
-            popularity: 0.0,
-            posterPath: "teste",
-            releaseDate: "01 de outubro de 2023",
-            title: "teste",
-            video: false,
-            voteAverage: 0.0,
-            voteCount: 0)],
+        results: [ObjectSeeds.result],
         totalPages: 1,
         totalResults: 1))
 }

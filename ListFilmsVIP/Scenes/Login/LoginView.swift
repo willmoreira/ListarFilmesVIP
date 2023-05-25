@@ -84,7 +84,6 @@ class LoginView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupInit()
     }
     
     func startAnimating() {
@@ -188,5 +187,4 @@ class LoginView: UIView {
     @objc func dismissKeyboard() {
         delegate?.dismissKeyboard()
     }
-    
 }

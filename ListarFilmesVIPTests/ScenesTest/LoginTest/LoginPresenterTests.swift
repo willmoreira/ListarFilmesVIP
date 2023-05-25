@@ -48,7 +48,7 @@ final class LoginPresenterTests: XCTestCase {
     
     func testPresentShowAlert() {
         // Given
-        let response = LoginModel.Login.Response(titleMessage: "Title",   message: "Message")
+        let response = LoginModel.Login.Response(titleMessage: TestStrings.alertTitle,   message: TestStrings.alertMessage)
         
         // When
         sut.presentShowAlert(response)

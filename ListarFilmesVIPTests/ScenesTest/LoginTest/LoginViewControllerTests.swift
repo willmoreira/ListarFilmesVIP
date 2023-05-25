@@ -21,21 +21,7 @@ final class LoginViewControllerTests: XCTestCase {
         dataSourceMock = LoginModel.DataSource(
             filmModelList: FilmModel(
                 page: 0,
-                results: [Result(
-                    adult: false,
-                    backdropPath: "",
-                    genreIDS: [0],
-                    id: 0,
-                    originalLanguage: "en",
-                    originalTitle: "",
-                    overview: "",
-                    popularity: 0.0,
-                    posterPath: "",
-                    releaseDate: "",
-                    title: "",
-                    video: false,
-                    voteAverage: 0.0,
-                    voteCount: 0)],
+                results: [ObjectSeeds.result],
                 totalPages: 0,
                 totalResults: 0))
         interactorMock = LoginInteractableMock(dataSource: dataSourceMock)
@@ -63,52 +49,52 @@ final class LoginViewControllerTests: XCTestCase {
     }
     
     func testDisplayStartLoading_ShouldStartActivityIndicator() {
-        //Given
+        // Given
         let viewModel = LoginModel.Login.ViewModel()
         
-        //When
+        // When
         sut.displayStartLoading(viewModel)
         
-        //Then
+        // Then
         XCTAssertTrue(mainViewMock.activityIndicatorStartAnimatingCalled)
     }
     
     func testDisplayStopLoading_ShouldStopActivityIndicator() {
-        //Given
+        // Given
         let viewModel = LoginModel.Login.ViewModel()
         
-        //When
+        // When
         sut.displayStopLoading(viewModel)
         
-        //Then
+        // Then
         XCTAssertTrue(mainViewMock.activityIndicatorStopAnimatingCalled)
     }
     
     func testDisplayShowAlertCalled() {
-        //Given
-        let viewModel = LoginModel.Login.ViewModel(titleMessage: "teste", message: "teste")
+        // Given
+        let viewModel = LoginModel.Login.ViewModel(titleMessage: TestStrings.alertTitle, message: TestStrings.alertMessage)
         
-        //When
+        // When
         sut.displayShowAlert(viewModel)
         
-        //Then
+        // Then
         XCTAssertTrue(mainViewMock.alertControllerPresentedCalled)
     }
     
     func testDisplayCleanFieldsClearsFields() {
-        //Given
-        mainViewMock.inputLogin.text = "test"
-        mainViewMock.inputSenha.text = "password"
+        // Given
+        mainViewMock.inputLogin.text = TestStrings.anyLogin
+        mainViewMock.inputSenha.text = TestStrings.anyPassword
         
         let expectation = XCTestExpectation(description: "Fields cleared")
         
-        //When
+        // When
         sut.displayCleanFields(LoginModel.Login.ViewModel())
         
-        //Then
+        // Then
         DispatchQueue.main.async {
-            XCTAssertEqual(self.mainViewMock.inputLogin.text, "")
-            XCTAssertEqual(self.mainViewMock.inputSenha.text, "")
+            XCTAssertEqual(self.mainViewMock.inputLogin.text, TestStrings.stringEmpty)
+            XCTAssertEqual(self.mainViewMock.inputSenha.text, TestStrings.stringEmpty)
             expectation.fulfill()
         }
         
@@ -117,34 +103,44 @@ final class LoginViewControllerTests: XCTestCase {
     
     func testDisplayGoToFilmListCallsRoutesToListFilms() {
         
-        //Given
+        // Given
         let request = LoginModel.Login.Request()
         
-        //When
+        // When
         sut.displayGoToFilmList(LoginModel.Login.ViewModel())
         
-        //Then
+        // Then
         XCTAssertTrue(routerMock.routeToListfilmsCalled)
     }
     
     func testResetButtonPressedRoutesToResetLogin() {
-        //Given
+        // Given
         
-        //When
+        // When
         sut.resetButtonPressed()
         
-        //Then
+        // Then
         XCTAssertTrue(routerMock.routeToResetLoginCalled)
     }
     
     func testCreateButtonPressedRoutesToCreateLogin() {
-        //Given
+        // Given
         
-        //When
+        // When
         sut.createButtonPressed()
         
-        //Then
+        // Then
         XCTAssertTrue(routerMock.routeToCreateLoginCalled)
+    }
+    
+    func testLoginButtonPressedRoutesToCreateLogin() {
+        // Given
+        
+        // When
+        sut.loginButtonPressed()
+        
+        // Then
+        XCTAssertTrue(interactorMock.doLoginCalled)
     }
 }
 
@@ -194,16 +190,18 @@ class LoginViewMock: LoginView {
 class LoginInteractableMock: LoginInteractable {
     
     var dataSource: LoginModel.DataSource
+    var doLoginCalled = false
+    var cleanFildsCalled = false
     
     init(dataSource: LoginModel.DataSource) {
         self.dataSource = dataSource
     }
     
     func doLogin(_ request: LoginModel.Login.Request) {
-        
+        doLoginCalled = true
     }
     
     func cleanFields(_ request: LoginModel.Login.Request) {
-        
+        cleanFildsCalled = true
     }
 }

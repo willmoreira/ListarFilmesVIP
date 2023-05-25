@@ -24,22 +24,9 @@ final class FilmDetailPresenterTests: XCTestCase {
         super.tearDown()
     }
     
-    func test() {
+    func testPresentSetupMainView() {
         // Given
-        let film = Result(adult: false,
-                          backdropPath: "teste",
-                          genreIDS: [0],
-                          id: 0,
-                          originalLanguage: "en",
-                          originalTitle: "teste",
-                          overview: "teste",
-                          popularity: 0.0,
-                          posterPath: "teste",
-                          releaseDate: "teste",
-                          title: "teste",
-                          video: false,
-                          voteAverage: 0.0,
-                          voteCount: 0)
+        let film = ObjectSeeds.result
         let response = FilmDetailModel.FilmDetail.Response(film: film)
         
         // When

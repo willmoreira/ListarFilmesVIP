@@ -17,21 +17,7 @@ final class FilmDetailInteractorTests: XCTestCase {
     override func setUp() {
         super.setUp()
         dataSourceMock = FilmDetailModel.DataSource(
-            film: Result(
-                adult: false,
-                backdropPath: "",
-                genreIDS: [0],
-                id: 0,
-                originalLanguage: "",
-                originalTitle: "",
-                overview: "",
-                popularity: 0.0,
-                posterPath: "",
-                releaseDate: "",
-                title: "",
-                video: false,
-                voteAverage: 0.0,
-                voteCount: 0))
+            film: ObjectSeeds.result)
         presenterMock = FilmDetailPresentationLogicMock()
         sut = FilmDetailInteractor(
             viewController: nil,
@@ -47,13 +33,13 @@ final class FilmDetailInteractorTests: XCTestCase {
     }
     
     func testSetupMainView() {
-        //Given
+        // Given
         let response = FilmDetailModel.FilmDetail.Request()
         
-        //When
+        // When
         sut.setupMainView(response)
         
-        //Then
+        // Then
         XCTAssertTrue(presenterMock.presentSetupMainViewCalled)
     }
 }

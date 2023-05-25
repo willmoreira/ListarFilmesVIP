@@ -61,7 +61,6 @@ class CreateLoginView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupInit()
     }
     
     func startAnimating() {

@@ -59,21 +59,7 @@ final class FilmListPresenterTests: XCTestCase {
         // Given
         let filmModel = FilmModel(
             page: 1,
-            results: [Result(
-                adult: false,
-                backdropPath: "/image.jpg",
-                genreIDS: [1,2,3],
-                id: 1,
-                originalLanguage: "en",
-                originalTitle: "Movie",
-                overview: "Description",
-                popularity: 1.2,
-                posterPath: "/image.jpg",
-                releaseDate: "2021-05-11",
-                title: "Movie",
-                video: false,
-                voteAverage: 7.5,
-                voteCount: 500)],
+            results: [ObjectSeeds.result],
             totalPages: 1,
             totalResults: 1)
         
@@ -92,21 +78,7 @@ class FilmListViewControllerSpy: UIViewController, FilmListDisplayLogic {
     var displayConfigureListCalled = false
     var viewModel = FilmListModel.FormattedFilmList.ViewModel(list: FilmModel(
         page: 0,
-        results: [Result(
-            adult: false,
-            backdropPath: "teste",
-            genreIDS: [0],
-            id: 0,
-            originalLanguage: "en",
-            originalTitle: "teste",
-            overview: "teste",
-            popularity: 0.0,
-            posterPath: "teste",
-            releaseDate: "2023-10-01",
-            title: "teste",
-            video: false,
-            voteAverage: 0.0,
-            voteCount: 0)],
+        results: [ObjectSeeds.result],
         totalPages: 1,
         totalResults: 1))
     

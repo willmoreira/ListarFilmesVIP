@@ -49,7 +49,7 @@ final class ResetLoginPresenterTests: XCTestCase {
     
     func testPresentShowAlert() {
         // Given
-        let response = ResetLoginModel.ResetLogin.Response(titleMessage: "Title",   message: "Message")
+        let response = ResetLoginModel.ResetLogin.Response(titleMessage: TestStrings.alertTitle, message: TestStrings.alertMessage)
         
         // When
         sut.presentShowAlert(response)

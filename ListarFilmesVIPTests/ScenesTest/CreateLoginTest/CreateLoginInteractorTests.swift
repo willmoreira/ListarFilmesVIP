@@ -37,7 +37,7 @@ class CreateLoginInteractorTests: XCTestCase {
     
     func testTryCreateLoginSucess() {
         // Given
-        let request = CreateLoginModel.CreateLogin.Request(password: "teste123", login: "teste@gmail.com")
+        let request = CreateLoginModel.CreateLogin.Request(password: TestStrings.anyPassword, login: TestStrings.anyPassword)
         createLoginMock.createUserCompletion = { email, password, completion in
             completion?(nil, nil)
         }
@@ -49,13 +49,13 @@ class CreateLoginInteractorTests: XCTestCase {
         XCTAssertTrue(presenterMock.presentStartLoadingCalled)
         XCTAssertTrue(presenterMock.presentStopLoadingCalled)
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Sucesso!")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "Usuario cadastrado com sucesso, faça o Login agora!")
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.success)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.userSuccessfullyCreatedMessage)
     }
     
     func testTryCreateLoginErrorWrongFormatEmail() {
         // Given
-        let request = CreateLoginModel.CreateLogin.Request(password: "teste123", login: "teste")
+        let request = CreateLoginModel.CreateLogin.Request(password: TestStrings.anyPassword, login: TestStrings.incorretEmail)
         createLoginMock.createUserCompletion = { email, password, completion in
             completion?(nil, NSError(domain:"", code: 17008, userInfo:nil))
         }
@@ -68,13 +68,13 @@ class CreateLoginInteractorTests: XCTestCase {
         XCTAssertTrue(presenterMock.presentStopLoadingCalled)
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
 
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Formato do email incorreto!")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "O endereço de e-mail não parece ser valido")
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.incorrectEmailFormat)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.incorrectEmailFormatMessage)
     }
     
     func testTryCreateLoginErrorEmailAlreadyInUse() {
         // Given
-        let request = CreateLoginModel.CreateLogin.Request(password: "teste123", login: "teste@gmail.com")
+        let request = CreateLoginModel.CreateLogin.Request(password: TestStrings.anyPassword, login: TestStrings.anyLogin)
         createLoginMock.createUserCompletion = { email, password, completion in
             completion?(nil, NSError(domain:"", code: 17007, userInfo:nil))
         }
@@ -87,13 +87,13 @@ class CreateLoginInteractorTests: XCTestCase {
         XCTAssertTrue(presenterMock.presentStopLoadingCalled)
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
 
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Email já em uso!")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "O endereço de e-mail já está sendo usado por outra conta.")
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.emailAlreadyInUse)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.emailAlreadyInUseMessage)
     }
     
     func testTryCreateLoginErrorShortPassword() {
         // Given
-        let request = CreateLoginModel.CreateLogin.Request(password: "teste", login: "teste@gmail.com")
+        let request = CreateLoginModel.CreateLogin.Request(password: TestStrings.sortPassword, login: TestStrings.anyLogin)
         createLoginMock.createUserCompletion = { email, password, completion in
             completion?(nil, NSError(domain:"", code: 17026, userInfo:nil))
         }
@@ -106,41 +106,41 @@ class CreateLoginInteractorTests: XCTestCase {
         XCTAssertTrue(presenterMock.presentStopLoadingCalled)
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
 
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Regra de senha")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "A senha deve ter 6 caracteres ou mais.")
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.passwordRule)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.passwordRuleMessage)
     }
     
     func testDoCreateLoginFieldPasswordEmpty() {
         // Given
-        let request = CreateLoginModel.CreateLogin.Request(password: "", login: "teste2@gmail.com")
+        let request = CreateLoginModel.CreateLogin.Request(password: TestStrings.stringEmpty, login: TestStrings.anyLogin)
         
         // When
         sut.doCreateLogin(request)
       
         // Then
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Erro no campo Senha")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "Preencha o campo Senha")
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.errorInPasswordField)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.errorInPasswordFieldMessage)
 
     }
     
     func testDoCreateLoginFieldLoginEmpty() {
         // Given
-        let request = CreateLoginModel.CreateLogin.Request(password: "123456", login: "")
+        let request = CreateLoginModel.CreateLogin.Request(password: TestStrings.anyPassword, login: TestStrings.stringEmpty)
         
         // When
         sut.doCreateLogin(request)
       
         // Then
         XCTAssertTrue(presenterMock.presentShowAlertCalled)
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, "Erro no campo Email")
-        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, "Preencha o campo Email")
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.titleMessage, TestStrings.errorInLoginField)
+        XCTAssertEqual(presenterMock.presentShowAlertResponse?.message, TestStrings.errorInLoginFieldMessage)
 
     }
     
     func testDoCreateLoginSucess() {
         // Given
-        let request = CreateLoginModel.CreateLogin.Request(password: "123456", login: "teste@gmail.com")
+        let request = CreateLoginModel.CreateLogin.Request(password: TestStrings.anyPassword, login: TestStrings.anyLogin)
         
         // When
         sut.doCreateLogin(request)

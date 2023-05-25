@@ -19,21 +19,7 @@ final class FilmListInteractorTests: XCTestCase {
         dataSourceMock = FilmListModel.DataSource(
             filmModelList: FilmModel(
                 page: 0,
-                results: [Result(
-                    adult: false,
-                    backdropPath: "",
-                    genreIDS: [0],
-                    id: 0,
-                    originalLanguage: "",
-                    originalTitle: "",
-                    overview: "",
-                    popularity: 0.0,
-                    posterPath: "",
-                    releaseDate: "",
-                    title: "",
-                    video: false,
-                    voteAverage: 0.0,
-                    voteCount: 0)],
+                results: [ObjectSeeds.result],
                 totalPages: 0,
                 totalResults: 0)
         )
@@ -52,13 +38,13 @@ final class FilmListInteractorTests: XCTestCase {
     }
     
     func testConfigureList() {
-        //Given
+        // Given
         let request = FilmListModel.FilmList.Request()
         
-        //When
+        // When
         sut.configureList(request)
         
-        //Then
+        // Then
         XCTAssertTrue(presenterMock.presentConfigureListCalled)
     }
 }
@@ -68,21 +54,7 @@ class FilmListPresentationLogicMock: FilmListPresentationLogic {
     var presentConfigureListResponse = FilmListModel.FilmList.Response(
         list: FilmModel(
             page: 0,
-            results: [Result(
-                adult: false,
-                backdropPath: "",
-                genreIDS: [0],
-                id: 0,
-                originalLanguage: "en",
-                originalTitle: "",
-                overview: "",
-                popularity: 0.0,
-                posterPath: "",
-                releaseDate: "",
-                title: "",
-                video: false,
-                voteAverage: 0.0,
-                voteCount: 0)],
+            results: [ObjectSeeds.result],
             totalPages: 0,
             totalResults: 0)
     )

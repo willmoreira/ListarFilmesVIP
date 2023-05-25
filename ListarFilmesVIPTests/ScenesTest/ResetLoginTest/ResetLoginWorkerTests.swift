@@ -31,7 +31,7 @@ final class ResetLoginWorkerTests: XCTestCase {
         var authError: Error?
         
         //When
-        worker.resetUser(withEmail: "q@gmail.com") { error in
+        worker.resetUser(withEmail: TestStrings.existingRealEmail) { error in
             authError = error
             expectation.fulfill()
         }
@@ -42,18 +42,18 @@ final class ResetLoginWorkerTests: XCTestCase {
     }
     
     func testResetWithValidCredentialsErrorNotFoundLogin() {
-        //Given
+        // Given
         let worker = ResetLoginWorker()
         let expectation = XCTestExpectation(description: "Reset in expectation error not found Login")
         var authError: Error?
         
-        //When
-        worker.resetUser(withEmail: "qwert@gmail.com") { error in
+        // When
+        worker.resetUser(withEmail: TestStrings.newEmail) { error in
             XCTAssertEqual((error as NSError?)?.code, AuthErrorCode.userNotFound.rawValue)
             expectation.fulfill()
         }
         
-        //Then
+        // Then
         wait(for: [expectation], timeout: 5.0)
         XCTAssertNil(authError)
     }

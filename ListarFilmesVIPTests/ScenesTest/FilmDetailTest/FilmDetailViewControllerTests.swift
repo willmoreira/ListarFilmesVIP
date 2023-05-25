@@ -19,22 +19,7 @@ final class FilmDetailViewControllerTests: XCTestCase {
         super.setUp()
         mainViewMock = FilmDetailViewMock()
         interactorMock = FilmDetailInteractableMock()
-        dataSourceMock = FilmDetailModel.DataSource(
-            film: Result(
-                adult: false,
-                backdropPath: "teste",
-                genreIDS: [0],
-                id: 0,
-                originalLanguage: "en",
-                originalTitle: "teste",
-                overview: "teste",
-                popularity: 0.0,
-                posterPath: "teste",
-                releaseDate: "teste",
-                title: "teste",
-                video: false,
-                voteAverage: 0.0,
-                voteCount: 0))
+        dataSourceMock = FilmDetailModel.DataSource(film: ObjectSeeds.result)
         sut = FilmDetailViewController(mainView: mainViewMock, dataSource: dataSourceMock)
         sut.interactor = interactorMock
         sut.mainView = mainViewMock
@@ -62,21 +47,7 @@ final class FilmDetailViewControllerTests: XCTestCase {
     func testDisplaySetupMainView() {
         // Given
         let viewModel = FilmDetailModel.FilmDetail.ViewModel(
-            film: Result(
-                adult: false,
-                backdropPath: "teste",
-                genreIDS: [0],
-                id: 0,
-                originalLanguage: "",
-                originalTitle: "teste",
-                overview: "teste",
-                popularity: 0.0,
-                posterPath: "teste",
-                releaseDate: "teste",
-                title: "teste",
-                video: false,
-                voteAverage: 0.0,
-                voteCount: 0))
+            film: ObjectSeeds.result)
         
         // When
         sut.displaySetupMainView(viewModel)
@@ -108,20 +79,6 @@ class FilmDetailInteractableMock: FilmDetailInteractable {
     
     var dataSource:FilmDetailModel.DataSource {
         return FilmDetailModel.DataSource(
-            film: Result(
-                adult: false,
-                backdropPath: "teste",
-                genreIDS: [0],
-                id: 0,
-                originalLanguage: "",
-                originalTitle: "teste",
-                overview: "teste",
-                popularity: 0.0,
-                posterPath: "teste",
-                releaseDate: "teste",
-                title: "teste",
-                video: false,
-                voteAverage: 0.0,
-                voteCount: 0))
+            film: ObjectSeeds.result)
     }
 }
