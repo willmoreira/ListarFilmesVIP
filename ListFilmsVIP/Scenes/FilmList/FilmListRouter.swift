@@ -39,7 +39,7 @@ extension FilmListRouter: FilmListRouting {
             let film = dataSourceFilmList.filmModelList.results[index]
             let dataSourceDetail = FilmDetailModel.DataSource(film: film)
             let FilmDetailViewController = FilmDetailViewController(mainView: mainView, dataSource: dataSourceDetail)
-            let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
+            let backButton = UIBarButtonItem(title: ProjectStrings.back.localized, style: .plain, target: nil, action: nil)
             self.viewController?.navigationItem.backBarButtonItem = backButton
             self.viewController?.navigationController?.pushViewController(FilmDetailViewController, animated: true)
         }

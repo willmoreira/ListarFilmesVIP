@@ -26,9 +26,7 @@ protocol ResetLoginDataStore {
 final class ResetLoginInteractor: ResetLoginDataStore {
     
     var dataSource: ResetLoginModel.DataSource
-    
     var presenter: ResetLoginPresentationLogic
-    
     var resetLoginWorker: ResetLoginWorkerProtocol
     
     init(viewController: ResetLoginDisplayLogic?,
@@ -42,7 +40,10 @@ final class ResetLoginInteractor: ResetLoginDataStore {
     func tryResetLogin(request: ResetLoginModel.ResetLogin.Request){
         let reponseLoading = ResetLoginModel.ResetLogin.Response()
         presenter.presentStartLoading(reponseLoading)
-        var response = ResetLoginModel.ResetLogin.Response(titleMessage: "Sucesso!", message: "As orientações foram enviadas para seu email!")
+        var response = ResetLoginModel.ResetLogin.Response(
+            titleMessage: ProjectStrings.success.localized,
+            message: ProjectStrings.guidelinesHaveBeenSentToYourEmail.localized
+        )
         
         if let login = request.login {
             resetLoginWorker.resetUser(withEmail: login) { error in
@@ -50,8 +51,8 @@ final class ResetLoginInteractor: ResetLoginDataStore {
                 if let error = error as? NSError{
                     if error.code == 17011 {
                         response = ResetLoginModel.ResetLogin.Response(
-                            titleMessage: "Usuário não encontrado",
-                            message: "Não há registro de usuário correspondente a este identificador. O usuário pode ter sido excluído." )
+                            titleMessage: ProjectStrings.userNotFound.localized,
+                            message: ProjectStrings.userNotFoundMessage2.localized)
                         self.presenter.presentShowAlert(response)
                     }
                     return
@@ -66,7 +67,9 @@ final class ResetLoginInteractor: ResetLoginDataStore {
 extension ResetLoginInteractor: ResetLoginBusinessLogic {
     func doResetLogin(_ request: ResetLoginModel.ResetLogin.Request) {
         guard let username = request.login, !username.isEmpty else {
-            let response = ResetLoginModel.ResetLogin.Response(titleMessage: "Erro no campo Email", message: "Preencha o campo Email")
+            let response = ResetLoginModel.ResetLogin.Response(
+                titleMessage: ProjectStrings.errorInLoginField.localized,
+                message: ProjectStrings.errorInLoginFieldMessage.localized)
             presenter.presentShowAlert(response)
             return
         }

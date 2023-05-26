@@ -83,8 +83,8 @@ class FilmDetailView: UIView {
     
     func updateFilm() {
         if let imgPathUrl = film?.posterPath {
-            let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500" + imgPathUrl)
-            customImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: "placeholder"))
+            let imageUrl = URL(string: ProjectStrings.urlSdWebImage.localized + imgPathUrl)
+            customImageView.sd_setImage(with: imageUrl, placeholderImage: UIImage(named: ProjectStrings.placeholder.localized))
         }
         titleView.text = film?.title
         descriptLabel.text = film?.overview

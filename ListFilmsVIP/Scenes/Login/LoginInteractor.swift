@@ -49,20 +49,20 @@ final class LoginInteractor: LoginDataStore {
                 if let error = error as? NSError{
                     if error.code == 17009 {
                         let response = LoginModel.Login.Response(
-                            titleMessage: "Senha inválida!",
-                            message: "A senha é inválida ou o usuário não possui uma senha.")
+                            titleMessage: ProjectStrings.invalidPassword.localized,
+                            message: ProjectStrings.invalidPasswordMessage.localized)
                         self.presenter.presentShowAlert(response)
                     }
                     if error.code == 17011 {
                         let response = LoginModel.Login.Response(
-                            titleMessage: "Usuário não encontrado",
-                            message: "Não há registro de usuário correspondente a este email, confira o email ou cadastre um novo usuário.")
+                            titleMessage: ProjectStrings.userNotFound.localized,
+                            message: ProjectStrings.userNotFoundMessage.localized)
                         self.presenter.presentShowAlert(response)
                     }
                     if error.code == 17008 {
                         let response = LoginModel.Login.Response(
-                            titleMessage: "Formato do email incorreto!",
-                            message:  "O endereço de e-mail não parece ser valido")
+                            titleMessage: ProjectStrings.incorrectEmailFormat.localized,
+                            message:  ProjectStrings.incorrectEmailFormatMessage.localized)
                         self.presenter.presentShowAlert(response)
                     }
                     return
@@ -73,8 +73,8 @@ final class LoginInteractor: LoginDataStore {
     }
     
     func goToScreenListFilms() {
-        let apiKey = "ac894a60b6f5b4abf7ff6c58dbc67ced"
-        let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)"
+        let apiKey = ProjectStrings.apiKey.localized
+        let urlString = ProjectStrings.urlString.localized + apiKey
         searchFilmList(apiKey: apiKey, urlString: urlString)
     }
     
@@ -89,18 +89,17 @@ final class LoginInteractor: LoginDataStore {
         var request = URLRequest(url: url)
         
         // Defina o método HTTP da requisição como GET
-        request.httpMethod = "GET"
+        request.httpMethod = ProjectStrings.get.localized
         
         // Crie uma task de data para enviar a requisição
         let task = session.dataTask(with: request) { data, response, error in
             // Verifique se houve um erro
             if let error = error {
-                print("Erro: \(error.localizedDescription)")
+                print("\(error.localizedDescription)")
                 return
             }
             // Verifique se há dados na resposta
             guard let data = data else {
-                print("Não há dados na resposta")
                 return
             }
             // Converta os dados em um objeto JSON
@@ -111,7 +110,7 @@ final class LoginInteractor: LoginDataStore {
                 let response = LoginModel.Login.Response()
                 self.presenter.presentGoToListFilms(response)
             } catch {
-                print("Erro ao converter dados em JSON: \(error.localizedDescription)")
+                print("\(error.localizedDescription)")
             }
         }
         task.resume()
@@ -128,15 +127,15 @@ extension LoginInteractor: LoginBusinessLogic {
     func doLogin(_ request: LoginModel.Login.Request) {
         guard let username = request.login, !username.isEmpty else {
             let response = LoginModel.Login.Response(
-                titleMessage: "Erro no campo Email",
-                message: "Preencha o campo Email")
+                titleMessage: ProjectStrings.errorInLoginField.localized,
+                message: ProjectStrings.errorInLoginFieldMessage.localized)
             presenter.presentShowAlert(response)
             return
         }
         guard let password = request.password, !password.isEmpty else {
             let response = LoginModel.Login.Response(
-                titleMessage: "Erro no campo Senha",
-                message: "Preencha o campo Senha")
+                titleMessage: ProjectStrings.errorInPasswordField.localized,
+                message: ProjectStrings.errorInPasswordFieldMessage.localized)
             presenter.presentShowAlert(response)
             return
         }

@@ -59,7 +59,7 @@ class LoginView: UIView {
         let button = UIButton()
         button.addTarget(self, action: #selector(resetButtonPressed), for: .touchUpInside)
         let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
-        let underlineAttributedString = NSAttributedString(string: ProjectStrings.recoverPassword.localized, attributes: underlineAttribute)
+        let underlineAttributedString = NSAttributedString(string: ProjectStrings.recoveryPassword.localized, attributes: underlineAttribute)
         button.setAttributedTitle(underlineAttributedString, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)

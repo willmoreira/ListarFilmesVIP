@@ -26,10 +26,10 @@ final class FilmListPresenter {
     func formatReleaseDate(films: FilmModel) -> FilmModel {
         let newResults = films.results.map { movie -> Result in
             let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "pt_BR")
-            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.locale = Locale(identifier: ProjectStrings.ptBr.localized)
+            dateFormatter.dateFormat = ProjectStrings.dateFormat.localized
             if let date = dateFormatter.date(from: movie.releaseDate) {
-                dateFormatter.dateFormat = "dd 'de' MMMM 'de' yyyy"
+                dateFormatter.dateFormat = ProjectStrings.endDateFormat.localized
                 let newLaunchDate = dateFormatter.string(from: date)
                 return Result(adult: movie.adult, backdropPath: movie.backdropPath, genreIDS: movie.genreIDS, id: movie.id, originalLanguage: movie.overview, originalTitle: movie.originalLanguage, overview: movie.originalTitle, popularity: movie.popularity, posterPath: movie.posterPath, releaseDate: newLaunchDate, title: movie.title, video: movie.video, voteAverage: movie.voteAverage, voteCount: movie.voteCount)
             } else {

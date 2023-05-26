@@ -33,7 +33,7 @@ class ResetLoginViewController: BaseUIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: ProjectStrings.back.localized, style: .plain, target: nil, action: nil)
         mainView.backgroundColor = .white
         mainView.delegate = self
     }

@@ -49,12 +49,28 @@ enum ProjectStrings: String, Localizable {
     case especificDate
     case enterEmail
     case enterPassword
-    case recoverPassword
+    case recoveryPassword
     case createAccount
     case titleLoginView
     case email
     case password
     case enter
     case ok
+    case registerLogin
+    case register
+    case placeholder
+    case urlSdWebImage
+    case titleMoviesList
+    case customTableViewCell
+    case launchedIn
+    case exitApp
+    case get
+    case send
+    case recoveryPassword2
+    case cell
+    case fatalError
+    case ptBr
+    case dateFormat
+    case endDateFormat
 
 }

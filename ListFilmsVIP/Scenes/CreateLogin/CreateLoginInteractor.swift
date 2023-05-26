@@ -44,8 +44,8 @@ final class CreateLoginInteractor: CreateLoginDataStore {
             presenter.presentStartLoading(responseLoading)
             
             var response = CreateLoginModel.CreateLogin.Response(
-                titleMessage: "Sucesso!",
-                message: "Usuario cadastrado com sucesso, faça o Login agora!")
+                titleMessage: ProjectStrings.success.localized,
+                message: ProjectStrings.userSuccessfullyCreatedMessage.localized)
             
             createLoginWorker.createUser(withEmail: login, password: password) { _, error in
                 self.presenter.presentStopLoading(responseLoading)
@@ -53,20 +53,20 @@ final class CreateLoginInteractor: CreateLoginDataStore {
                 if let error = error as? NSError{
                     if error.code == 17007 {
                         response = CreateLoginModel.CreateLogin.Response(
-                            titleMessage: "Email já em uso!",
-                            message: "O endereço de e-mail já está sendo usado por outra conta.")
+                            titleMessage: ProjectStrings.emailAlreadyInUse.localized,
+                            message: ProjectStrings.emailAlreadyInUseMessage.localized)
                         self.presenter.presentShowAlert(response)
                     }
                     if error.code == 17008 {
                         response = CreateLoginModel.CreateLogin.Response(
-                            titleMessage: "Formato do email incorreto!",
-                            message:  "O endereço de e-mail não parece ser valido")
+                            titleMessage: ProjectStrings.incorrectEmailFormat.localized,
+                            message:  ProjectStrings.incorrectEmailFormatMessage.localized)
                         self.presenter.presentShowAlert(response)
                     }
                     if error.code == 17026 {
                         response = CreateLoginModel.CreateLogin.Response(
-                            titleMessage: "Regra de senha",
-                            message:  "A senha deve ter 6 caracteres ou mais.")
+                            titleMessage: ProjectStrings.passwordRule.localized,
+                            message:  ProjectStrings.passwordRuleMessage.localized)
                         self.presenter.presentShowAlert(response)
                     }
                     return
@@ -82,15 +82,15 @@ extension CreateLoginInteractor: CreateLoginBusinessLogic {
     func doCreateLogin(_ request: CreateLoginModel.CreateLogin.Request) {
         guard let username = request.login, !username.isEmpty else {
             let response = CreateLoginModel.CreateLogin.Response(
-                titleMessage: "Erro no campo Email",
-                message: "Preencha o campo Email")
+                titleMessage: ProjectStrings.errorInLoginField.localized,
+                message: ProjectStrings.errorInLoginFieldMessage.localized)
             presenter.presentShowAlert(response)
             return
         }
         guard let password = request.password, !password.isEmpty else {
             let response = CreateLoginModel.CreateLogin.Response(
-                titleMessage: "Erro no campo Senha",
-                message: "Preencha o campo Senha")
+                titleMessage: ProjectStrings.errorInPasswordField.localized,
+                message: ProjectStrings.errorInPasswordFieldMessage.localized)
             presenter.presentShowAlert(response)
             return
         }

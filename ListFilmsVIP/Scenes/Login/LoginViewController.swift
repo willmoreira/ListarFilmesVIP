@@ -37,7 +37,7 @@ final class LoginViewController: BaseUIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainView.backgroundColor = .white
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: ProjectStrings.back.localized, style: .plain, target: nil, action: nil)
         mainView.delegate = self
     }
     
@@ -100,8 +100,8 @@ extension LoginViewController: LoginViewDelegate {
     func clearFields() {
         DispatchQueue.main.async {
             self.mainView.inputLogin.becomeFirstResponder()
-            self.mainView.inputLogin.text = ""
-            self.mainView.inputSenha.text = ""
+            self.mainView.inputLogin.text = ProjectStrings.stringEmpty.localized
+            self.mainView.inputSenha.text = ProjectStrings.stringEmpty.localized
         }
     }
 }

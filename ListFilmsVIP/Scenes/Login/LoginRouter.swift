@@ -37,7 +37,7 @@ extension LoginRouter: LoginRouting {
         let mainView = CreateLoginView()
         let dataSource = CreateLoginModel.DataSource()
         let createLoginViewController = CreateLoginViewController(mainView: mainView, dataSource: dataSource)
-        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: ProjectStrings.back.localized, style: .plain, target: nil, action: nil)
         self.viewController?.navigationItem.backBarButtonItem = backButton
         self.viewController?.navigationController?.pushViewController(createLoginViewController, animated: true)
     }
@@ -46,7 +46,7 @@ extension LoginRouter: LoginRouting {
         let mainView = ResetLoginView()
         let dataSource = ResetLoginModel.DataSource()
         let resetLoginViewController = ResetLoginViewController(mainView: mainView, dataSource: dataSource)
-        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: ProjectStrings.back.localized, style: .plain, target: nil, action: nil)
         self.viewController?.navigationItem.backBarButtonItem = backButton
         self.viewController?.navigationController?.pushViewController(resetLoginViewController, animated: true)
     }
@@ -57,7 +57,7 @@ extension LoginRouter: LoginRouting {
             guard let dataStore = self.dataStore else { return }
             let dataSource = FilmListModel.DataSource(filmModelList: dataStore.dataSource.filmModelList)
             let resetLoginViewController = FilmListViewController(mainView: mainView, dataSource: dataSource)
-            let backButton = UIBarButtonItem(title: "Sair do APP", style: .plain, target: nil, action: nil)
+            let backButton = UIBarButtonItem(title: ProjectStrings.exitApp.localized, style: .plain, target: nil, action: nil)
             self.viewController?.navigationItem.backBarButtonItem = backButton
             self.viewController?.navigationController?.pushViewController(resetLoginViewController, animated: true)
         }

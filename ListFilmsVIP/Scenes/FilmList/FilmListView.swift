@@ -25,7 +25,7 @@ class FilmListView: UIView {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: ProjectStrings.cell.localized)
         return tableView
     }()
     
@@ -49,8 +49,8 @@ class FilmListView: UIView {
     }
     
     private func configureView() {
-        self.titleView.text = "Lista de Filmes"
-        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "CustomTableViewCell")
+        self.titleView.text = ProjectStrings.titleMoviesList.localized
+        tableView.register(CustomTableViewCell.self, forCellReuseIdentifier: ProjectStrings.customTableViewCell.localized)
         addSubview(titleView)
         addSubview(tableView)
         
@@ -84,10 +84,10 @@ extension FilmListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomTableViewCell", for: indexPath) as! CustomTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProjectStrings.customTableViewCell.localized, for: indexPath) as! CustomTableViewCell
         cell.nameLabel.text = listFilms[indexPath.row].title
-        cell.subtitleLabel.text = "Lançado em " + listFilms[indexPath.row].releaseDate
-        cell.customImageView.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500" + listFilms[indexPath.row].posterPath), placeholderImage: UIImage(named: "placeholder"))
+        cell.subtitleLabel.text = ProjectStrings.launchedIn.localized + listFilms[indexPath.row].releaseDate
+        cell.customImageView.sd_setImage(with: URL(string: ProjectStrings.urlSdWebImage.localized + listFilms[indexPath.row].posterPath), placeholderImage: UIImage(named: ProjectStrings.placeholder.localized))
         return cell
     }
 }
