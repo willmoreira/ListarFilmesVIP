@@ -8,9 +8,7 @@
 import XCTest
 @testable import ListarFilmesVIP
 
-
 final class LoginRouterTests: XCTestCase {
-    
     
     var viewControllerMock: UIViewController!
     var sut: LoginRouter!
@@ -53,7 +51,7 @@ final class LoginRouterTests: XCTestCase {
         waitForExpectations(timeout: 3.0)
 
         //wait(for: [expection], timeout: 3.0)
-        guard let safeValidateController = validateController else { return XCTFail()}
+        guard let safeValidateController = validateController else { return XCTFail() }
         XCTAssertTrue(safeValidateController is CreateLoginViewController)
     }
     
@@ -76,7 +74,7 @@ final class LoginRouterTests: XCTestCase {
         waitForExpectations(timeout: 3.0)
 
         //wait(for: [expection], timeout: 3.0)
-        guard let safeValidateController = validateController else { return XCTFail()}
+        guard let safeValidateController = validateController else { return XCTFail() }
         XCTAssertTrue(safeValidateController is ResetLoginViewController)
     }
     
@@ -99,7 +97,7 @@ final class LoginRouterTests: XCTestCase {
         waitForExpectations(timeout: 3.0)
 
         //wait(for: [expection], timeout: 3.0)
-        guard let safeValidateController = validateController else { return XCTFail()}
+        guard let safeValidateController = validateController else { return XCTFail() }
         XCTAssertTrue(safeValidateController is FilmListViewController)
     }
 }

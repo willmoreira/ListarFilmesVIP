@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class BaseView: UIView {
     
     required init?(coder: NSCoder) {

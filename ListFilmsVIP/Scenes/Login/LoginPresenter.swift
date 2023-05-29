@@ -51,7 +51,9 @@ extension LoginPresenter: LoginPresentationLogic {
     }
 
     func presentShowAlert(_ response: LoginModel.Login.Response) {
-        let viewModel = LoginModel.Login.ViewModel(titleMessage:response.titleMessage , message: response.message)
+        let viewModel = LoginModel.Login.ViewModel(
+            titleMessage: response.titleMessage,
+            message: response.message)
         self.viewController?.displayShowAlert(viewModel)
     }
 }

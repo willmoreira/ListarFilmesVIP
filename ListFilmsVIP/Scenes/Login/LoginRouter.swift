@@ -56,10 +56,10 @@ extension LoginRouter: LoginRouting {
             let mainView = FilmListView()
             guard let dataStore = self.dataStore else { return }
             let dataSource = FilmListModel.DataSource(filmModelList: dataStore.dataSource.filmModelList)
-            let resetLoginViewController = FilmListViewController(mainView: mainView, dataSource: dataSource)
+            let filmListViewController = FilmListViewController(mainView: mainView, dataSource: dataSource)
             let backButton = UIBarButtonItem(title: ProjectStrings.exitApp.localized, style: .plain, target: nil, action: nil)
             self.viewController?.navigationItem.backBarButtonItem = backButton
-            self.viewController?.navigationController?.pushViewController(resetLoginViewController, animated: true)
+            self.viewController?.navigationController?.pushViewController(filmListViewController, animated: true)
         }
     }
 }
