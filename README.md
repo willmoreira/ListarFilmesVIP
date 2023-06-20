@@ -49,10 +49,10 @@ a tela de listar filmes, quando clicar em algum filme mostra na tela de detalhes
 
 ## Técnicas utlizadas
 
-Utilizado a arquitetura VIP para organização do projeto.
-Para login utilizamos via SPM o firebaseAuth para ter acesso ao app.
-Teste Unitarios utilizando XCTTeste do proprio Swift
-Internacionalização de Strings via arquivo Localizable, ingles e portugues a principio.
-Aplicação de conceitos do SOLID
-Telas feitas utilizando viewCode
-Usando template para agilizar na construção das camadas do projeto (VIP Swift Xcode Templates)
+- Utilizado a arquitetura VIP para organização do projeto.
+- Para login utilizamos via SPM o firebaseAuth para ter acesso ao app.
+- Teste Unitarios utilizando XCTTeste do proprio Swift
+- Internacionalização de Strings via arquivo Localizable, ingles e portugues a principio.
+- Aplicação de conceitos do SOLID
+- Telas feitas utilizando viewCode
+- Usando template para agilizar na construção das camadas do projeto (VIP Swift Xcode Templates)
