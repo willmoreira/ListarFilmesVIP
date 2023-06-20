@@ -55,3 +55,4 @@ Teste Unitarios utilizando XCTTeste do proprio Swift
 Internacionalização de Strings via arquivo Localizable, ingles e portugues a principio.
 Aplicação de conceitos do SOLID
 Telas feitas utilizando viewCode
+Usando template para agilizar na construção das camadas do projeto (VIP Swift Xcode Templates)
