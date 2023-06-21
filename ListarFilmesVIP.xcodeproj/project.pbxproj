@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3DB362722A433AAD00D5ED52 /* ConfigExample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DB362712A433AAD00D5ED52 /* ConfigExample.plist */; };
-		3DB362752A4344E100D5ED52 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DB362742A4344E100D5ED52 /* Config.plist */; };
+		3DB3627C2A43540B00D5ED52 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3627B2A43540B00D5ED52 /* Config.plist */; };
+		3DB3627F2A4354D400D5ED52 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3627E2A4354D400D5ED52 /* GoogleService-Info.plist */; };
 		3DEF018B2A3B45390074BC16 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3DEF018A2A3B45390074BC16 /* FirebaseAuth */; };
 		74106C762A1F8FB500FF6740 /* FilmDetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74106C752A1F8FB500FF6740 /* FilmDetailViewTests.swift */; };
 		74106C782A1F952000FF6740 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74106C772A1F952000FF6740 /* BaseView.swift */; };
@@ -106,7 +107,9 @@
 
 /* Begin PBXFileReference section */
 		3DB362712A433AAD00D5ED52 /* ConfigExample.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ConfigExample.plist; sourceTree = "<group>"; };
-		3DB362742A4344E100D5ED52 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		3DB3627B2A43540B00D5ED52 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		3DB3627D2A43547C00D5ED52 /* git.gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = git.gitignore; sourceTree = "<group>"; };
+		3DB3627E2A4354D400D5ED52 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74106C752A1F8FB500FF6740 /* FilmDetailViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailViewTests.swift; sourceTree = "<group>"; };
 		74106C772A1F952000FF6740 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		74106C7D2A1F996700FF6740 /* TestStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStrings.swift; sourceTree = "<group>"; };
@@ -331,18 +334,20 @@
 		74AF5D212A0AC4BD00A26173 /* ListFilmsVIP */ = {
 			isa = PBXGroup;
 			children = (
+				74B7708429F9559500800E4F /* AppDelegate.swift */,
+				74B7708629F9559500800E4F /* SceneDelegate.swift */,
 				74EA8C802A17B1C700184F35 /* Commons */,
 				74B7709929F957C000800E4F /* CustomCell */,
 				749638A12A05342900225A3E /* GenericModel */,
-				746F8E2B2A017FA200BD6452 /* Scenes */,
-				74B7708429F9559500800E4F /* AppDelegate.swift */,
-				74B7708629F9559500800E4F /* SceneDelegate.swift */,
+				74B7708F29F9559700800E4F /* LaunchScreen.storyboard */,
 				74B7708A29F9559500800E4F /* Main.storyboard */,
 				74B7708D29F9559700800E4F /* Assets.xcassets */,
-				74B7708F29F9559700800E4F /* LaunchScreen.storyboard */,
-				74B7709229F9559700800E4F /* Info.plist */,
+				3DB3627D2A43547C00D5ED52 /* git.gitignore */,
+				3DB3627B2A43540B00D5ED52 /* Config.plist */,
 				3DB362712A433AAD00D5ED52 /* ConfigExample.plist */,
-				3DB362742A4344E100D5ED52 /* Config.plist */,
+				3DB3627E2A4354D400D5ED52 /* GoogleService-Info.plist */,
+				74B7709229F9559700800E4F /* Info.plist */,
+				746F8E2B2A017FA200BD6452 /* Scenes */,
 			);
 			path = ListFilmsVIP;
 			sourceTree = "<group>";
@@ -618,8 +623,9 @@
 				74B7709129F9559700800E4F /* LaunchScreen.storyboard in Resources */,
 				3DB362722A433AAD00D5ED52 /* ConfigExample.plist in Resources */,
 				74B7708E29F9559700800E4F /* Assets.xcassets in Resources */,
+				3DB3627C2A43540B00D5ED52 /* Config.plist in Resources */,
 				74B7708C29F9559500800E4F /* Main.storyboard in Resources */,
-				3DB362752A4344E100D5ED52 /* Config.plist in Resources */,
+				3DB3627F2A4354D400D5ED52 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
