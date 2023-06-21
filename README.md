@@ -43,9 +43,16 @@ Na tela de detalhes mostra a sinopse do filme
 - iOS 13.0 ou superior
 
 ## Uso
+Para rodar o projeto, dois pontos importantes são necessarios, criar as credenciais para obter a lista de filmes no site https://www.themoviedb.org/?language=pt e criar um app no console do firebase.
+Após criar a conta no site de listagem de filmes incluir a API_KEY no projeto onde mostra na imagem
 
-Para usar a aplicação basta criar uma conta com um email valido e uma senha seguindo as regras do AUTH do firebase, quando criar e tiver o restorno de conta criada com sucesso logar no app com as credenciais e verá
-a tela de listar filmes, quando clicar em algum filme mostra na tela de detalhes o filme clicado com a descrição do filme.
+![apiFilmes](https://github.com/willmoreira/ListarFilmesVIP/assets/32074474/6edc3a42-43f2-4850-8fc5-1d6572b4b0da)
+
+Seguindo o passo a passo do firebase será criado um arquivo GoogleServiceInfo.plist, deve ser incluido no projeto na pasta indicada na imagem, para funcionar o Login
+
+![firebase](https://github.com/willmoreira/ListarFilmesVIP/assets/32074474/b3a061ca-399e-4bd5-a3dd-affb01f9b55f)
+
+Para usar a aplicação basta criar uma conta com um email valido e uma senha seguindo as regras do AUTH do firebase, quando criar e tiver o retorno de conta criada com sucesso logar no app com as credenciais e verá a tela de listar filmes, quando clicar em algum filme mostrará na tela de detalhes o filme clicado com a descrição do filme.
 
 ## Técnicas utlizadas
 
