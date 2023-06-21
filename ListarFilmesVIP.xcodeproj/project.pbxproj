@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3DB362702A433A4000D5ED52 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DB3626F2A433A4000D5ED52 /* Config.plist */; };
 		3DB362722A433AAD00D5ED52 /* ConfigExample.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DB362712A433AAD00D5ED52 /* ConfigExample.plist */; };
+		3DB362752A4344E100D5ED52 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DB362742A4344E100D5ED52 /* Config.plist */; };
 		3DEF018B2A3B45390074BC16 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3DEF018A2A3B45390074BC16 /* FirebaseAuth */; };
 		74106C762A1F8FB500FF6740 /* FilmDetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74106C752A1F8FB500FF6740 /* FilmDetailViewTests.swift */; };
 		74106C782A1F952000FF6740 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74106C772A1F952000FF6740 /* BaseView.swift */; };
@@ -26,7 +26,6 @@
 		74688EAC2A12A331001CD85F /* CreateLoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74688EAB2A12A331001CD85F /* CreateLoginWorker.swift */; };
 		74688EAE2A13BAAE001CD85F /* ResetLoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74688EAD2A13BAAE001CD85F /* ResetLoginWorker.swift */; };
 		74688EB02A13F0D1001CD85F /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74688EAF2A13F0D1001CD85F /* LoginWorker.swift */; };
-		746F8DE02A01558500BD6452 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 746F8DDF2A01558500BD6452 /* GoogleService-Info.plist */; };
 		746F8E7F2A01865000BD6452 /* FilmDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E792A01865000BD6452 /* FilmDetailPresenter.swift */; };
 		746F8E802A01865000BD6452 /* FilmDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E7A2A01865000BD6452 /* FilmDetailRouter.swift */; };
 		746F8E812A01865000BD6452 /* FilmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746F8E7B2A01865000BD6452 /* FilmDetailViewController.swift */; };
@@ -106,8 +105,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3DB3626F2A433A4000D5ED52 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		3DB362712A433AAD00D5ED52 /* ConfigExample.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ConfigExample.plist; sourceTree = "<group>"; };
+		3DB362742A4344E100D5ED52 /* Config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		74106C752A1F8FB500FF6740 /* FilmDetailViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailViewTests.swift; sourceTree = "<group>"; };
 		74106C772A1F952000FF6740 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		74106C7D2A1F996700FF6740 /* TestStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestStrings.swift; sourceTree = "<group>"; };
@@ -125,7 +124,6 @@
 		74688EAB2A12A331001CD85F /* CreateLoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLoginWorker.swift; sourceTree = "<group>"; };
 		74688EAD2A13BAAE001CD85F /* ResetLoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetLoginWorker.swift; sourceTree = "<group>"; };
 		74688EAF2A13F0D1001CD85F /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
-		746F8DDF2A01558500BD6452 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		746F8E792A01865000BD6452 /* FilmDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailPresenter.swift; sourceTree = "<group>"; };
 		746F8E7A2A01865000BD6452 /* FilmDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailRouter.swift; sourceTree = "<group>"; };
 		746F8E7B2A01865000BD6452 /* FilmDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailViewController.swift; sourceTree = "<group>"; };
@@ -342,10 +340,9 @@
 				74B7708A29F9559500800E4F /* Main.storyboard */,
 				74B7708D29F9559700800E4F /* Assets.xcassets */,
 				74B7708F29F9559700800E4F /* LaunchScreen.storyboard */,
-				746F8DDF2A01558500BD6452 /* GoogleService-Info.plist */,
 				74B7709229F9559700800E4F /* Info.plist */,
-				3DB3626F2A433A4000D5ED52 /* Config.plist */,
 				3DB362712A433AAD00D5ED52 /* ConfigExample.plist */,
+				3DB362742A4344E100D5ED52 /* Config.plist */,
 			);
 			path = ListFilmsVIP;
 			sourceTree = "<group>";
@@ -620,10 +617,9 @@
 				74106C912A1FE30A00FF6740 /* Localizable.strings in Resources */,
 				74B7709129F9559700800E4F /* LaunchScreen.storyboard in Resources */,
 				3DB362722A433AAD00D5ED52 /* ConfigExample.plist in Resources */,
-				746F8DE02A01558500BD6452 /* GoogleService-Info.plist in Resources */,
 				74B7708E29F9559700800E4F /* Assets.xcassets in Resources */,
-				3DB362702A433A4000D5ED52 /* Config.plist in Resources */,
 				74B7708C29F9559500800E4F /* Main.storyboard in Resources */,
+				3DB362752A4344E100D5ED52 /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,7 +641,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Config.plist\" >> .gitignore\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\necho \"Config.plist\" >> .gitignore\necho \"GoogleService-Info.plist\" >> .gitignore\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
