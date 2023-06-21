@@ -34,7 +34,6 @@ struct TestStrings {
     static let userNotFoundMessage = "Não há registro de usuário correspondente a este email, confira o email ou cadastre um novo usuário."
     static let invalidPassword = "Senha inválida!"
     static let invalidPasswordMessage = "A senha é inválida ou o usuário não possui uma senha."
-    static let apiKey = "ac894a60b6f5b4abf7ff6c58dbc67ced"
     static let urlString = "https://api.themoviedb.org/3/movie/popular?api_key="
     static let listOfMoviesMustNotBeNull = "A lista de filmes não deve ser nula"
     static let movieListMustNotBeEmpty =  "A lista de filmes não deve estar vazia"

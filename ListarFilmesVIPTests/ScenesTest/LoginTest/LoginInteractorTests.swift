@@ -158,7 +158,11 @@ final class LoginInteractorTests: XCTestCase {
     func testSearchFilmList() {
         // Given
         let expectation = XCTestExpectation(description: "Receber resposta da API")
-        let apiKey = TestStrings.apiKey
+        guard let configPath = Bundle.main.path(forResource: "Config", ofType: "plist"),
+              let configDictionary = NSDictionary(contentsOfFile: configPath),
+              let apiKey = configDictionary["API_KEY"] as? String else {
+            fatalError("Arquivo de configuração 'Config.plist' não encontrado ou chave 'API_KEY' ausente.")
+        }
         let urlString = TestStrings.urlString + apiKey
         
         // When

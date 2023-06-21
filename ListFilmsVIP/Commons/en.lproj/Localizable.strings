@@ -52,7 +52,6 @@
 "dateFormat" = "yyyy-MM-dd";
 "endDateFormat" = "dd 'de' MMMM 'de' yyyy";
 "urlSdWebImage" = "https://image.tmdb.org/t/p/w500";
-"apiKey" = "ac894a60b6f5b4abf7ff6c58dbc67ced";
 "urlString" = "https://api.themoviedb.org/3/movie/popular?api_key=";
 
 
