@@ -39,7 +39,6 @@ enum ProjectStrings: String, Localizable {
     case userNotFoundMessage
     case invalidPassword
     case invalidPasswordMessage
-    case apiKey
     case urlString
     case listOfMoviesMustNotBeNull
     case movieListMustNotBeEmpty

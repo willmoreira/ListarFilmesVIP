@@ -73,7 +73,12 @@ final class LoginInteractor: LoginDataStore {
     }
     
     func goToScreenListFilms() {
-        let apiKey = ProjectStrings.apiKey.localized
+        guard let configPath = Bundle.main.path(forResource: "Config", ofType: "plist"),
+              let configDictionary = NSDictionary(contentsOfFile: configPath),
+              let apiKey = configDictionary["API_KEY"] as? String else {
+            fatalError("Arquivo de configuração 'Config.plist' não encontrado ou chave 'API_KEY' ausente.")
+        }
+        
         let urlString = ProjectStrings.urlString.localized + apiKey
         searchFilmList(apiKey: apiKey, urlString: urlString)
     }
